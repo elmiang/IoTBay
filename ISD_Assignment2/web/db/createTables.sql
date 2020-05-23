@@ -1,14 +1,14 @@
 CREATE TABLE User
 (
-    userID      integer(10),
+    userID      integer NOT NULL PRIMARY KEY,
     email       varchar(30),
     password    varchar(16),
     name        varchar(30),
-    dob         date(6),
+    dob         date,
     gender      varchar(1),
     address     varchar(100),
-    postCode    integer(4),
-    phoneNumber integer(15),
+    postCode    varchar(4),
+    phoneNumber varchar(15)
 );
 
 CREATE TABLE Staff
@@ -55,14 +55,13 @@ CREATE TABLE Order
 
 CREATE TABLE Product
 (
-    productID       integer(10),
-    storeID         integer(10),
+    productID       integer NOT NULL PRIMARY KEY,
     productName     varchar(30),
     type            varchar(20),
     description     varchar(300),
-    quantity        integer(4),
-    availability    boolean(1),
-    price           double(10),
+    quantity        varchar(4),
+    availability    boolean,
+    price           double
 );
 
 CREATE TABLE OrderLine
