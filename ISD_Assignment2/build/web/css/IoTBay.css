@@ -19,6 +19,29 @@ body {
         
 }
 
+.instructions > a:link {
+  color: green;
+  text-decoration:none;
+}
+
+/* visited link */
+.instructions >a:visited {
+  color: green;
+  text-decoration:none;
+}
+
+/* mouse over link */
+.instructions >a:hover {
+  color: red;
+  text-decoration:none;
+}
+
+/* selected link */
+.instructions >a:active {
+  color: blue;
+  text-decoration:none;
+}
+
 h1{
     text-align: center;
     font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
@@ -30,6 +53,8 @@ h1{
     font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
     font-size: 20px;
     color: #ec4c4c;
+    margin: 5px;
+    padding-top: 10px;
 }
 
 h2.instructions{
@@ -121,29 +146,42 @@ ul li img{
     width:55%;
 }
 
+.main-content>img{
+    display:block;
+    margin:20px auto;
+}
+
 /*Form styling*/
 form{
     margin: 20px auto;
     padding:0 16px;
     width: 55%;
 }
-label[for="email"], label[for="password"], label[for="name"], label[for="phoneNumber"]{
+label[for="email"],label[for="addressTwo"], label[for="city"],label[for="State/Territory"],label[for="postcode"],label[for="chName"],label[for="password"], label[for="name"], label[for="phoneNumber"], label[for="address"]{
     display:block;
     margin:8px auto;
-    text-align:left;
+    text-align:left !important;
 }
 
 .tos-section{
     margin:32px 18px auto;
 }
+
+.payment-section{
+    margin:32px auto;
+    margin-left: auto;
+    text-align: left;
+    
+}
+
 label[for="tos"]{
     margin-right: 5px;
 }
 
-input[type="email"], input[type="password"], input[type="text"], input[type="date"] , input[type="tel"]{
+input[type="email"], input[type="password"], input[type="text"], input[type="date"] , input[type="tel"] {
     font-size:16px;
 }
-input[type="email"], input[type="password"], input[type="text"], input[type="date"] , input[type="tel"]{
+input[type="email"], input[type="password"], input[type="text"], input[type="date"] , input[type="tel"], input[type="cardNum"]{
     display:block;
     padding:.25em .5em;
     margin:10px auto;
@@ -245,6 +283,48 @@ tr>td{
     color:black;
     padding:6px 8px;
     text-align:center;
+    
+.box{
+    background-color: lightgrey;
+    width: 300px;
+    border: 15px black;
+    padding: 50px;
+    margin: 20px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 }
 
 /*End of Table Styling*/
+
+
+/*Payment Styling*/
+
+.cardExpiration{
+     text-align:left;
+     margin-bottom:8px;
+}
+label[for="cardMonth"], option,label[for="cardYear"], select[value="cardMonth"],select[value="cardYear"]{
+    font-size:16px;
+    text-align:left;
+}
+
+li.listImage > a > img{
+    height:60px;
+}
+/*End of Payment Styling*/
+
+
+/*Cart Styling*/
+
+.thead-dark > tr>th, tbody > tr >th{
+    background-color:#333333;
+    border:1px solid #333333;
+}
+
+
+/*End of Cart Styling*/
