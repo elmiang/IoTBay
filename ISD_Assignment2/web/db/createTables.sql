@@ -1,6 +1,8 @@
-CREATE TABLE User
+CREATE TABLE Users
 (
-    userID      integer NOT NULL PRIMARY KEY,
+    userID      integer NOT NULL PRIMARY KEY
+                GENERATED ALWAYS AS IDENTITY
+                (START WITH 1, INCREMENT BY 1),
     email       varchar(30),
     password    varchar(16),
     name        varchar(30),
@@ -55,9 +57,11 @@ CREATE TABLE Order
 
 CREATE TABLE Product
 (
-    productID       integer NOT NULL PRIMARY KEY,
-    productName     varchar(30),
-    type            varchar(20),
+    productID       integer NOT NULL PRIMARY KEY
+                    GENERATED ALWAYS AS IDENTITY
+                    (START WITH 1, INCREMENT BY 1),
+    productName     varchar(50),
+    type            varchar(30),
     description     varchar(300),
     quantity        varchar(4),
     availability    boolean,
