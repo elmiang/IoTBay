@@ -1,2 +1,0 @@
-# IoTBay
-IoTBay
