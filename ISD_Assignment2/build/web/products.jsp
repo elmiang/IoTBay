@@ -31,7 +31,20 @@
         </div>
         
         <main class="main-content">
-            <p class="p instructions">Lorem ipsum dolor sit amet.</p>
+            <h1>All Products</h1>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Availability</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            
         </main>
     </body>
 </html>
