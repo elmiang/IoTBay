@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package ISD.Assignment.Model.Dao;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

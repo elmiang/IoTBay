@@ -12,25 +12,22 @@ import javax.servlet.http.HttpSession;
 
 import ISD.Assignment.Model.Dao.ProductDao;
 import ISD.Assignment.Model.Product;
+import ISD.Assignment.Model.Dao.DBConnector;
 import java.sql.Connection;
-import javax.annotation.Resource;
-import javax.servlet.annotation.WebServlet;
-
-    @WebServlet("/products")
+import java.util.ArrayList;
+    
     public class StoreServlet extends HttpServlet {
-        @Resource(name="jdbc/iotdb")
-        private Connection conn;
         private ProductDao productDao;
         
-        
-       @Override
-       public void init(){
-           productDao = new ProductDao(conn);
-       }
-       
-       @Override
-       protected void doGet(HttpServlet request, HttpServlet response) throws ServletException, IOException{
-           
-           ProductDao productDao = (ProductDao) session.getAttribute("productDao");
-       }
+        @Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+                throws ServletException, IOException{ 
+            try {
+                ArrayList<Product> products = productDao.fetchProducts();
+                request.setAttribute("products", products);
+                request.getRequestDispatcher("products.jsp").forward(request, response);
+            } catch (SQLException e){
+               throw new ServletException("Cannot obtain products from DB", e); 
+            }
+        }
     }

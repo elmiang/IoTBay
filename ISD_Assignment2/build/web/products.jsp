@@ -34,15 +34,21 @@
             <h1>All Products</h1>
             <table>
                 <tr>
+                    <th>ID</th>
                     <th>Name</th>
+                    <th>Type</th>
                     <th>Price</th>
                     <th>Availability</th>
                 </tr>
+                <c:forEach var="product" items="${products}">
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><c:out value="${product.ProductID}"/></td>
+                    <td><c:out value="${product.ProductName}"/></td>
+                    <td><c:out value="${product.ProductType}"/></td>
+                    <td><c:out value="${product.ProductPrice}"/></td>
+                    <td><c:out value="${product.ProductAvailability}"/></td>
                 </tr>
+                </c:forEach>
             </table>
             
         </main>

@@ -12,20 +12,20 @@ package ISD.Assignment.Model;
 public class Product {
     private int productID;
     private String productName;
-    private char productType;
+    private String productType;
     private String productDesc;
     private int quantity;
-    private int price;
+    private double price;
     private boolean availability;
 
-    public Product(int productID, String productName, char productType, String productDesc, int quantity, int price, boolean availability) {
+    public Product(int productID, String productName, String productType, String productDesc, int quantity, boolean availability, double price) {
         this.productID = productID;
         this.productName = productName;
         this.productType = productType;
         this.productDesc = productDesc;
         this.quantity = quantity;
-        this.price = price;
         this.availability = availability;
+        this.price = price;
     }
 
     public int getProductID() {
@@ -44,11 +44,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public char getProductType() {
+    public String getProductType() {
         return productType;
     }
 
-    public void setProductType(char productType) {
+    public void setProductType(String productType) {
         this.productType = productType;
     }
 
@@ -68,11 +68,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
