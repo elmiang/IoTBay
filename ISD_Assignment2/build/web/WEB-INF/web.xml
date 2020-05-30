@@ -8,6 +8,10 @@
         <servlet-name>ConnServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.ConnServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.SearchServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StoreServlet</servlet-name>
         <url-pattern>/StoreServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/SearchServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

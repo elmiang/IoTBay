@@ -33,6 +33,12 @@
         </div>
         
         <main class="main-content">
+            <div>
+                <form action="SearchServlet" method="get">
+                    <input type="text" id="searchText" name="searchText" placeholder="Search.."/>
+                    <input type="submit" value ="Search"/>
+                </form>
+            </div>
             <h1>All Products</h1>
             <table>
                 <tr>
@@ -40,17 +46,17 @@
                     <th>Name</th>
                     <th>Type</th>
                     <th>Price</th>
-                    <th>Availability</th>
+                    <th>Quantity</th>
                 </tr>
-                <c:forEach var="product" items="${products}">
-                <tr>
-                    <td><c:out value="${product.ProductID}" /></td>
-                    <td><c:out value="${product.ProductName}" /></td>
-                    <td><c:out value="${product.ProductType}" /></td>
-                    <td><c:out value="${product.ProductPrice}" /></td>
-                    <td><c:out value="${product.ProductAvailability}" /></td>
-                </tr>
-                </c:forEach>
+                    <c:forEach var="product" items="${products}">
+                    <tr>
+                        <td><c:out value="${product.productID}" /></td>
+                        <td><c:out value="${product.productName}" /></td>
+                        <td><c:out value="${product.productType}" /></td>
+                        <td><c:out value="${product.price}" /></td>
+                        <td><c:out value="${product.quantity}" /></td>
+                    </tr>
+                    </c:forEach>
             </table>
             
         </main>

@@ -46,6 +46,9 @@ private void runQueries() throws SQLException {
             case 'C':
                 testAdd();
                 break;
+            case 'R':
+                testRead();
+                break;
             case 'S':
                 testShow();
                 break;
@@ -101,4 +104,18 @@ private void testShow(){
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+private void testRead() throws SQLException{
+    System.out.print("Product name: ");
+    String name = in.nextLine();
+    ArrayList<Product> products = pd.searchProducts(name);
+    if (products != null){
+        for(Product p: products){
+            System.out.println(p.getProductName());
+        }
+    }
+    else{
+        System.out.println("Product does not exist");
+    }
+}
+
 }

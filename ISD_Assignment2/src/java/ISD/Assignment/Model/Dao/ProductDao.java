@@ -24,6 +24,31 @@ public class ProductDao {
         this.conn = conn;
     }
     
+    
+    public ArrayList<Product> searchProducts(String searchName) throws SQLException {
+        ArrayList<Product> searchProducts = new ArrayList();
+        String search = "Select * from IOTUSER.Product where UPPER(PRODUCTNAME) LIKE UPPER('%" + searchName + "%')";
+        ResultSet rs = st.executeQuery(search);
+        
+        while (rs.next()){
+            int productId = rs.getInt(1);
+            String productName = rs.getString(2);
+            String productType = rs.getString(3);
+            String productDesc = rs.getString(4);
+            int productQuantity = rs.getInt(5);
+            boolean productAvailability = rs.getBoolean(6);
+            double productPrice = rs.getDouble(7);
+            searchProducts.add(new Product(productId, productName, productType, productDesc, productQuantity, productAvailability, productPrice));
+        }
+        if(searchProducts.size() > 0){
+            return searchProducts;
+        }
+        else{
+            return null;
+        }
+    }
+    
+    
     public ArrayList<Product> fetchProducts() throws SQLException {
         ArrayList<Product> products = new ArrayList();
         String fetch = "Select * from IOTUSER.Product";
