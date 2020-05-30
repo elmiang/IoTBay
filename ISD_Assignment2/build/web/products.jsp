@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,11 +44,11 @@
                 </tr>
                 <c:forEach var="product" items="${products}">
                 <tr>
-                    <td><c:out value="${product.ProductID}"/></td>
-                    <td><c:out value="${product.ProductName}"/></td>
-                    <td><c:out value="${product.ProductType}"/></td>
-                    <td><c:out value="${product.ProductPrice}"/></td>
-                    <td><c:out value="${product.ProductAvailability}"/></td>
+                    <td><c:out value="${product.ProductID}" /></td>
+                    <td><c:out value="${product.ProductName}" /></td>
+                    <td><c:out value="${product.ProductType}" /></td>
+                    <td><c:out value="${product.ProductPrice}" /></td>
+                    <td><c:out value="${product.ProductAvailability}" /></td>
                 </tr>
                 </c:forEach>
             </table>

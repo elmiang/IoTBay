@@ -32,5 +32,6 @@
         <main class="main-content">
             <p class="p instructions">Lorem ipsum dolor sit amet.</p>
         </main>
+        <jsp:include page="/ConnServlet" flush="true"/>
     </body>
 </html>

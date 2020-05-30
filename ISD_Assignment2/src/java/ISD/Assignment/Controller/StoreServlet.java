@@ -17,15 +17,15 @@ import java.sql.Connection;
 import java.util.ArrayList;
     
     public class StoreServlet extends HttpServlet {
-        private ProductDao productDao;
-        
         @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
+            HttpSession session = request.getSession();
+            ProductDao pd = (ProductDao) session.getAttribute("pd");
             try {
-                ArrayList<Product> products = productDao.fetchProducts();
+                ArrayList<Product> products = pd.fetchProducts();
                 request.setAttribute("products", products);
-                request.getRequestDispatcher("products.jsp").forward(request, response);
+                request.getRequestDispatcher("products.jsp").include(request, response);
             } catch (SQLException e){
                throw new ServletException("Cannot obtain products from DB", e); 
             }

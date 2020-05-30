@@ -5,55 +5,100 @@ import java.util.*;
 import java.util.logging.*;
 import ISD.Assignment.Model.Dao.DBConnector;
 import ISD.Assignment.Model.Dao.DBManager;
+import ISD.Assignment.Model.Dao.ProductDao;
+import ISD.Assignment.Model.Product;
 
  
 
 public class TestDB {
 private static Scanner in = new Scanner(System.in);
+private DBConnector connector;
+private Connection conn;
+private DBManager db;
+private ProductDao pd;
 
-public static void main(String[] args) {
+public static void main(String[] args) throws SQLException {
+    (new TestDB()).runQueries();
+}
 
-try {
-DBConnector connector = new DBConnector();
-Connection conn = connector.openConnection();
-DBManager db = new DBManager(conn);
+public TestDB(){
+    try {
+        connector = new DBConnector();
+        conn = connector.openConnection();
+        db = new DBManager(conn);
+        pd = new ProductDao(conn);
+    }
+    catch (ClassNotFoundException | SQLException ex) {
+        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
 
-System.out.print("User ID: ");
-String id = in.nextLine();
+private char readChoice(){
+    System.out.print("Operation CRUDS or * to exit: ");
+    return in.nextLine().charAt(0);
+}
 
-System.out.print("User email: ");
-String email = in.nextLine();
+private void runQueries() throws SQLException {
+    char c;
+    
+    while ((c = readChoice()) != '*'){
+        switch(c){
+            case 'C':
+                testAdd();
+                break;
+            case 'S':
+                testShow();
+                break;
+            default:
+                System.out.println("Unknown Command");
+        }
+    }
+}
 
-System.out.print("User password: ");
-String password = in.nextLine();
+private void testAdd(){
+    System.out.print("User ID: ");
+    String id = in.nextLine();
 
-System.out.print("User name: ");
-String name = in.nextLine();
+    System.out.print("User email: ");
+    String email = in.nextLine();
 
-System.out.print("User DOB: ");
-String dob = in.nextLine();
+    System.out.print("User password: ");
+    String password = in.nextLine();
 
-System.out.print("User gender: ");
-String gender = in.nextLine();
+    System.out.print("User name: ");
+    String name = in.nextLine();
 
-System.out.print("User address: ");
-String address = in.nextLine();
+    System.out.print("User DOB: ");
+    String dob = in.nextLine();
 
-System.out.print("User postcode: ");
-String postcode = in.nextLine();
+    System.out.print("User gender: ");
+    String gender = in.nextLine();
 
-System.out.print("User phone number: ");
-String phoneNumber = in.nextLine();
+    System.out.print("User address: ");
+    String address = in.nextLine();
 
-db.addUser(id, email, password, name, dob, gender, address, postcode, phoneNumber);
+    System.out.print("User postcode: ");
+    String postcode = in.nextLine();
 
-System.out.println("User is added to the database.");
-connector.closeConnection();
-
+    System.out.print("User phone number: ");
+    String phoneNumber = in.nextLine();
+    try {
+    db.addUser(id, email, password, name, dob, gender, address, postcode, phoneNumber);
+    } catch (SQLException ex) {
+        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    System.out.println("User is added to the database.");
 } 
-catch (ClassNotFoundException | SQLException ex) {
 
-Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+private void testShow(){
+    try {
+        ArrayList<Product> products = pd.fetchProducts();
+        System.out.println("PRODUCTS TABLE: ");
+        for(Product p: products){
+            System.out.println(p.getProductName());
+            }    
+    } catch (SQLException ex) {
+        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
