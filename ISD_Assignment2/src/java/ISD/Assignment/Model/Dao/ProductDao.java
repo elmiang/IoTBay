@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import ISD.Assignment.Model.Product;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 /**
@@ -24,6 +25,15 @@ public class ProductDao {
         this.conn = conn;
     }
     
+    public void addProduct(String name, String type, int quantity, double price) throws SQLException{
+        String update = "INSERT INTO IOTUSER.Product(productname, type, quantity, price) VALUES(?, ?, ?, ?)";
+        PreparedStatement st = conn.prepareStatement(update);
+        st.setString(1, name);
+        st.setString(2, type);
+        st.setInt(3, quantity);
+        st.setDouble(4, price);
+        st.execute();
+    }
     
     public ArrayList<Product> searchProducts(String searchName) throws SQLException {
         ArrayList<Product> searchProducts = new ArrayList();

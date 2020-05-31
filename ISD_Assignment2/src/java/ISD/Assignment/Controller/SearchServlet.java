@@ -21,7 +21,8 @@ import java.util.ArrayList;
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            String result = (String)session.getAttribute("searchText");
+            String result = request.getParameter("searchText");
+            //String result = (String)session.getAttribute("searchText");
             ProductDao pd = (ProductDao) session.getAttribute("pd");
             try {
                 ArrayList<Product> products = pd.searchProducts(result);
