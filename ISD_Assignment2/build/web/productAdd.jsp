@@ -1,12 +1,10 @@
 <%-- 
-    Document   : products
-    Created on : 24/05/2020, 8:29:15 PM
-    Author     : CristinaFidelino
+    Document   : productAdd
+    Created on : May 31, 2020, 2:45:14 PM
+    Author     : jacks
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,36 +31,43 @@
         </div>
         
         <main class="main-content">
-            <div>
-                <form action="SearchServlet" method="get">
-                    <input type="text" id="searchText" name="searchText" placeholder="Search.."/>
-                </form>
-            </div>
-            <div>
-                <form action="productAdd.jsp" method="post">
-                    <input type="submit" class="button" name="addProduct" value="Add"/>
-                </form>
-            </div>
-            <h1>All Products</h1>
+            <h1>Add Product</h1>
+            <form action="StoreAddServlet" method="post">
             <table>
                 <tr>
-                    <th>ID</th>
                     <th>Name</th>
-                    <th>Type</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
+                    <td>
+                        <input type="text" name="productName" placeholder="Insert product name..."/>
+                    </td>
                 </tr>
-                    <c:forEach var="product" items="${products}">
-                    <tr>
-                        <td><c:out value="${product.productID}" /></td>
-                        <td><c:out value="${product.productName}" /></td>
-                        <td><c:out value="${product.productType}" /></td>
-                        <td><c:out value="${product.price}" /></td>
-                        <td><c:out value="${product.quantity}" /></td>
-                    </tr>
-                    </c:forEach>
+                <tr>
+                    <th>Type</th>
+                    <td>
+                        <input type="text" name="productType" placeholder="Insert product type..."/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Quantity</th>
+                    <td>
+                        <input type="text" name="productQuantity" placeholder="Insert product quantity..."/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td>
+                        <input type="text" name="productPrice" placeholder="Insert product price..."/>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th></th>
+                    <td>
+                        <a href="StoreServlet" class="button">Back</a>
+                        <input type="submit" value="Add" class="button"/>
+                    </td>
+                </tr>
             </table>
-            
+            </form>
         </main>
     </body>
 </html>

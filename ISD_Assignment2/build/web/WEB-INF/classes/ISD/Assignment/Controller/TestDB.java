@@ -109,6 +109,7 @@ private void testAddProduct(){
     
     System.out.print("Price: ");
     double price = in.nextDouble();
+    in.nextLine();
     
     try{
         pd.addProduct(name, type, quantity, price);

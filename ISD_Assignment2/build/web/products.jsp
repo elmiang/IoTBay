@@ -36,7 +36,11 @@
             <div>
                 <form action="SearchServlet" method="get">
                     <input type="text" id="searchText" name="searchText" placeholder="Search.."/>
-                    <input type="submit" value ="Search"/>
+                </form>
+            </div>
+            <div>
+                <form action="productAdd.jsp" method="post">
+                    <input type="submit" class="button" name="addProduct" value="Add"/>
                 </form>
             </div>
             <h1>All Products</h1>
