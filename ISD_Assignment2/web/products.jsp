@@ -51,6 +51,7 @@
                     <th>Type</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th>Actions</th>
                 </tr>
                     <c:forEach var="product" items="${products}">
                     <tr>
@@ -59,6 +60,11 @@
                         <td><c:out value="${product.productType}" /></td>
                         <td><c:out value="${product.price}" /></td>
                         <td><c:out value="${product.quantity}" /></td>
+                        <td>
+                            <a>Edit</a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="StoreRemoveServlet?productName=<c:out value ="${product.productName}"/>">Delete</a>
+                        </td>
                     </tr>
                     </c:forEach>
             </table>

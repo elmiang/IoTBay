@@ -50,7 +50,7 @@ private void runQueries() throws SQLException {
                 testAddProduct();
                 break;
             case 'R':
-                testRead();
+                testRemoveProduct();
                 break;
             case 'S':
                 testShow();
@@ -117,6 +117,18 @@ private void testAddProduct(){
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
     }
     System.out.println("Product is added to the database.");
+}
+
+private void testRemoveProduct(){
+    System.out.print("Product Name: ");
+    String name = in.nextLine();
+    
+    try{
+        pd.removeProduct(name);
+    } catch (SQLException ex) {
+        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    System.out.println("Product removed from the database.");
 }
 
 private void testShow(){

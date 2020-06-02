@@ -16,6 +16,10 @@
         <servlet-name>StoreAddServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.StoreAddServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StoreRemoveServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.StoreRemoveServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StoreServlet</servlet-name>
         <url-pattern>/StoreServlet</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>StoreAddServlet</servlet-name>
         <url-pattern>/StoreAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StoreRemoveServlet</servlet-name>
+        <url-pattern>/StoreRemoveServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
