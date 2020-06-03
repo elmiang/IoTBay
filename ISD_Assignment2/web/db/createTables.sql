@@ -11,48 +11,53 @@ CREATE TABLE Users
     address     varchar(100),
     postCode    varchar(4),
     phoneNumber varchar(15)
+    
 );
 
 CREATE TABLE Staff
 (
-    userID      integer(10),
+    userID      integer NOT NULL,
     position    varchar(20),
-    dateHired   date(6),
-    salary      double(8)
+    dateHired   date,
+    salary      double,
+    FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
 CREATE TABLE Customer
 (
-    userID          integer(10),
+    userID          integer NOT NULL,
     billingAddress  varchar(100),
-    cardNumber      integer(16),
+    cardNumber      integer,
     cardType        varchar(12),
-    cardExpiry      date(4),
-    cvv             integer(3)
+    cardExpiry      date,
+    cvv             integer,
+    FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
 CREATE TABLE AccessLogs
 (
-    userID integer(10),
+    userID Integer NOT NULL,
     action varchar(30),
-    time   timestamp(14)
+    time   timestamp,
+    FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
 
 CREATE TABLE Store
 (
-    storeID         integer(10),
+    storeID         integer,
     storeAddress    varchar(100),
     businessHours   varchar(50)
 );
 
-CREATE TABLE Order
+CREATE TABLE OrderTable
 (
-    orderID         integer(10),
-    userID          integer(10),
-    orderDate       date(6),
+    orderID         integer,
+    userID          integer NOT NULL,
+    orderDate       date,
     orderStatus     varchar(30),
-    deliveryType    varchar(20)
+    deliveryType    varchar(20),
+    FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
 CREATE TABLE Product
@@ -70,46 +75,47 @@ CREATE TABLE Product
 
 CREATE TABLE OrderLine
 (
-    productID       integer(10),
-    orderID         integer(10),
-    quantity        integer(3),
-    price           double(8)
+    productID       integer,
+    orderID         integer,
+    quantity        integer,
+    price           double
 );
 
 CREATE TABLE Invoice
 (
-    invoiceID   integer(10),
-    orderID     integer(10),
-    subTotal    double(10),
-    issueDate   date(6),
-    dueDate     date(6),
-    tax         double(10),
-    total       double(10)
+    invoiceID   integer,
+    orderID     integer,
+    subTotal    double,
+    issueDate   date,
+    dueDate     date,
+    tax         double,
+    total       double
 );
 
 CREATE TABLE Admin
 (
-    userID      integer(10),
-    dateHired   date(6),
-    salary      double(8)
+    userID      integer NOT NULL,
+    dateHired   date,
+    salary      double,
+    FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
 CREATE TABLE Payment
 (
-    paymentID       integer(10),
-    invoiceID       integer(10),
-    paidDate        date(6),
+    paymentID       integer,
+    invoiceID       integer,
+    paidDate        date,
     paymentMethod   varchar(20),
-    paidAmount      double(8)
+    paidAmount      double
 );
 
 CREATE TABLE Shipment
 (
-    shipmentID      integer(10),
-    orderID         integer(10),
-    startDate       date(6),
-    estArrDate      date(6),
-    deliveryAddress varchar(50),
-    currentStatus   varchar(100)
+    shipmentID      integer,
+    orderID         integer,
+    startDate       date,
+    estArrDate      date,
+    deliveryAddress varchar(20),
+    currentStatus   varchar(20)
 );
 
