@@ -52,6 +52,9 @@ private void runQueries() throws SQLException {
             case 'R':
                 testRemoveProduct();
                 break;
+            case 'U':
+                testUpdateProduct();
+                break;
             case 'S':
                 testShow();
                 break;
@@ -117,6 +120,31 @@ private void testAddProduct(){
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
     }
     System.out.println("Product is added to the database.");
+}
+
+private void testUpdateProduct(){
+    System.out.print("Product Name: ");
+    String oname = in.nextLine();
+    
+    System.out.print("New Product Name: ");
+    String name = in.nextLine();
+    
+    System.out.print("Product Type: ");
+    String type = in.nextLine();
+    
+    System.out.print("Product Quantity: ");
+    int quantity = in.nextInt();
+    
+    System.out.print("Product Price: ");
+    double price = in.nextDouble();
+    in.nextLine();
+    
+    try{
+       pd.updateProduct(oname, name, type, quantity, price); 
+    } catch (SQLException ex) {
+        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    System.out.println("Product updated.");
 }
 
 private void testRemoveProduct(){

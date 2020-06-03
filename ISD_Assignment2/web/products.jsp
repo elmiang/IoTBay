@@ -61,7 +61,7 @@
                         <td><c:out value="${product.price}" /></td>
                         <td><c:out value="${product.quantity}" /></td>
                         <td>
-                            <a>Edit</a>
+                            <a href="StoreEditServlet?oName=<c:out value ="${product.productName}"/>">Edit</a>
                             &nbsp;&nbsp;&nbsp;
                             <a href="StoreRemoveServlet?productName=<c:out value ="${product.productName}"/>">Delete</a>
                         </td>

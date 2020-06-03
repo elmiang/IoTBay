@@ -20,19 +20,17 @@ import ISD.Assignment.Model.Product;
 import ISD.Assignment.Model.Dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
     
-    public class StoreRemoveServlet extends HttpServlet {
+    public class StoreEditServlet extends HttpServlet {
         @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
             ProductDao pd = (ProductDao) session.getAttribute("pd");
-            String name = request.getParameter("productName");
-            try {
-                pd.removeProduct(name);
-                response.sendRedirect("StoreServlet");
-            } catch (SQLException e){
-               throw new ServletException("Cannot add product to DB", e); 
-            }
+            String oname = (String) request.getParameter("oName");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("productAdd.jsp");
+            request.setAttribute("oName", oname);
+            dispatcher.forward(request, response);
         }
     }

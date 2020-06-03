@@ -30,7 +30,6 @@ import java.util.ArrayList;
             String name = request.getParameter("productName");
             try {
                 pd.removeProduct(name);
-                //request.getRequestDispatcher("products.jsp").forward(request, response);
                 response.sendRedirect("StoreServlet");
             } catch (SQLException e){
                throw new ServletException("Cannot add product to DB", e); 

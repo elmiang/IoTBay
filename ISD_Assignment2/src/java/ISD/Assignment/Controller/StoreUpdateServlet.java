@@ -21,18 +21,23 @@ import ISD.Assignment.Model.Dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
     
-    public class StoreRemoveServlet extends HttpServlet {
+    public class StoreUpdateServlet extends HttpServlet {
         @Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
             ProductDao pd = (ProductDao) session.getAttribute("pd");
+            String oname = request.getParameter("oName");
+            
             String name = request.getParameter("productName");
+            String type = request.getParameter("productType");
+            int quantity = Integer.parseInt(request.getParameter("productQuantity"));
+            double price = Double.parseDouble(request.getParameter("productPrice"));
             try {
-                pd.removeProduct(name);
+                pd.updateProduct(oname, name, type, quantity, price);
                 response.sendRedirect("StoreServlet");
             } catch (SQLException e){
-               throw new ServletException("Cannot add product to DB", e); 
+               throw new ServletException("Cannot update product", e); 
             }
         }
     }

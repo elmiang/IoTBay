@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,8 +32,15 @@
         </div>
         
         <main class="main-content">
+        <c:if test="${oName != null}">
+            <h1>Edit Product</h1>
+            <form action="StoreUpdateServlet?oName=<c:out value="${oName}"/>" method="post">
+        </c:if>
+        
+        <c:if test="${oName == null}">
             <h1>Add Product</h1>
             <form action="StoreAddServlet" method="post">
+        </c:if>
             <table>
                 <tr>
                     <th>Name</th>
@@ -63,7 +71,7 @@
                     <th></th>
                     <td>
                         <a href="StoreServlet" class="button">Back</a>
-                        <input type="submit" value="Add" class="button"/>
+                        <input type="submit" value="Save" class="button"/>
                     </td>
                 </tr>
             </table>

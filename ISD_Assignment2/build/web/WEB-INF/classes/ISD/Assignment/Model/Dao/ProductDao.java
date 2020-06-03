@@ -30,8 +30,16 @@ public class ProductDao {
         st.executeUpdate("DELETE FROM IOTUSER.Product WHERE PRODUCTNAME='" + name + "'");
     }
     
-    public void updateProduct(String name, String type, int quantity, double price) throws SQLException{
-        st.executeUpdate("UPDATE IOTUSER.Product SET PRODUCTNAME='" + name + "', TYPE='" + type + "', QUANTITY='" + quantity +"', PRICE='" + price + "'");
+    public void updateProduct(String oname, String name, String type, int quantity, double price) throws SQLException{
+        //st.executeUpdate("UPDATE IOTUSER.Product SET PRODUCTNAME='" + name + "', TYPE='" + type + "', QUANTITY='" + quantity +"', PRICE='" + price + "' WHERE PRODUCTNAME='" + oname + "'");
+        String update = "UPDATE IOTUSER.PRODUCT SET PRODUCTNAME = ?, TYPE = ?, QUANTITY = ?, PRICE = ? WHERE PRODUCTNAME = ?";
+        PreparedStatement st = conn.prepareStatement(update);
+        st.setString(1, name);
+        st.setString(2, type);
+        st.setInt(3, quantity);
+        st.setDouble(4, price);
+        st.setString(5, oname);
+        st.execute();
     }
     
     public void addProduct(String name, String type, int quantity, double price) throws SQLException{
