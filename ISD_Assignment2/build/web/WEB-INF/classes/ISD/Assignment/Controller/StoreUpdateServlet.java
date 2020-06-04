@@ -27,7 +27,6 @@ import java.util.ArrayList;
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
             ProductDao pd = (ProductDao) session.getAttribute("pd");
-            //String oname = (String)request.getAttribute("oName");
             String oname = request.getParameter("oName");
             
             String name = request.getParameter("productName");

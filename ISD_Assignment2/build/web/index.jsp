@@ -22,9 +22,9 @@
         </div>
         <div class="topnav">
             <a href="StoreServlet" style="float: left;">All Products</a>
-            <a href="StoreServlet" style="float: left;">Kits</a>
-            <a href="StoreServlet" style="float: left;">Parts</a>
-            <a href="StoreServlet" style="float: left;">Sensors</a>
+            <a href="StoreCategoryServlet?type=motor" style="float: left;">Kits (Motors)</a>
+            <a href="StoreCategoryServlet?type=display" style="float: left;">Parts (Displays)</a>
+            <a href="StoreCategoryServlet?type=sensor" style="float: left;">Sensors</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
         </div>

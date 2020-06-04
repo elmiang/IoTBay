@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,29 +43,18 @@
               <thead class="thead-dark">
                 <tr>
                   <th scope="col"></th>
-                  <th scope="col">Item Picture</th>
-                  <th scope="col">Product Info</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Quantity</th>
                   <th scope="col">Price</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
+                    <c:forEach var="product" items="${products}">
                   <th scope="row"></th>
-                  <td>Pic (change later)</td>
-                  <td>Lorem Ipsum</td>
-                  <td>$15.00</td>
-                </tr>
-                <tr>
-                  <th scope="row"></th>
-                  <td>Pic (change later)</td>
-                  <td>Lorem Ipsum</td>
-                  <td>$75.00</td>
-                </tr>
-                <tr>
-                  <th scope="row"></th>
-                  <td>Pic (change later)</td>
-                  <td>Lorem Ipsum</td>
-                  <td>$135.00</td>
+                  <td><c:out value="${product.productName}" /></td>
+                  <td><c:out value="${product.quantity}" /></td>
+                  <td><c:out value="${product.price}" /></td>
                 </tr>
               </tbody>
             </table>

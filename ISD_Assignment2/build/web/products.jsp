@@ -24,10 +24,10 @@
         </ul>
         </div>
         <div class="topnav">
-            <a href="products.jsp" style="float: left;">All Products</a>
-            <a style="float: left;">Kits</a>
-            <a style="float: left;">Parts</a>
-            <a style="float: left;">Sensors</a>
+            <a href="StoreServlet" style="float: left;">All Products</a>
+            <a href="StoreServlet" style="float: left;">Kits</a>
+            <a href="StoreServlet" style="float: left;">Parts</a>
+            <a href="StoreServlet" style="float: left;">Sensors</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
         </div>
@@ -64,6 +64,8 @@
                             <a href="StoreEditServlet?oName=<c:out value ="${product.productName}"/>">Edit</a>
                             &nbsp;&nbsp;&nbsp;
                             <a href="StoreRemoveServlet?productName=<c:out value ="${product.productName}"/>">Delete</a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a>Add to Cart</a>
                         </td>
                     </tr>
                     </c:forEach>
