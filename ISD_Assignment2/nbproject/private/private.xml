@@ -13,5 +13,13 @@
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/cart.jsp</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/SearchServlet.java</file>
         </group>
+        <group>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/web/userRecords.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/web/index.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/StoreServlet.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/StoreAddServlet.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/SearchServlet.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/web/products.jsp</file>
+        </group>
     </open-files>
 </project-private>

@@ -7,6 +7,8 @@ import ISD.Assignment.Model.Dao.DBConnector;
 import ISD.Assignment.Model.Dao.DBManager;
 import ISD.Assignment.Model.Dao.ProductDao;
 import ISD.Assignment.Model.Product;
+import ISD.Assignment.Model.UserRecord;
+import ISD.Assignment.Model.Dao.UserRecordDao;
 
  
 
@@ -16,6 +18,8 @@ private DBConnector connector;
 private Connection conn;
 private DBManager db;
 private ProductDao pd;
+private UserRecordDao ud;
+
 
 public static void main(String[] args) throws SQLException {
     (new TestDB()).runQueries();
@@ -27,6 +31,7 @@ public TestDB(){
         conn = connector.openConnection();
         db = new DBManager(conn);
         pd = new ProductDao(conn);
+        ud = new UserRecordDao(conn);
     }
     catch (ClassNotFoundException | SQLException ex) {
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,6 +62,9 @@ private void runQueries() throws SQLException {
                 break;
             case 'S':
                 testShow();
+                break;
+                case 'Q':
+                testURShow();
                 break;
             default:
                 System.out.println("Unknown Command");
@@ -184,4 +192,53 @@ private void testRead() throws SQLException{
     }
 }
 
+private void testURShow() throws SQLException{
+     try {
+        ArrayList<UserRecord> ur = ud.fetchUserRecord();
+        System.out.println("UR Email List: ");
+        for(UserRecord p: ur){
+            System.out.println(p.getEmail());
+            }    
+    } catch (SQLException ex) {
+        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+}
+
+private void testURRead() throws SQLException{
+    System.out.print("Email: ");
+    String email = in.nextLine();
+    ArrayList<UserRecord> ur = ud.searchUserRecord(email);
+    if (ur != null){
+        for(UserRecord p: ur){
+            System.out.println(p.getEmail());
+        }
+    }
+    else{
+        System.out.println("Product does not exist");
+    }
+}
+
+private void testAddUR(){
+    System.out.print("Product Name: ");
+    String name = in.nextLine();
+    
+    System.out.print("Product Type: ");
+    String type = in.nextLine();
+    
+    System.out.print("Quantity: ");
+    int quantity = in.nextInt();
+    in.nextLine();
+    
+    System.out.print("Price: ");
+    double price = in.nextDouble();
+    in.nextLine();
+    
+    try{
+        pd.addProduct(name, type, quantity, price);
+    } catch (SQLException ex) {
+        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    System.out.println("Product is added to the database.");
+}
 }

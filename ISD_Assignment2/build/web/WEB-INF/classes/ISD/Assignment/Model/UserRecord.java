@@ -37,23 +37,6 @@ public class UserRecord implements Serializable {
         this.phoneNumber = phoneNumber;
         this.role = role;
     }
-    
-    public static void updateUserRecord(HttpServletRequest request, HttpSession session, UserRecord userrecord)
-    {
-        String userID = request.getParameter("userID");
-            String email = request.getParameter("email");
-            String name = request.getParameter("name");
-            String dob = request.getParameter("dob");
-            String password = request.getParameter("password");
-            String gender = request.getParameter("gender");
-            String address = request.getParameter("address");
-            String postcode = request.getParameter("postcode");
-            String phoneNumber = request.getParameter("phoneNumber");
-            String role = request.getParameter("role");
-            
-            userrecord = new UserRecord(userID, email, password, name, dob, gender, address, postcode, phoneNumber, role);
-            session.setAttribute("user",userrecord);
-    }
 
     public String getUserID() {
         return userID;

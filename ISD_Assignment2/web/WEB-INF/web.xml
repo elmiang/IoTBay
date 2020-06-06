@@ -32,6 +32,10 @@
         <servlet-name>StoreCategoryServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.StoreCategoryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>URServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.URServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StoreServlet</servlet-name>
         <url-pattern>/StoreServlet</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>StoreCategoryServlet</servlet-name>
         <url-pattern>/StoreCategoryServlet</url-pattern>
+    </servlet-mapping> 
+    <servlet-mapping>
+        <servlet-name>URServlet</servlet-name>
+        <url-pattern>/URServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
