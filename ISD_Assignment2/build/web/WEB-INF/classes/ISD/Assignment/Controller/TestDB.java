@@ -64,7 +64,7 @@ private void runQueries() throws SQLException {
                 testShow();
                 break;
                 case 'Q':
-                testAddUR();
+                testUpdateUR();
                 break;
             default:
                 System.out.println("Unknown Command");
@@ -206,12 +206,13 @@ private void testURShow() throws SQLException{
 }
 
 private void testURRead() throws SQLException{
-    System.out.print("Email: ");
-    String email = in.nextLine();
-    ArrayList<UserRecord> ur = ud.searchUserRecord(email);
+    System.out.print("Name or Phone Number: ");
+    String name = in.nextLine();
+    
+    ArrayList<UserRecord> ur = ud.searchUserRecord(name);
     if (ur != null){
         for(UserRecord p: ur){
-            System.out.println(p.getEmail());
+            System.out.println(p.getName());
         }
     }
     else{
@@ -255,5 +256,44 @@ private void testAddUR(){
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
     }
     System.out.println("UR is added to the database.");
+}
+private void testUpdateUR(){
+    System.out.print("UserID: ");
+    String userID = in.nextLine();
+    
+   System.out.print("Email: ");
+    String email = in.nextLine();
+    
+    System.out.print("Password: ");
+    String password = in.nextLine();
+    
+    System.out.print("Name: ");
+    String name = in.nextLine();
+        
+    System.out.print("DoB: ");
+    String dob= in.nextLine();
+    
+    System.out.print("Gender: ");
+    String gender = in.nextLine();
+    
+    System.out.print("Address: ");
+    String address = in.nextLine();
+    
+    System.out.print("Postcode: ");
+    String postcode = in.nextLine();
+    
+    System.out.print("Phonenumber: ");
+    String phoneNumber = in.nextLine();
+    
+    System.out.print("Role: ");
+    String role = in.nextLine();
+    
+    
+    try{
+       ud.updateUserRecord(userID,email, password, name, dob, gender, address, postcode, phoneNumber, role);
+    } catch (SQLException ex) {
+        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    System.out.println("UR updated.");
 }
 }

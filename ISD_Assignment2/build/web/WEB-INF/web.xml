@@ -40,6 +40,18 @@
         <servlet-name>URAddServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.URAddServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>URSearchServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.URSearchServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UREditServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.UREditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>URUpdateServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.URUpdateServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StoreServlet</servlet-name>
         <url-pattern>/StoreServlet</url-pattern>
@@ -71,7 +83,7 @@
     <servlet-mapping>
         <servlet-name>StoreCategoryServlet</servlet-name>
         <url-pattern>/StoreCategoryServlet</url-pattern>
-    </servlet-mapping> 
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>URServlet</servlet-name>
         <url-pattern>/URServlet</url-pattern>
@@ -79,6 +91,18 @@
     <servlet-mapping>
         <servlet-name>URAddServlet</servlet-name>
         <url-pattern>/URAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>URSearchServlet</servlet-name>
+        <url-pattern>/URSearchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UREditServlet</servlet-name>
+        <url-pattern>/UREditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>URUpdateServlet</servlet-name>
+        <url-pattern>/URUpdateServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -32,17 +32,25 @@
             <a style="float: right;">Contact</a>
             <a href="URServlet" style="float: right;">User Management</a>
         </div>
-    <main class="main-content">    
-   <c:if test="${userrecord == null}">
+    <main class="main-content"> 
+        
+   <c:if test="${userID != null}">
+            <h1>Edit User Record</h1>
+            <form action="URUpdateServlet?userID=<c:out value="${userID}"/>" method="post">
+        </c:if>     
+        
+   <c:if test="${userID == null}">
             <h1>Add User Record</h1>
             <form action="URAddServlet" method="post">
         </c:if>
             
          <table>
-      
+           
+         
+               <tr>
                     <th>Email</th>
                     <td>
-                        <input type="email" name="email" placeholder="Insert email"/>
+                        <input type="email" name="email" placeholder="Insert email" />
                     </td>
                 </tr>
                 

@@ -69,9 +69,10 @@ public void addUserRecord(String email, String password, String name, String dob
     st.execute();
 }     
      
-public void updateUserRecord(String email, String password, String name, String dob, String gender, String address, String postcode, String phonenumber, String role) throws SQLException {
-    String update = "UPDATE IOTUSER.USERRECORD SET userID = ?, email = ?, password = ?, name = ?, dob = ?, gender = ?, address = ?, postcode = ?, phonenumber = ?, role = ? WHERE email = ? ";
+public void updateUserRecord(String userID, String email, String password, String name, String dob, String gender, String address, String postcode, String phonenumber, String role) throws SQLException {
+    String update = "UPDATE IOTUSER.USERRECORD SET email = ?, password = ?, name = ?, dob = ?, gender = ?, address = ?, postcode = ?, phonenumber = ?, role = ? WHERE userID = ? ";
     PreparedStatement st = conn.prepareStatement(update);
+    
     
     st.setString(1, email);
     st.setString(2, password);
@@ -82,6 +83,7 @@ public void updateUserRecord(String email, String password, String name, String 
     st.setString(7, postcode);
     st.setString(8, phonenumber);
     st.setString(9, role);
+    st.setString(10, userID);
     st.execute();
     
 }     

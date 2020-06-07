@@ -45,7 +45,13 @@
                 <form action="URServlet" method="get">
                     <input type="submit" class="button" name="listUR" value="List User Records"/>
                 </form>
-            </h2>     
+            
+            <div>
+                <form action="URSearchServlet" method="get">
+                    <input type="text" id="searchText" name="searchText" placeholder="Search name"/>
+                </form>
+            </div>
+            
     </center>
             <div align="center">     
         <h1>User Records</h1>
@@ -62,6 +68,7 @@
                     <th>Postcode</th>
                     <th>Phone number</th>
                     <th>Role</th>
+                    <th>Actions</th>
                 </tr>
                  <c:forEach var="userrecord" items="${ur}">
                      <tr>
@@ -76,6 +83,8 @@
                         <td><c:out value="${userrecord.phoneNumber}" /></td>
                         <td><c:out value="${userrecord.role}" /></td>
                         <td>
+                            <a href="UREditServlet?userID=<c:out value ="${userrecord.userID}"/>">Edit</a>
+                            &nbsp;&nbsp;&nbsp;
                            
                         </td>
                     </tr>
