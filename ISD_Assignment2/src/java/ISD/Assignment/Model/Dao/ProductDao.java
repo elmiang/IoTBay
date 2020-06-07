@@ -75,28 +75,6 @@ public class ProductDao {
         }
     }
     
-     public Product exactSearch(String searchName) throws SQLException {
-        String search = "Select * from IOTUSER.Product where UPPER(PRODUCTNAME) = UPPER('" + searchName + "')";
-        ResultSet rs = st.executeQuery(search);
-        ArrayList<Product> product = new ArrayList<Product>();
-        while (rs.next()){
-            int productId = rs.getInt(1);
-            String productName = rs.getString(2);
-            String productType = rs.getString(3);
-            String productDesc = rs.getString(4);
-            int productQuantity = rs.getInt(5);
-            boolean productAvailability = rs.getBoolean(6);
-            double productPrice = rs.getDouble(7);
-            product.add(new Product(productId, productName, productType, productDesc, productQuantity, productAvailability, productPrice));
-        }
-        if(product.size() > 0){
-            return product.get(0);
-        }
-        else{
-            return null;
-        }
-    }
-     
     public ArrayList<Product> searchTypes(String searchType) throws SQLException {
         ArrayList<Product> searchProducts = new ArrayList();
         String search = "Select * from IOTUSER.Product where UPPER(TYPE) LIKE UPPER('%" + searchType + "%')";

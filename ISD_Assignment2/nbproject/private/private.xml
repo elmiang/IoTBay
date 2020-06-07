@@ -6,13 +6,10 @@
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/products.jsp</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/StoreAddServlet.java</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/StoreServlet.java</file>
-            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Model/Dao/ProductDao.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/productAdd.jsp</file>
-            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Model/ShoppingCart.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/cart.jsp</file>
-            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/SearchServlet.java</file>
-            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/CartAddServlet.java</file>
-            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/CartServlet.java</file>
         </group>
     </open-files>
 </project-private>
