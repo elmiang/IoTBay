@@ -17,7 +17,8 @@
        private DBManager manager;
        private ProductDao pd;
        private Connection conn;   
-
+       private UserRecordDao ud;
+       
        @Override //Create an instance of DBConnector for the deployment session
        
        public void init() {
@@ -39,6 +40,7 @@
            try {
                manager = new DBManager(conn);
                pd = new ProductDao(conn);
+               ud = new UserRecordDao(conn);
            } catch (SQLException ex) {
                Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
            }
@@ -46,6 +48,7 @@
            //export the DB manager to the view-session (JSPs)
            session.setAttribute("manager", manager);  
            session.setAttribute("pd", pd);
+           session.setAttribute("ud", ud);
        }   
 
        @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
