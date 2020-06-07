@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,28 +13,22 @@
         <title>Index</title>
     </head>
     <body>
-        <%-- 
-            These are used to test staff and customer roles:
-            <c:set var="customer" value="customer" scope="session"/> 
-            <c:set var="staff" value="staff" scope="session"/>
-        --%>
-        <c:set var="customer" value="customer" scope="session"/> 
-        
         <div class="header-img">
         <ul>
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
           <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
           <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
+          <li style="float:right" class="listImage"><a href="cart.jsp"><img class="logo" src="css/cart2.png"/></a></li>
+          <li style="float:right" class="listImage"><a href="main.jsp"><img class="logo" src="css/userIcon.png"/></a></li>
         </ul>
         </div>
         <div class="topnav">
             <a href="StoreServlet" style="float: left;">All Products</a>
-            <a href="StoreCategoryServlet?type=motor" style="float: left;">Kits (Motors)</a>
-            <a href="StoreCategoryServlet?type=display" style="float: left;">Parts (Displays)</a>
-            <a href="StoreCategoryServlet?type=sensor" style="float: left;">Sensors</a>
+            <a href="StoreServlet" style="float: left;">Kits</a>
+            <a href="StoreServlet" style="float: left;">Parts</a>
+            <a href="StoreServlet" style="float: left;">Sensors</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
-            <a href="URServlet" style="float: right;">User Management</a>
         </div>
         
         <main class="main-content">
