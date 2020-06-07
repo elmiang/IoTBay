@@ -11,12 +11,22 @@ package ISD.Assignment.Model;
  */
 public class Admin {
     
+    private int userID;
     private String dateHired;
     private double salary;
 
-    public Admin(String dateHired, double salary) {
+    public Admin(int userID, String dateHired, double salary) {
+        this.userID = userID;
         this.dateHired = dateHired;
         this.salary = salary;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getDateHired() {
@@ -34,4 +44,6 @@ public class Admin {
     public void setSalary(double salary) {
         this.salary = salary;
     }
+    
 }
+

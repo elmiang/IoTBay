@@ -1,0 +1,2 @@
+UPDATE IotBayAdmin.Users SET  PASSWORD='test1', NAME = 'test1123', DOB='', GENDER='" + gender + "', ADDRESS='" + address + "', POSTCODE='" + postCode + "', "
+            + "PHONENUMBER='" + phoneNumber + "' WHERE EMAIL='" + email + "'

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
  * @author CristinaFidelino
  */
 public class User implements Serializable {
-    private String userID;
+    private int userID;
     private String email;
     private String password;
     private String name;
@@ -24,7 +24,7 @@ public class User implements Serializable {
     private String postcode;
     private String phoneNumber;
 
-    public User(String userID, String email, String password, String name, String dob, String gender, String address, String postcode, String phoneNumber) {
+    public User(int userID, String email, String password, String name, String dob, String gender, String address, String postcode, String phoneNumber) {
         this.userID = userID;
         this.email = email;
         this.password = password;
@@ -35,28 +35,30 @@ public class User implements Serializable {
         this.postcode = postcode;
         this.phoneNumber = phoneNumber;
     }
-    
-    public static void updateUser(HttpServletRequest request, HttpSession session, User user)
-    {
-        String userID = request.getParameter("userID");
-            String email = request.getParameter("email");
-            String name = request.getParameter("name");
-            String dob = request.getParameter("dob");
-            String password = request.getParameter("password");
-            String gender = request.getParameter("gender");
-            String address = request.getParameter("address");
-            String postcode = request.getParameter("postcode");
-            String phoneNumber = request.getParameter("phoneNumber");
-            
-            user = new User(userID, email, password, name, dob, gender, address, postcode, phoneNumber);
-            session.setAttribute("user",user);
-    }
 
-    public String getUserID() {
+
+    
+    
+    /*public static void updateUser(HttpServletRequest request, HttpSession session, User user)
+    {
+    int userID = request.getParameter("userID");
+    String email = request.getParameter("email");
+    String name = request.getParameter("name");
+    String dob = request.getParameter("dob");
+    String password = request.getParameter("password");
+    String gender = request.getParameter("gender");
+    String address = request.getParameter("address");
+    String postcode = request.getParameter("postcode");
+    String phoneNumber = request.getParameter("phoneNumber");
+    user = new User(userID, email, password, name, dob, gender, address, postcode, phoneNumber);
+    session.setAttribute("user",user);
+    }*/
+    
+    public int getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 

@@ -11,28 +11,28 @@ package ISD.Assignment.Model;
  */
 public class Customer {
     
-    private int id;
+    private int userID;
     private String billlingAddress;
     private int cardNumber;
+    private char cardType;
+    private String cardExpiry;
     private int ccv;
-    private String cardType;
-    private String cardExpDate;
 
-    public Customer(int id, String billlingAddress, int cardNumber, int ccv, String cardType, String cardExpDate) {
-        this.id = id;
+    public Customer(int userID, String billlingAddress, int cardNumber, char cardType, String cardExpiry, int ccv) {
+        this.userID = userID;
         this.billlingAddress = billlingAddress;
         this.cardNumber = cardNumber;
-        this.ccv = ccv;
         this.cardType = cardType;
-        this.cardExpDate = cardExpDate;
+        this.cardExpiry = cardExpiry;
+        this.ccv = ccv;
     }
 
-    public int getId() {
-        return id;
+    public int getUserID() {
+        return userID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getBilllingAddress() {
@@ -51,6 +51,22 @@ public class Customer {
         this.cardNumber = cardNumber;
     }
 
+    public char getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(char cardType) {
+        this.cardType = cardType;
+    }
+
+    public String getCardExpiry() {
+        return cardExpiry;
+    }
+
+    public void setCardExpiry(String cardExpiry) {
+        this.cardExpiry = cardExpiry;
+    }
+
     public int getCcv() {
         return ccv;
     }
@@ -58,20 +74,6 @@ public class Customer {
     public void setCcv(int ccv) {
         this.ccv = ccv;
     }
+    
 
-    public String getCardType() {
-        return cardType;
-    }
-
-    public void setCardType(String cardType) {
-        this.cardType = cardType;
-    }
-
-    public String getCardExpDate() {
-        return cardExpDate;
-    }
-
-    public void setCardExpDate(String cardExpDate) {
-        this.cardExpDate = cardExpDate;
-    }
 }

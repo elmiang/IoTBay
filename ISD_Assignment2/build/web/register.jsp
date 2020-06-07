@@ -13,7 +13,14 @@
         <title>Register</title>
     </head>
     <body>
-        
+        <%
+            String emailErr = (String) session.getAttribute("emailErr");
+            String passErr = (String) session.getAttribute("passErr");
+            String existErr = (String) session.getAttribute("existErr");
+            String addressErr = (String) session.getAttribute("addressErr");
+            String postCodeErr = (String) session.getAttribute("postCodeErr");
+            String phoneNumberErr = (String) session.getAttribute("phoneNumberErr");
+        %>
         <div class="header-img">
             <ul>
                 <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
@@ -31,23 +38,31 @@
         </div>
         
         <main class="main-content">
-        <form method="post" action="welcome.jsp" style="text-align: center;">
-            <h1>Create An Account</h1>
+        <form method="post" action="RegisterServlet" style="text-align: center;">
+            <h1>Create An Account</h1><span><%=(existErr != null ? existErr : "")%></span>
             
             <label for="name">Name</label>
             <input id="name" name="name" type="text" placeholder="Full Name" required = "true"/>
             <label for="email">Email address</label>
-            <input id="email" name="email" type="email" placeholder="Email address" required = "true"/>
+            <input id="email" name="email"  placeholder="<%=(emailErr != null ? emailErr : "Enter Email")%>" required = "true"/>
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" placeholder="Password" required = "true"/>
+            <input id="password" name="password" placeholder="<%=(passErr != null? passErr : "Enter Password")%>" required = "true"/>
+          
+            <label for="address">Address:</label>
+            <input type="text" name="address" id="address" placeholder="<%=(addressErr != null? addressErr : "Enter Address")%>"/>
             
+            <label for="postCode">PostCode:</label>
+            <input type="text" name="postCode" id="postCode" placeholder="<%=(postCodeErr != null? postCodeErr : "Enter postCode")%>"/>
+            
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" name="phoneNumber" id="phoneNumber" placeholder="<%=(phoneNumberErr != null? phoneNumberErr : "Enter phoneNumber")%>"/>
             
             <h4 class="gender">Gender:</h4>
             <div class="gender-labels">
                 <label for="male">Male</label>
-                <input type="radio" id="male" name="gender" value="male"/>
+                <input type="radio" id="male" name="gender" value="m"/>
                 <label for="male">Female</label>
-                <input type="radio" id="female" name="gender"value="female"/>
+                <input type="radio" id="female" name="gender"value="f"/>
             </div>
             
             <label for="dob">Date of Birth:</label>

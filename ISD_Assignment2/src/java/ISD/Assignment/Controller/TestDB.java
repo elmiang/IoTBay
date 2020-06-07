@@ -1,187 +1,196 @@
-package ISD.Assignment.Controller;
-
-import java.sql.*;
-import java.util.*;
-import java.util.logging.*;
-import ISD.Assignment.Model.Dao.DBConnector;
-import ISD.Assignment.Model.Dao.DBManager;
-import ISD.Assignment.Model.Dao.ProductDao;
-import ISD.Assignment.Model.Product;
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package ISD.Assignment.controller;
  
+import ISD.Assignment.Model.AccessLogs;
+import java.util.*;
 
+import java.util.logging.*;
+import ISD.Assignment.Model.User;
+import ISD.Assignment.Model.Dao.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+/**
+ *
+ * @author admin
+ */
 public class TestDB {
-private static Scanner in = new Scanner(System.in);
-private DBConnector connector;
-private Connection conn;
-private DBManager db;
-private ProductDao pd;
+    private static Scanner in = new Scanner(System.in);
+    private DBConnector connector;
+    private Connection conn;
+    private DBManager db;
 
-public static void main(String[] args) throws SQLException {
-    (new TestDB()).runQueries();
-}
-
-public TestDB(){
-    try {
-        connector = new DBConnector();
-        conn = connector.openConnection();
-        db = new DBManager(conn);
-        pd = new ProductDao(conn);
+    public static void main(String[] args) throws SQLException{
+        (new TestDB()).runQueries();
     }
-    catch (ClassNotFoundException | SQLException ex) {
-        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+
+    public TestDB(){
+        try{
+            connector = new DBConnector();
+            conn = connector.openConnection();
+            db = new DBManager(conn);
+            } catch (ClassNotFoundException | SQLException ex){
+            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-}
 
-private char readChoice(){
-    System.out.print("Operation CDRUDS or * to exit: ");
-    return in.nextLine().charAt(0);
-}
+    private char readChoice(){
+        System.out.print("Operation CRUDS or * to exit: ");
+        return in.nextLine().charAt(0);
+    }
 
-private void runQueries() throws SQLException {
-    char c;
-    
-    while ((c = readChoice()) != '*'){
-        switch(c){
+    private void runQueries() throws SQLException{
+        char c;
+
+        while((c = readChoice()) != '*'){
+            switch(c){
             case 'C':
-                testAdd();
-                break;
-            case 'D':
-                testAddProduct();
-                break;
+            testAdd();
+            break;
             case 'R':
-                testRemoveProduct();
-                break;
+            testRead();
+            break;
             case 'U':
-                testUpdateProduct();
-                break;
+            testUpdate();
+            break;
+            case 'D':
+            testDelete();
+            break;
             case 'S':
-                testShow();
-                break;
+            testAccessAog();
+            break;
+            case 'B':
+            testFetchAccess(6);
+            break;
             default:
-                System.out.println("Unknown Command");
+            System.out.println("Unknown Command");
+
+            }
         }
     }
-}
-
-private void testAdd(){
-    System.out.print("User ID: ");
-    String id = in.nextLine();
-
-    System.out.print("User email: ");
-    String email = in.nextLine();
-
-    System.out.print("User password: ");
-    String password = in.nextLine();
-
-    System.out.print("User name: ");
-    String name = in.nextLine();
-
-    System.out.print("User DOB: ");
-    String dob = in.nextLine();
-
-    System.out.print("User gender: ");
-    String gender = in.nextLine();
-
-    System.out.print("User address: ");
-    String address = in.nextLine();
-
-    System.out.print("User postcode: ");
-    String postcode = in.nextLine();
-
-    System.out.print("User phone number: ");
-    String phoneNumber = in.nextLine();
-    try {
-        db.addUser(id, email, password, name, dob, gender, address, postcode, phoneNumber);
-    } catch (SQLException ex) {
-        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    System.out.println("User is added to the database.");
-} 
-
-private void testAddProduct(){
-    System.out.print("Product Name: ");
-    String name = in.nextLine();
     
-    System.out.print("Product Type: ");
-    String type = in.nextLine();
-    
-    System.out.print("Quantity: ");
-    int quantity = in.nextInt();
-    in.nextLine();
-    
-    System.out.print("Price: ");
-    double price = in.nextDouble();
-    in.nextLine();
-    
-    try{
-        pd.addProduct(name, type, quantity, price);
-    } catch (SQLException ex) {
-        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    System.out.println("Product is added to the database.");
-}
-
-private void testUpdateProduct(){
-    System.out.print("Product Name: ");
-    String oname = in.nextLine();
-    
-    System.out.print("New Product Name: ");
-    String name = in.nextLine();
-    
-    System.out.print("Product Type: ");
-    String type = in.nextLine();
-    
-    System.out.print("Product Quantity: ");
-    int quantity = in.nextInt();
-    
-    System.out.print("Product Price: ");
-    double price = in.nextDouble();
-    in.nextLine();
-    
-    try{
-       pd.updateProduct(oname, name, type, quantity, price); 
-    } catch (SQLException ex) {
-        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    System.out.println("Product updated.");
-}
-
-private void testRemoveProduct(){
-    System.out.print("Product Name: ");
-    String name = in.nextLine();
-    
-    try{
-        pd.removeProduct(name);
-    } catch (SQLException ex) {
-        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    System.out.println("Product removed from the database.");
-}
-
-private void testShow(){
-    try {
-        ArrayList<Product> products = pd.fetchProducts();
-        System.out.println("PRODUCTS TABLE: ");
-        for(Product p: products){
-            System.out.println(p.getProductName());
-            }    
-    } catch (SQLException ex) {
-        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+    private void testFetchAccess(int id) throws SQLException{
+        ArrayList<AccessLogs> accessLogs = db.fetchAccessLogs(id);
+        for(AccessLogs t : accessLogs){
+            System.out.println(t.getUserId());
+            System.out.println(t.getVisitId());
+            System.out.println(t.getLoginTime());
+            System.out.println(t.getLogoutTime());
         }
     }
-private void testRead() throws SQLException{
-    System.out.print("Product name: ");
-    String name = in.nextLine();
-    ArrayList<Product> products = pd.searchProducts(name);
-    if (products != null){
-        for(Product p: products){
-            System.out.println(p.getProductName());
+    
+    
+    private void testAccessAog(){
+        String time = new Date().toString();
+        try {
+            db.addAccessLogLoginTime(10, time);
+        } catch (SQLException ex) {
+            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
+    
+    
+    private void testRead(){
+        System.out.print("Email: ");
+        String email = in.nextLine();
+        System.out.print("Password: ");
+        String password = in.nextLine();
+        try{
+            User user = db.findUser(email, password);
+            System.out.print(user.getName());
+            System.out.print(user.getPhoneNumber());
+            System.out.print(user.getPostcode());
+            System.out.print(user.getUserID());
+            System.out.print(user.getAddress());
+        } catch (SQLException ex) {
+            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    else{
-        System.out.println("Product does not exist");
+    
+    private void testUpdate(){
+        
+        System.out.print("Email: ");
+        String email = in.nextLine();
+        
+        System.out.print("Password: ");
+        String password = in.nextLine();        
+        
+        System.out.print("Name: ");
+        String name = in.nextLine();
+
+        System.out.print("dob: ");
+        String dob = in.nextLine();
+        
+        System.out.print("Gender: ");
+        String gender = in.nextLine();
+
+        System.out.print("address: ");
+        String address = in.nextLine();
+
+        System.out.print("post code: ");
+        String postCode = in.nextLine();
+
+        System.out.print("phone: ");
+        String phone = in.nextLine();
+        
+        try{
+                db.updateUser(email, password, name, dob, gender, address, postCode, phone);
+        }   catch (SQLException ex) {
+            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-}
+    
+    private void testDelete(){
+        System.out.print("Email: ");
+        String email = in.nextLine();
+        try{
+                db.deleteUser(email);
+        }   catch (SQLException ex) {
+            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    private void testAdd(){
+        System.out.print("Email: ");
+        String email = in.nextLine();
+        
+        System.out.print("Password: ");
+        String password = in.nextLine();
+                
+        System.out.print("Name: ");
+        String name = in.nextLine();
+
+        System.out.print("dob: ");
+        String dob = in.nextLine();
+        
+        System.out.print("Gender: ");
+        String gender = in.nextLine();
+
+        System.out.print("address: ");
+        String address = in.nextLine();
+
+        System.out.print("post code: ");
+        String postCode = in.nextLine();
+
+        System.out.print("phone: ");
+        String phone = in.nextLine();
+                 
+        try{
+            db.addUser(email, password, name, dob, gender, address, postCode, phone);
+        } catch (SQLException ex) {
+            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println("User is added to the database");
+
+    }
+
+      
+        
 
 }

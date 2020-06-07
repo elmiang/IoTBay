@@ -17,8 +17,8 @@
     <body>
         
         <%
-            User user = (User)session.getAttribute("user");
-            String updated = request.getParameter("update");
+            String updated = (String) session.getAttribute("updated");
+            String existErr = (String) session.getAttribute("existErr");
         %>
         
         <div class="header-img">
@@ -41,27 +41,27 @@
         
         <main class="main-content">
              <div class="greeting">
-            <h1>Edit Account Information</h1>
+                 <h1>Edit Account Information</h1> <span><%=(updated != null ? updated : "")%></span>
         </div>
         
-        <form method="post" action="edit.jsp">
+        <form method="post" action="UpdateServlet"/>
             <h2 class="h2 instructions">Account Settings</h2>
         
-            <p class="p instructions">Personal Information</p>
+            <p class="p instructions">Personal Information</p><span><%=(existErr != null ? existErr : "")%></span>
             
             <label for="name">Name</label>
             <input id="name" name="name" type="text" placeholder="Full Name" value = "${user.name}"/>
             <label for="email">Email address</label>
-            <input id="email" name="email" type="email" placeholder="Email address" value ="${user.email}"/>
+            <input id="email" name="email" placeholder="Email address" value ="${user.email}"/>
             <label for="password">Password</label>
             <input id="password" name="password" type="password" placeholder="Password" value = "${user.password}"/>
             
             <h4 class="gender">Gender:</h4>
             <div class="gender-labels">
                 <label for="male">Male</label>
-                <input type="radio" id="male" name="gender"value = "${user.gender}"/>
+                <input type="radio" id="male" name="gender" value="m"/>
                 <label for="female">Female</label>
-                <input type="radio" id="female" name="gender" value = "${user.gender}"/>
+                <input type="radio" id="female" name="gender" value="f"/>
             </div>
             
             <label for="dob">Date of Birth:</label>
@@ -69,31 +69,15 @@
             <label for="address">Address</label>
             <input id="address" name="address" type="text" placeholder="Address" value = "${user.address}"/>
             <label for="postcode">Postcode</label>
-            <input id="postcode" name="postcode" type="text" placeholder="Postcode" value ="${user.postcode}"/>
+            <input id="postcode" name="postCode" type="text" placeholder="Postcode" value ="${user.postcode}"/>
             <label for="phoneNumber">Phone Number</label>
-            <input id="phoneNumber" name="phoneNumber" type="tel"  pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="1234-567-890" value = "${user.phoneNumber}"/>
+            <input id="phoneNumber" name="phoneNumber" type="tel"  placeholder="1234-567-890" value = "${user.phoneNumber}"/>
             
             <input class="button" type="submit" value="Update"/><br>
             <p class="p instructions">Return to the <a class="p"href = "main.jsp">main page</a> </p>
             <input type ="hidden" name="update" value="Updated">
 
         </form>
-        
-        <%
-            String userID = request.getParameter("userID");
-            String email = request.getParameter("email");
-            String name = request.getParameter("name");
-            String dob = request.getParameter("dob");
-            String password = request.getParameter("password");
-            String gender = request.getParameter("gender");
-            String address = request.getParameter("address");
-            String postcode = request.getParameter("postcode");
-            String phoneNumber = request.getParameter("phoneNumber");
-            
-            
-            user = new User(userID, email, password, name, dob, gender, address, postcode, phoneNumber);
-            session.setAttribute("user",user);
-        %>
         </main>
         
     </body>

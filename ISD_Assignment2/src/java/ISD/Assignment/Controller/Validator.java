@@ -5,84 +5,78 @@
  */
 package ISD.Assignment.Controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.io.Serializable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author jacks
- */
-@WebServlet(name = "Validator", urlPatterns = {"/Validator"})
-public class Validator extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Validator</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Validator at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+   public class Validator implements Serializable{ 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+ 
+   private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";      
+   private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";       
+   private String passwordPattern = "[a-zA-Z0-9]{4,}";  
+   private String addressPattern = "[a-zA-Z0-9]{4,}";
+   private String postCodePattern = "[0-9]+";
+   private String phoneNumberPattern = "[a-zA-Z0-9]{6,}";
+              
+   public Validator(){    }       
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+   public boolean validate(String pattern, String input){       
+      Pattern regEx = Pattern.compile(pattern);       
+      Matcher match = regEx.matcher(input);       
 
+      return match.matches(); 
+
+   }       
+
+   public boolean checkEmpty(String email, String password){       
+
+      return  email.isEmpty() || password.isEmpty();   
+
+   }
+   
+   public boolean validateAddress(String address){
+       return validate(addressPattern, address);
+   }
+   
+   public boolean validatePostCode(String postCode){
+       return validate(postCodePattern, postCode);
+   }
+   
+   public boolean validatePhoneNumber(String phoneNumber){
+       return validate(phoneNumberPattern, phoneNumber);
+   }
+   
+   public boolean validateEmail(String email){                       
+
+      return validate(emailPattern,email);   
+
+   }
+
+       
+   public boolean validateName(String name){
+
+      return validate(namePattern,name); 
+
+   }       
+   
+
+   public boolean validatePassword(String password){
+
+      return validate(passwordPattern,password); 
+
+   }
+   
+   public void clear(HttpSession session){
+       session.setAttribute("emailErr", "Enter Email");
+       session.setAttribute("passErr", "Enter Password");
+       session.setAttribute("existErr", "");
+       session.setAttribute("addressErr", "Enter Address");
+       session.setAttribute("postCodeErr", "Enter PostCode");
+       session.setAttribute("phoneNumberErr", "Enter Phone Number");
+       
+   }
 }

@@ -1,19 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ISD.Assignment.Model.Dao;
+import ISD.Assignment.Model.AccessLogs;
+import ISD.Assignment.Model.Admin;
+import ISD.Assignment.Model.Staff;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import ISD.Assignment.Model.User;
-/**
- *
- * @author jacks
- */
+
+
+
 public class DBManager {
     private Statement st;
     
@@ -22,19 +19,19 @@ public class DBManager {
     }
     
     public User findUser(String email, String password) throws SQLException{
-        String read = "SELECT * FROM IOTUSER.Users WHERE EMAIL='" + email + "' " + " AND PASSWORD='" + password + "'";
+        String read = "SELECT * FROM IotBayAdmin.Users WHERE EMAIL= '"+email+"' AND PASSWORD='"+password+"'";
         ResultSet rs = st.executeQuery(read);
         
         while(rs.next()){
-            String userID = rs.getString(1);
             String userEmail = rs.getString(2);
             String userPass = rs.getString(3);
             if(userEmail.equals(email) && userPass.equals(password)){
+                int userID = rs.getInt(1);
                 String userName = rs.getString(4);
                 String userDOB = rs.getString(5);
                 String userGender = rs.getString(6);
                 String userAddress = rs.getString(7);
-                String userPostCode = rs.getString(8);
+                String userPostCode  = rs.getString(8);
                 String userPhoneNumber = rs.getString(9);
                 return new User (userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber);
             }
@@ -42,25 +39,33 @@ public class DBManager {
         return null;
     }
     
-    public void addUser(String id, String email, String password, String name, String dob, String gender, String address, String postCode, String phoneNumber) throws SQLException{
-        st.executeUpdate("INSERT INTO IOTUSER.Users " + "VALUES ('" + id + "', '" + email + "', '" + password + "', '" + name + "', '" + dob + "', '" + gender + "', '" + address + "', '" + postCode + "', '" + phoneNumber + "')");
+    public void addUser(String email, String password, String name, String dob, String gender, String address, String postCode, String phoneNumber) throws SQLException{
+        st.executeUpdate("INSERT INTO IotBayAdmin.Users (email,password,name,dob,gender,address,postcode,phonenumber) "
+        + "VALUES ('" + email + "', '" + password + "', '" + name + "', '" + dob + "', '" + gender + "', '" + address + "', "
+        + "'" + postCode + "', '" + phoneNumber + "')");
     }
     
-    public void updateUser(String id, String email, String password, String name, String dob, String gender, String address, String postCode, String phoneNumber) throws SQLException{
-        st.executeUpdate("UPDATE IOTUSER.Users SET FULLNAME='" + name + "', PASSWORD='" + password + "', DOB='" + dob + "', GENDER='" + gender + "', ADDRESS='" + address + "', POSTCODE='" + postCode + "', PHONENUMBER='" + phoneNumber + "' WHERE EMAIL='" + email + "'");
+    public void updateUser(String email, String password, String name, String dob, String gender, String address, String postCode, String phoneNumber) throws SQLException{
+            
+            st.executeUpdate("UPDATE IotBayAdmin.Users SET  PASSWORD='" + password + "', NAME = '"+ name +"',"
+            + "DOB='" + dob + "', GENDER='" + gender + "', ADDRESS='" + address + "', POSTCODE='" + postCode + "', "
+            + "PHONENUMBER='" + phoneNumber + "' WHERE EMAIL='" + email + "'");     
     }
     
     public void deleteUser(String email) throws SQLException {
-        st.executeUpdate("DELETE FROM IOTUSER.Users WHERE EMAIL='" + email + "'");
+        st.executeUpdate("UPDATE IotBayAdmin.Users SET EMAIL =NULL, PASSWORD=NULL, NAME =NULL,"
+            + "DOB=CAST(NULL AS DATE), GENDER=NULL, ADDRESS=NULL, POSTCODE=NULL, "
+            + "PHONENUMBER=NULL WHERE EMAIL='" + email + "'");
+        
     }
     
     public ArrayList<User> fetchUsers() throws SQLException {
-        String fetch = "select * from USERS";
+        String fetch = "select * IotBay.Users";
         ResultSet rs = st.executeQuery(fetch);
-        ArrayList<User> temp = new ArrayList();
+        ArrayList<User> temp = new ArrayList<User>();
         
         while (rs.next()){
-            String userID = rs.getString(1);
+            int userID = rs.getInt(1);
             String userEmail = rs.getString(2);
             String userPass = rs.getString(3);
             String userName = rs.getString(4);
@@ -72,5 +77,45 @@ public class DBManager {
             temp.add(new User(userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber));
         }
         return temp;
+    
     }
+    
+    public void addAccessLogLoginTime(int id, String loginTime) throws SQLException{
+        
+        ResultSet rs = st.executeQuery("SELECT MAX(VISITID) FROM IOTBAYADMIN.ACCESSLOGS WHERE USERID="+id);
+          if(!rs.next()){
+                st.executeUpdate("INSERT INTO IotBayAdmin.AccessLogs (visitid,userid,loginTime) VALUES ("+1+"," + id + ",'" + loginTime + "')");
+            }
+            else{
+                int max = rs.getInt(1);
+                max++;
+                st.executeUpdate("INSERT INTO IotBayAdmin.AccessLogs (visitid,userid,loginTime) VALUES ("+ max +"," + id + ",'" + loginTime + "')");
+            }       
+    }
+    
+    public void addAccessLogLogoutTime(int id, String logoutTime) throws SQLException{
+        ResultSet rs = st.executeQuery("SELECT MAX(VISITID) FROM IOTBAYADMIN.ACCESSLOGS WHERE USERID="+id);
+                
+        if(rs.next()){
+            int max = rs.getInt(1);
+            st.executeUpdate("UPDATE IotBayAdmin.AccessLogs SET LOGOUTTIME = '"+ logoutTime+"' WHERE VISITID ="+max+" AND USERID="+id);
+        }
+    }
+    
+    public ArrayList<AccessLogs> fetchAccessLogs(int id) throws SQLException{
+        ArrayList<AccessLogs> result = new ArrayList<AccessLogs>();
+        ResultSet rs = st.executeQuery("SELECT * FROM IotBayAdmin.AccessLogs WHERE USERID="+id);
+        
+        while(rs.next()){
+            int visitId = rs.getInt(1);
+            int userId = rs.getInt(2);
+            String loginTime = rs.getString(3);
+            String logoutTime = rs.getString(4);
+            result.add(new AccessLogs(visitId, userId, loginTime, logoutTime));
+        }
+    return result;
+    }
+    
+    
 }
+

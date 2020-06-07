@@ -4,6 +4,7 @@
     Author     : CristinaFidelino
 --%>
 
+<%@page import="ISD.Assignment.Model.Dao.DBManager"%>
 <%@page import="ISD.Assignment.Model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,12 +19,12 @@
             User user = (User)session.getAttribute("user");
         %>
         
-        <% if (user != null) { %>
+        
         
         <div class="header-img">
         <ul>
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
-          <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="logout.jsp"> Logout </a></li>
+          <li style="float:right; margin-right:10px;"> <a class="button top-actions" href="LogoutServlet"> Logout </a></li>
         </ul>
         </div>
         
@@ -38,23 +39,52 @@
         </div>
         
         <main class="main-content">
-        <h1>Account Summary</h1><br>
-        <p class="p">You are logged in as ${user.email}</p><br>
-            <table id="profile_table">
-                <tr>
-                <thead><th>Name</th><th>Email</th><th>Password</th><th>DOB</th><th>Gender</th><th>Address</th><th>Postcode</th><th>Phone Number</th></thead>
-                </tr>
-            <tr><td>${user.name}</td><td>${user.email}</td><td>${user.password}</td><td>${user.dob}</td><td>${user.gender}</td><td>${user.address}</td><td>${user.postcode}</td><td>${user.phoneNumber}</td></tr>
-            </table>
+       
+        <div class="tab">
+            <button class="tablinks" onclick="openPage(event, 'profileTable')">Dashboard</button>
+            <button class="tablinks" onclick="openPage(event, 'accessLogs')">Access Logs</button>
+            <button class="tablinks" onclick="openPage(event, 'userCart')">Your cart</button>
+            <button class="tablinks" onclick="openPage(event, 'userCart')">Your orders</button>
+            <button class="tablinks" onclick="openPage(event, 'deleteAcc')">Delete Account</button>
+          </div>
+
+          <div id="profileTable" class="tabcontent" style="display: none">  
+              
+              <jsp:include page="profileTable.jsp" flush="true" />
+          </div>
+
+          <div id="accessLogs" class="tabcontent" style="display: none">
+              <jsp:include page="AccessLogServlet" flush="true" />
+          </div>
+
+          <div id="userCart" class="tabcontent" style="display: none">
+            <jsp:include page="" flush="true" />
+          </div>
+
+          <div id="deleteAcc" class="tabcontent" style="display: none">
+            <form method="post" action="AccDelServlet">
+                <input type ="hidden" name="email" value="${user.email}"/>
+                <input type ="hidden" name="password" value="${user.password}"/>
+                <input class="button" type="submit" value="Delete"/>
+            </form>
+          </div>
             
-            <div style="text-align: center;">
-                <a class="button" href="edit.jsp"> Edit </a>
-            </div>
-            
-        <% }  else { %>
-            <p class="p">You are not logged in</p>
-            <a class="p" href="register.jsp"> Register </a>
-        <% } %>
-        </main>
+          <script>
+          function openPage(evt, page) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(page).style.display = "block";
+            evt.currentTarget.className += " active";
+          }
+          </script>
+         
+        </main>    
     </body>
 </html>
