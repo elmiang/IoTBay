@@ -59,6 +59,9 @@
     <servlet>
         <servlet-name>URUpdateServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.URUpdateServlet</servlet-class>
+<<<<<<< HEAD
+>>>>>>> parent of 3e49964... Merge branch 'master' into User-Management
+=======
 >>>>>>> parent of 3e49964... Merge branch 'master' into User-Management
     </servlet>
     <servlet-mapping>
@@ -120,6 +123,9 @@
     <servlet-mapping>
         <servlet-name>URUpdateServlet</servlet-name>
         <url-pattern>/URUpdateServlet</url-pattern>
+<<<<<<< HEAD
+>>>>>>> parent of 3e49964... Merge branch 'master' into User-Management
+=======
 >>>>>>> parent of 3e49964... Merge branch 'master' into User-Management
     </servlet-mapping>
     <session-config>
