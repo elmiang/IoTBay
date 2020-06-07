@@ -33,13 +33,13 @@
         <servlet-class>ISD.Assignment.Controller.StoreCategoryServlet</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
         <servlet-name>CartAddServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.CartAddServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CartServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.CartServlet</servlet-class>
+<<<<<<< HEAD
 =======
         <servlet-name>URServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.URServlet</servlet-class>
@@ -63,6 +63,8 @@
 >>>>>>> parent of 3e49964... Merge branch 'master' into User-Management
 =======
 >>>>>>> parent of 3e49964... Merge branch 'master' into User-Management
+=======
+>>>>>>> parent of 04c5c3f... Reverts
     </servlet>
     <servlet-mapping>
         <servlet-name>StoreServlet</servlet-name>
@@ -97,13 +99,13 @@
         <url-pattern>/StoreCategoryServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>CartAddServlet</servlet-name>
         <url-pattern>/CartAddServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/CartServlet</url-pattern>
+<<<<<<< HEAD
 =======
         <servlet-name>URServlet</servlet-name>
         <url-pattern>/URServlet</url-pattern>
@@ -127,6 +129,8 @@
 >>>>>>> parent of 3e49964... Merge branch 'master' into User-Management
 =======
 >>>>>>> parent of 3e49964... Merge branch 'master' into User-Management
+=======
+>>>>>>> parent of 04c5c3f... Reverts
     </servlet-mapping>
     <session-config>
         <session-timeout>

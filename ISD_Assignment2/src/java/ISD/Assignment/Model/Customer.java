@@ -11,18 +11,28 @@ package ISD.Assignment.Model;
  */
 public class Customer {
     
+    private int id;
     private String billlingAddress;
     private int cardNumber;
     private int ccv;
-    private char cardType;
+    private String cardType;
     private String cardExpDate;
 
-    public Customer(String billlingAddress, int cardNumber, int ccv, char cardType, String cardExpDate) {
+    public Customer(int id, String billlingAddress, int cardNumber, int ccv, String cardType, String cardExpDate) {
+        this.id = id;
         this.billlingAddress = billlingAddress;
         this.cardNumber = cardNumber;
         this.ccv = ccv;
         this.cardType = cardType;
         this.cardExpDate = cardExpDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getBilllingAddress() {
@@ -49,11 +59,11 @@ public class Customer {
         this.ccv = ccv;
     }
 
-    public char getCardType() {
+    public String getCardType() {
         return cardType;
     }
 
-    public void setCardType(char cardType) {
+    public void setCardType(String cardType) {
         this.cardType = cardType;
     }
 
