@@ -19,7 +19,7 @@
             <c:set var="customer" value="customer" scope="session"/> 
             <c:set var="staff" value="staff" scope="session"/>
         --%>
-        <c:set var="staff" value="staff" scope="session"/>
+        <c:set var="customer" value="customer" scope="session"/> 
         
         <div class="header-img">
         <ul>

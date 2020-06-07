@@ -20,7 +20,7 @@
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
           <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
           <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
-          <li style="float:right"><a href="cart.jsp"><img class="logo" src="css/cart.png"/></a></li>
+          <li style="float:right"><a href="CartServlet"><img class="logo" src="css/cart.png"/></a></li>
         </ul>
         </div>
         <div class="topnav">
@@ -69,7 +69,7 @@
                             </c:if>
                             
                             <c:if test="${sessionScope.staff == null}">
-                            <a>Add to Cart</a>
+                                <a href="CartAddServlet?productName=<c:out value = "${product.productName}"/>">Add to Cart</a>
                             </c:if>
                         </td>
                     </tr>

@@ -32,6 +32,14 @@
         <servlet-name>StoreCategoryServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.StoreCategoryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CartAddServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.CartAddServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.CartServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StoreServlet</servlet-name>
         <url-pattern>/StoreServlet</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>StoreCategoryServlet</servlet-name>
         <url-pattern>/StoreCategoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartAddServlet</servlet-name>
+        <url-pattern>/CartAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/CartServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
