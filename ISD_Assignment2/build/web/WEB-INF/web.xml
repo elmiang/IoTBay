@@ -51,7 +51,7 @@
     <servlet>
         <servlet-name>URUpdateServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.URUpdateServlet</servlet-class>
-     </servlet>
+  </servlet>
         <servlet-name>CartAddServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.CartAddServlet</servlet-class>
     </servlet>
