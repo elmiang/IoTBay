@@ -44,7 +44,6 @@ public class UserRecordDao {
             String postcode = rs.getString(8);
             String phonenumber = rs.getString(9);
             String role = rs.getString(10);
-            // searchProducts.add(new Product(productId, productName, productType, productDesc, productQuantity, productAvailability, productPrice));
             searchUserRecord.add(new UserRecord(userID, email, password, name, dob, gender, address, postcode, phonenumber, role));
             }
         if(searchUserRecord.size() > 0 ) {
@@ -88,12 +87,28 @@ public void updateUserRecord(String userID, String email, String password, Strin
     
 }     
     
-public void deleteUserRecord() {
-    
+public void deleteUserRecord(String email) throws SQLException {
+    st.executeUpdate("DELETE FROM IOTUSER.USERRECORD WHERE email='" + email + "'");
 }
     
 public ArrayList<UserRecord> fetchUserRecord() throws SQLException{
    ArrayList<UserRecord> userrecords = new ArrayList(); 
+   String fetch = "Select * from IOTUSER.USERRECORD";
+   ResultSet rs = st.executeQuery(fetch);
+   
+   while (rs.next()) {
+           String userID = rs.getString(1);
+            String email = rs.getString(2);
+            String password = rs.getString(3);
+            String name = rs.getString(4);
+            String dob = rs.getString(5);
+            String gender = rs.getString(6);
+            String address = rs.getString(7);
+            String postcode = rs.getString(8);
+            String phonenumber = rs.getString(9);
+            String role = rs.getString(10);
+            userrecords.add(new UserRecord(userID, email, password, name, dob, gender, address, postcode, phonenumber, role));    
+   }
    return userrecords;
 }
 
