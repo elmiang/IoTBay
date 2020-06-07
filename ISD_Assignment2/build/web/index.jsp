@@ -33,6 +33,7 @@
             <a href="StoreCategoryServlet?type=motor" style="float: left;">Kits (Motors)</a>
             <a href="StoreCategoryServlet?type=display" style="float: left;">Parts (Displays)</a>
             <a href="StoreCategoryServlet?type=sensor" style="float: left;">Sensors</a>
+            <a href="OrderServlet" style="float: left;">Your Order</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
             <a href="URServlet" style="float: right;">User Management</a>

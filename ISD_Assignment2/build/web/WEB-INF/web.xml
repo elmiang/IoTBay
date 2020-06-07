@@ -33,6 +33,22 @@
         <servlet-class>ISD.Assignment.Controller.StoreCategoryServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.OrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderRemoveServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.OrderRemoveServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderAddServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.OrderAddServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderUpdateServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.OrderUpdateServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>URServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.URServlet</servlet-class>
     </servlet>
@@ -83,6 +99,22 @@
     <servlet-mapping>
         <servlet-name>StoreRemoveServlet</servlet-name>
         <url-pattern>/StoreRemoveServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/OrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderRemoveServlet</servlet-name>
+        <url-pattern>/OrderRemoveServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderAddServlet</servlet-name>
+        <url-pattern>/OrderAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderUpdateServlet</servlet-name>
+        <url-pattern>/OrderUpdateServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>URServlet</servlet-name>
