@@ -39,32 +39,6 @@
     <servlet>
         <servlet-name>CartServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.CartServlet</servlet-class>
-<<<<<<< HEAD
-=======
-        <servlet-name>URServlet</servlet-name>
-        <servlet-class>ISD.Assignment.Controller.URServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>URAddServlet</servlet-name>
-        <servlet-class>ISD.Assignment.Controller.URAddServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>URSearchServlet</servlet-name>
-        <servlet-class>ISD.Assignment.Controller.URSearchServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UREditServlet</servlet-name>
-        <servlet-class>ISD.Assignment.Controller.UREditServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>URUpdateServlet</servlet-name>
-        <servlet-class>ISD.Assignment.Controller.URUpdateServlet</servlet-class>
-<<<<<<< HEAD
->>>>>>> parent of 3e49964... Merge branch 'master' into User-Management
-=======
->>>>>>> parent of 3e49964... Merge branch 'master' into User-Management
-=======
->>>>>>> parent of 04c5c3f... Reverts
     </servlet>
     <servlet-mapping>
         <servlet-name>StoreServlet</servlet-name>
@@ -105,32 +79,6 @@
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/CartServlet</url-pattern>
-<<<<<<< HEAD
-=======
-        <servlet-name>URServlet</servlet-name>
-        <url-pattern>/URServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>URAddServlet</servlet-name>
-        <url-pattern>/URAddServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>URSearchServlet</servlet-name>
-        <url-pattern>/URSearchServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UREditServlet</servlet-name>
-        <url-pattern>/UREditServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>URUpdateServlet</servlet-name>
-        <url-pattern>/URUpdateServlet</url-pattern>
-<<<<<<< HEAD
->>>>>>> parent of 3e49964... Merge branch 'master' into User-Management
-=======
->>>>>>> parent of 3e49964... Merge branch 'master' into User-Management
-=======
->>>>>>> parent of 04c5c3f... Reverts
     </servlet-mapping>
     <session-config>
         <session-timeout>
