@@ -35,7 +35,6 @@
             <a href="StoreCategoryServlet?type=sensor" style="float: left;">Sensors</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
-            <a href="URServlet" style="float: right;">User Management</a>
         </div>
         
         <main class="main-content">
