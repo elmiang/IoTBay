@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,6 +14,13 @@
         <title>Index</title>
     </head>
     <body>
+        <%-- 
+            These are used to test staff and customer roles:
+            <c:set var="customer" value="customer" scope="session"/> 
+            <c:set var="staff" value="staff" scope="session"/>
+        --%>
+        <c:set var="staff" value="staff" scope="session"/>
+        
         <div class="header-img">
         <ul>
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>

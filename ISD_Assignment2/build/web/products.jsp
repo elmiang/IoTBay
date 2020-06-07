@@ -61,11 +61,16 @@
                         <td><c:out value="${product.price}" /></td>
                         <td><c:out value="${product.quantity}" /></td>
                         <td>
+                            <c:if test="${sessionScope.staff != null}">
                             <a href="StoreEditServlet?oName=<c:out value ="${product.productName}"/>">Edit</a>
                             &nbsp;&nbsp;&nbsp;
                             <a href="StoreRemoveServlet?productName=<c:out value ="${product.productName}"/>">Delete</a>
                             &nbsp;&nbsp;&nbsp;
+                            </c:if>
+                            
+                            <c:if test="${sessionScope.staff == null}">
                             <a>Add to Cart</a>
+                            </c:if>
                         </td>
                     </tr>
                     </c:forEach>
