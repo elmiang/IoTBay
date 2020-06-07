@@ -7,6 +7,8 @@ import ISD.Assignment.Model.Dao.DBConnector;
 import ISD.Assignment.Model.Dao.DBManager;
 import ISD.Assignment.Model.Dao.ProductDao;
 import ISD.Assignment.Model.Product;
+import ISD.Assignment.Model.UserRecord;
+import ISD.Assignment.Model.Dao.UserRecordDao;
 
  
 
@@ -16,6 +18,8 @@ private DBConnector connector;
 private Connection conn;
 private DBManager db;
 private ProductDao pd;
+private UserRecordDao ud;
+
 
 public static void main(String[] args) throws SQLException {
     (new TestDB()).runQueries();
@@ -27,6 +31,7 @@ public TestDB(){
         conn = connector.openConnection();
         db = new DBManager(conn);
         pd = new ProductDao(conn);
+        ud = new UserRecordDao(conn);
     }
     catch (ClassNotFoundException | SQLException ex) {
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,6 +62,9 @@ private void runQueries() throws SQLException {
                 break;
             case 'S':
                 testShow();
+                break;
+                case 'Q':
+                testUpdateUR();
                 break;
             default:
                 System.out.println("Unknown Command");
@@ -184,4 +192,108 @@ private void testRead() throws SQLException{
     }
 }
 
+private void testURShow() throws SQLException{
+     try {
+        ArrayList<UserRecord> ur = ud.fetchUserRecord();
+        System.out.println("UR Email List: ");
+        for(UserRecord p: ur){
+            System.out.println(p.getEmail());
+            }    
+    } catch (SQLException ex) {
+        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+}
+
+private void testURRead() throws SQLException{
+    System.out.print("Name or Phone Number: ");
+    String name = in.nextLine();
+    
+    ArrayList<UserRecord> ur = ud.searchUserRecord(name);
+    if (ur != null){
+        for(UserRecord p: ur){
+            System.out.println(p.getName());
+        }
+    }
+    else{
+        System.out.println("Product does not exist");
+    }
+}
+
+private void testAddUR(){
+    System.out.print("Email: ");
+    String email = in.nextLine();
+    
+    System.out.print("Password: ");
+    String password = in.nextLine();
+    
+    System.out.print("Name: ");
+    String name = in.nextLine();
+        
+    System.out.print("DoB: ");
+    String dob= in.nextLine();
+    
+    System.out.print("Gender: ");
+    String gender = in.nextLine();
+    
+    System.out.print("Address: ");
+    String address = in.nextLine();
+    
+    System.out.print("Postcode: ");
+    String postcode = in.nextLine();
+    
+    System.out.print("Phonenumber: ");
+    String phoneNumber = in.nextLine();
+    
+    System.out.print("Role: ");
+    String role = in.nextLine();
+    
+    
+    
+    try{
+        ud.addUserRecord(email, password, name, dob, gender, address, postcode, phoneNumber, role);
+    } catch (SQLException ex) {
+        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    System.out.println("UR is added to the database.");
+}
+private void testUpdateUR(){
+    System.out.print("UserID: ");
+    String userID = in.nextLine();
+    
+   System.out.print("Email: ");
+    String email = in.nextLine();
+    
+    System.out.print("Password: ");
+    String password = in.nextLine();
+    
+    System.out.print("Name: ");
+    String name = in.nextLine();
+        
+    System.out.print("DoB: ");
+    String dob= in.nextLine();
+    
+    System.out.print("Gender: ");
+    String gender = in.nextLine();
+    
+    System.out.print("Address: ");
+    String address = in.nextLine();
+    
+    System.out.print("Postcode: ");
+    String postcode = in.nextLine();
+    
+    System.out.print("Phonenumber: ");
+    String phoneNumber = in.nextLine();
+    
+    System.out.print("Role: ");
+    String role = in.nextLine();
+    
+    
+    try{
+       ud.updateUserRecord(userID,email, password, name, dob, gender, address, postcode, phoneNumber, role);
+    } catch (SQLException ex) {
+        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    System.out.println("UR updated.");
+}
 }
