@@ -28,9 +28,9 @@ public class UserRecordDao {
         this.conn = conn;
     }
      
- public ArrayList<UserRecord> searchUserRecord(String searchEmail) throws SQLException{
+ public ArrayList<UserRecord> searchUserRecord(String searchName) throws SQLException{
         ArrayList<UserRecord> searchUserRecord = new ArrayList();
-        String search = "SELECT * FROM IOTUSER.UserRecord WHERE UPPER(EMAIL) LIKE UPPER('%" + searchEmail + "%')";
+        String search = "SELECT * FROM IOTUSER.UserRecord WHERE UPPER(NAME) LIKE UPPER('%" + searchName + "%')";
         ResultSet rs = st.executeQuery(search);
         
         while(rs.next()){
@@ -54,35 +54,34 @@ public class UserRecordDao {
     }
 }   
      
-public void addUserRecord(String userID, String email, String password, String name, String dob, String gender, String address, String postcode, String phonenumber, String role) throws SQLException {
-    String update = "INSERT INTO IOTUSER.USERRECORD(userid,email,password,name,dob,gender,address,postcode,phonenumber,role) VALUES(?,?,?,?,?,?,?,?,?,?)";
+public void addUserRecord(String email, String password, String name, String dob, String gender, String address, String postcode, String phonenumber, String role) throws SQLException {
+    String update = "INSERT INTO IOTUSER.USERRECORD(email,password,name,dob,gender,address,postcode,phonenumber,role) VALUES(?,?,?,?,?,?,?,?,?)";
     PreparedStatement st = conn.prepareStatement(update);
-    st.setString(1, userID);
-    st.setString(2, email);
-    st.setString(3, password);
-    st.setString(4, name);
-    st.setString(5, dob);
-    st.setString(6, gender);
-    st.setString(7, address);
-    st.setString(8, postcode);
-    st.setString(9, phonenumber);
-    st.setString(10, role);
+    st.setString(1, email);
+    st.setString(2, password);
+    st.setString(3, name);
+    st.setString(4, dob);
+    st.setString(5, gender);
+    st.setString(6, address);
+    st.setString(7, postcode);
+    st.setString(8, phonenumber);
+    st.setString(9, role);
     st.execute();
 }     
      
-public void updateUserRecord(String userID, String email, String password, String name, String dob, String gender, String address, String postcode, String phonenumber, String role) throws SQLException {
+public void updateUserRecord(String email, String password, String name, String dob, String gender, String address, String postcode, String phonenumber, String role) throws SQLException {
     String update = "UPDATE IOTUSER.USERRECORD SET userID = ?, email = ?, password = ?, name = ?, dob = ?, gender = ?, address = ?, postcode = ?, phonenumber = ?, role = ? WHERE email = ? ";
     PreparedStatement st = conn.prepareStatement(update);
-    st.setString(1, userID);
-    st.setString(2, email);
-    st.setString(3, password);
-    st.setString(4, name);
-    st.setString(5, dob);
-    st.setString(6, gender);
-    st.setString(7, address);
-    st.setString(8, postcode);
-    st.setString(9, phonenumber);
-    st.setString(10, role);
+    
+    st.setString(1, email);
+    st.setString(2, password);
+    st.setString(3, name);
+    st.setString(4, dob);
+    st.setString(5, gender);
+    st.setString(6, address);
+    st.setString(7, postcode);
+    st.setString(8, phonenumber);
+    st.setString(9, role);
     st.execute();
     
 }     

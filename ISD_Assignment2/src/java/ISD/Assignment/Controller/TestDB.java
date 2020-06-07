@@ -64,7 +64,7 @@ private void runQueries() throws SQLException {
                 testShow();
                 break;
                 case 'Q':
-                testURShow();
+                testAddUR();
                 break;
             default:
                 System.out.println("Unknown Command");
@@ -220,25 +220,40 @@ private void testURRead() throws SQLException{
 }
 
 private void testAddUR(){
-    System.out.print("Product Name: ");
+    System.out.print("Email: ");
+    String email = in.nextLine();
+    
+    System.out.print("Password: ");
+    String password = in.nextLine();
+    
+    System.out.print("Name: ");
     String name = in.nextLine();
+        
+    System.out.print("DoB: ");
+    String dob= in.nextLine();
     
-    System.out.print("Product Type: ");
-    String type = in.nextLine();
+    System.out.print("Gender: ");
+    String gender = in.nextLine();
     
-    System.out.print("Quantity: ");
-    int quantity = in.nextInt();
-    in.nextLine();
+    System.out.print("Address: ");
+    String address = in.nextLine();
     
-    System.out.print("Price: ");
-    double price = in.nextDouble();
-    in.nextLine();
+    System.out.print("Postcode: ");
+    String postcode = in.nextLine();
+    
+    System.out.print("Phonenumber: ");
+    String phoneNumber = in.nextLine();
+    
+    System.out.print("Role: ");
+    String role = in.nextLine();
+    
+    
     
     try{
-        pd.addProduct(name, type, quantity, price);
+        ud.addUserRecord(email, password, name, dob, gender, address, postcode, phoneNumber, role);
     } catch (SQLException ex) {
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
     }
-    System.out.println("Product is added to the database.");
+    System.out.println("UR is added to the database.");
 }
 }

@@ -29,8 +29,8 @@ public class URAddServlet extends HttpServlet{
         protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            UserRecordDao ur = (UserRecordDao) session.getAttribute("ur");
-		String userID = request.getParameter("userID");
+            UserRecordDao ud = (UserRecordDao) session.getAttribute("ud");
+		
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
                 String name = request.getParameter("name");
@@ -38,10 +38,10 @@ public class URAddServlet extends HttpServlet{
                 String gender = request.getParameter("gender");
                 String address = request.getParameter("address");
                 String postcode = request.getParameter("postcode");
-                String phonenumber = request.getParameter("phonenumber");
+                String phoneNumber = request.getParameter("phoneNumber");
                 String role = request.getParameter("role");
                 try {
-                    ur.addUserRecord(userID, email, password, name, dob, gender, address, postcode, phonenumber, role);
+                    ud.addUserRecord(email, password, name, dob, gender, address, postcode, phoneNumber, role);
                     response.sendRedirect("URServlet");
                 } catch (SQLException e) {
                    throw new ServletException("Cannot add user record to the DB", e);  

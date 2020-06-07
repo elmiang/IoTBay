@@ -32,10 +32,56 @@
             <a style="float: right;">Contact</a>
             <a href="URServlet" style="float: right;">User Management</a>
         </div>
-        <h1>User Management</h1>
-         
-           
-           
+        
+        <main class="main-content">
+            
+        <center>
+        <h1>User Management</>
+            
+                <form action="userRecordsAdd.jsp" method="post">
+                    <input type="submit" class="button" name="addUR" value="Add User Record"/>
+                </form>
+                
+                <form action="URServlet" method="get">
+                    <input type="submit" class="button" name="listUR" value="List User Records"/>
+                </form>
+            </h2>     
+    </center>
+            <div align="center">     
+        <h1>User Records</h1>
+        
+         <table border="1" cellpadding="5">
+                <tr>
+                    <th>UserID</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Name</th>
+                    <th>DoB</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Postcode</th>
+                    <th>Phone number</th>
+                    <th>Role</th>
+                </tr>
+                 <c:forEach var="userrecord" items="${ur}">
+                     <tr>
+                        <td><c:out value="${userrecord.userID}" /></td>
+                        <td><c:out value="${userrecord.email}" /></td>
+                        <td><c:out value="${userrecord.password}" /></td>
+                        <td><c:out value="${userrecord.name}" /></td>
+                        <td><c:out value="${userrecord.dob}" /></td>
+                        <td><c:out value="${userrecord.gender}" /></td>
+                        <td><c:out value="${userrecord.address}" /></td>
+                        <td><c:out value="${userrecord.postcode}" /></td>
+                        <td><c:out value="${userrecord.phoneNumber}" /></td>
+                        <td><c:out value="${userrecord.role}" /></td>
+                        <td>
+                           
+                        </td>
+                    </tr>
+                    </c:forEach>
+            </table>
+            </div>
         
     </body>
 </html>

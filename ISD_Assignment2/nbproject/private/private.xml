@@ -14,12 +14,20 @@
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/SearchServlet.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/web/userRecords.jsp</file>
             <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/web/index.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/web/userRecordsAdd.jsp</file>
             <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/StoreServlet.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/StoreAddServlet.java</file>
-            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/SearchServlet.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Model/Dao/ProductDao.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/ConnServlet.java</file>
             <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/web/products.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Model/Product.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/web/userRecords.jsp</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/URServlet.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/TestDB.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/StoreAddServlet.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/URAddServlet.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Model/Dao/DBManager.java</file>
+            <file>file:/C:/Users/User/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Model/Dao/DBConnector.java</file>
         </group>
     </open-files>
 </project-private>
