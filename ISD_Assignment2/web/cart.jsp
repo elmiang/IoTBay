@@ -24,10 +24,10 @@
         </ul>
         </div>
         <div class="topnav">
-            <a href="StoreServlet" style="float: left;">All Products</a>
-            <a href="StoreServlet" style="float: left;">Kits</a>
-            <a href="StoreServlet" style="float: left;">Parts</a>
-            <a href="StoreServlet" style="float: left;">Sensors</a>
+            <a href="products.jsp" style="float: left;">All Products</a>
+            <a style="float: left;">Kits</a>
+            <a style="float: left;">Parts</a>
+            <a style="float: left;">Sensors</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
         </div>
@@ -49,14 +49,13 @@
                 </tr>
               </thead>
               <tbody>
-              <c:forEach var="cart" items="${ShoppingCart.cart}">
                 <tr>
+                    <c:forEach var="product" items="${products}">
                   <th scope="row"></th>
-                  <td><c:out value="${cart.productName}" /></td>
-                  <td><input type="text" name="quantity" value="<c:out value="${ShoppingCart.quantity}"/>"</td>
-                  <td><c:out value="${cart.price}" /></td>
+                  <td><c:out value="${product.productName}" /></td>
+                  <td><c:out value="${product.quantity}" /></td>
+                  <td><c:out value="${product.price}" /></td>
                 </tr>
-              </c:forEach>
               </tbody>
             </table>
             

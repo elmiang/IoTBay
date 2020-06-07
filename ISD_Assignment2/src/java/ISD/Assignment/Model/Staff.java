@@ -11,31 +11,21 @@ package ISD.Assignment.Model;
  */
 public class Staff {
     
-    private int id;
-    private String position;
+    private char position;
     private String dateHired;
     private double salary;
 
-    public Staff(int id, String position, String dateHired, double salary) {
-        this.id = id;
+    public Staff(char position, String dateHired, double salary) {
         this.position = position;
         this.dateHired = dateHired;
         this.salary = salary;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPosition() {
+    public char getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(char position) {
         this.position = position;
     }
 
