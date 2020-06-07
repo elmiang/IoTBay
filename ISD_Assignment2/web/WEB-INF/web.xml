@@ -52,6 +52,7 @@
         <servlet-name>URUpdateServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.URUpdateServlet</servlet-class>
   </servlet>
+  <servlet>
         <servlet-name>CartAddServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.CartAddServlet</servlet-class>
     </servlet>
@@ -128,13 +129,13 @@
         <servlet-name>URDeleteServlet</servlet-name>
         <url-pattern>/URDeleteServlet</url-pattern>
 	</servlet-mapping>
+      <servlet-mapping>
         <servlet-name>CartAddServlet</servlet-name>
         <url-pattern>/CartAddServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/CartServlet</url-pattern>
-
     </servlet-mapping>
     <session-config>
         <session-timeout>
