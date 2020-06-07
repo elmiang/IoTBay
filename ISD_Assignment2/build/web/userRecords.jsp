@@ -85,7 +85,8 @@
                         <td>
                             <a href="UREditServlet?userID=<c:out value ="${userrecord.userID}"/>">Edit</a>
                             &nbsp;&nbsp;&nbsp;
-                           
+                           <a href="URDeleteServlet?email=<c:out value ="${userrecord.email}"/>">Delete</a>
+                            &nbsp;&nbsp;&nbsp;
                         </td>
                     </tr>
                     </c:forEach>
