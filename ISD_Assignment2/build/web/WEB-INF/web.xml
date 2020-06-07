@@ -51,8 +51,8 @@
     <servlet>
         <servlet-name>URUpdateServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.URUpdateServlet</servlet-class>
-  </servlet>
-  <servlet>
+    </servlet>
+    <servlet>
         <servlet-name>CartAddServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.CartAddServlet</servlet-class>
     </servlet>
@@ -67,6 +67,10 @@
     <servlet>
         <servlet-name>URDeleteServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.URDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>URPassSearchServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.URPassSearchServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>StoreServlet</servlet-name>
@@ -120,7 +124,6 @@
         <servlet-name>URUpdateServlet</servlet-name>
         <url-pattern>/URUpdateServlet</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>URRemoveServlet</servlet-name>
         <url-pattern>/URRemoveServlet</url-pattern>
@@ -128,14 +131,18 @@
     <servlet-mapping>
         <servlet-name>URDeleteServlet</servlet-name>
         <url-pattern>/URDeleteServlet</url-pattern>
-	</servlet-mapping>
-      <servlet-mapping>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>CartAddServlet</servlet-name>
         <url-pattern>/CartAddServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/CartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>URPassSearchServlet</servlet-name>
+        <url-pattern>/URPassSearchServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
