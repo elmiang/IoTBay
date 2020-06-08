@@ -36,7 +36,8 @@ public class DBManager {
                 String userAddress = rs.getString(7);
                 String userPostCode = rs.getString(8);
                 String userPhoneNumber = rs.getString(9);
-                return new User (userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber);
+                String userRole = rs.getString(10);
+                return new User (userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber, userRole);
             }
         }
         return null;
@@ -69,7 +70,8 @@ public class DBManager {
             String userAddress = rs.getString(7);
             String userPostCode = rs.getString(8);
             String userPhoneNumber = rs.getString(9);
-            temp.add(new User(userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber));
+            String userRole = rs.getString(10);
+            temp.add(new User(userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber, userRole));
         }
         return temp;
     }

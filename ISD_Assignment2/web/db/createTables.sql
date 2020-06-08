@@ -10,8 +10,8 @@ CREATE TABLE Users
     gender      varchar(1),
     address     varchar(100),
     postCode    varchar(4),
-    phoneNumber varchar(15)
-    
+    phoneNumber varchar(15),
+    role        varChar(20)
 );
 
 CREATE TABLE Staff

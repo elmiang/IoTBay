@@ -33,29 +33,32 @@ public class UserManagementDao {
                 String userAddress = rs.getString(7);
                 String userPostCode  = rs.getString(8);
                 String userPhoneNumber = rs.getString(9);
-                return new User (userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber);
+                String userRole = rs.getString(10);
+                return new User (userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber, userRole);
             }
         }
         return null;
     }
     
     public void addUser(String email, String password, String name, String dob, String gender, String address, String postCode, String phoneNumber) throws SQLException{
-        st.executeUpdate("INSERT INTO IOTUSER.Users (email,password,name,dob,gender,address,postcode,phonenumber) "
+
+        st.executeUpdate("INSERT INTO IOTUSER.Users (email,password,name,dob,gender,address,postcode,phonenumber,role) "
+
         + "VALUES ('" + email + "', '" + password + "', '" + name + "', '" + dob + "', '" + gender + "', '" + address + "', "
-        + "'" + postCode + "', '" + phoneNumber + "')");
+        + "'" + postCode + "', '" + phoneNumber + "','customer')");
     }
     
     public void updateUser(String email, String password, String name, String dob, String gender, String address, String postCode, String phoneNumber) throws SQLException{
             
-            st.executeUpdate("UPDATE IOTUSER.Users SET  PASSWORD='" + password + "', NAME = '"+ name +"',"
+            st.executeUpdate("UPDATE IotBayAdmin.Users SET  PASSWORD='" + password + "', NAME = '"+ name +"',"
             + "DOB='" + dob + "', GENDER='" + gender + "', ADDRESS='" + address + "', POSTCODE='" + postCode + "', "
             + "PHONENUMBER='" + phoneNumber + "' WHERE EMAIL='" + email + "'");     
     }
     
     public void deleteUser(String email) throws SQLException {
-        st.executeUpdate("UPDATE IOTUSER.Users SET EMAIL =NULL, PASSWORD=NULL, NAME =NULL,"
+        st.executeUpdate("UPDATE IotBayAdmin.Users SET EMAIL =NULL, PASSWORD=NULL, NAME =NULL,"
             + "DOB=CAST(NULL AS DATE), GENDER=NULL, ADDRESS=NULL, POSTCODE=NULL, "
-            + "PHONENUMBER=NULL WHERE EMAIL='" + email + "'");
+            + "PHONENUMBER=NULL, ROLE=NULL WHERE EMAIL='" + email + "'");
         
     }
     
@@ -74,7 +77,8 @@ public class UserManagementDao {
             String userAddress = rs.getString(7);
             String userPostCode = rs.getString(8);
             String userPhoneNumber = rs.getString(9);
-            temp.add(new User(userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber));
+            String userRole = rs.getString(10);
+            temp.add(new User(userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber, userRole));
         }
         return temp;
     

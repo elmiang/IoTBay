@@ -38,6 +38,7 @@ public class UpdateServlet extends HttpServlet {
         String address = request.getParameter("address");
         String postCode = request.getParameter("postCode");
         String phoneNumber = request.getParameter("phoneNumber");
+        String role = request.getParameter("role");
         validator.clear(session);
         
         User exist = null;
@@ -46,7 +47,7 @@ public class UpdateServlet extends HttpServlet {
         try{
             exist = manager.findUser(email, password);
             ID = exist.getUserID();
-            user = new User(ID, email, password, name, dob, gender, address, postCode, phoneNumber);
+            user = new User(ID, email, password, name, dob, gender, address, postCode, phoneNumber, role);
         }catch (SQLException ex) {
             Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

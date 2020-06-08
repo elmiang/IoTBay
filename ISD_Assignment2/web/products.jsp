@@ -19,8 +19,13 @@
         <div class="header-img">
         <ul>
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
-          <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
-          <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
+          <c:if test="${user == null}">
+            <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
+          </c:if>
+          <c:if test="${user != null}">
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="logout.jsp"> Logout </a></li>
+          </c:if>
           <li style="float:right"><a href="CartServlet"><img class="logo" src="css/cart.png"/></a></li>
         </ul>
         </div>
@@ -46,13 +51,13 @@
                 </form>
             </div>
             
-            
+            <c:if test="${user.role == 'staff'}">
                 <div>
                     <form action="productAdd.jsp" method="post">
                         <input type="submit" class="button" name="addProduct" value="Add"/>
                     </form>
                 </div>
-            
+            </c:if>
             
             <h1>Products List</h1>
             <table>
@@ -73,14 +78,14 @@
                         <td><fmt:formatNumber type="currency" value="${product.price}" /></td>
                         <td><c:out value="${product.quantity}" /></td>
                         <td>
-                            <c:if test="${sessionScope.staff != null}">
+                            <c:if test="${user.role == 'staff'}">
                             <a href="StoreEditServlet?oName=<c:out value ="${product.productName}"/>">Edit</a>
                             &nbsp;&nbsp;&nbsp;
                             <a href="StoreRemoveServlet?productName=<c:out value ="${product.productName}"/>">Delete</a>
                             &nbsp;&nbsp;&nbsp;
                             </c:if>
                             
-                            <c:if test="${sessionScope.staff == null}">
+                            <c:if test="${user.role == 'customer'}">
                                 <c:if test="${product.quantity > 0}">
                                     <a href="CartAddServlet?productName=<c:out value = "${product.productName}"/>">Add to Cart</a>
                                 </c:if>

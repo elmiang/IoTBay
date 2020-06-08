@@ -23,8 +23,9 @@ public class User implements Serializable {
     private String address;
     private String postcode;
     private String phoneNumber;
+    private String role;
 
-    public User(int userID, String email, String password, String name, String dob, String gender, String address, String postcode, String phoneNumber) {
+    public User(int userID, String email, String password, String name, String dob, String gender, String address, String postcode, String phoneNumber, String role) {
         this.userID = userID;
         this.email = email;
         this.password = password;
@@ -34,6 +35,7 @@ public class User implements Serializable {
         this.address = address;
         this.postcode = postcode;
         this.phoneNumber = phoneNumber;
+        this.role = role;
     }
 
 
@@ -125,6 +127,13 @@ public class User implements Serializable {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    
+    public String getRole() {
+        return role;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
     
 }

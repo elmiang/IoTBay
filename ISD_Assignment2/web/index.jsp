@@ -29,7 +29,6 @@
           </c:if>
           <c:if test="${user != null}">
             <li style="float:right; margin-right:10px;"><a class="button top-actions" href="logout.jsp"> Logout </a></li>
-            <c:out value="${user}"/>
           </c:if>
         </ul>
         </div>
