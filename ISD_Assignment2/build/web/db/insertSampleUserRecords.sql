@@ -28,7 +28,7 @@ VALUES
 ('adamlee@email.com','adlee312','Adam Lee','2000-02-10','M','34 Priam Street','2814','4360912','Staff'),
 ('klay123@email.com','klay0987','Klay Roach','1985-07-24','M','67 Nestor Street','3319','0575436','Admin'),
 ('jason@email.com','jbob982','Jason Bob','1997-10-14','M','98 Random Street','2314','75735436','Customer'),
-('jason@email.com','jbob982','Jason Bob','1997-10-14','M','98 Random Street','2314','75735436','Customer'),
+('jason4@email.com','jbob9824','Jason Bo','1997-10-15','M','90 Random Street','2316','075735436','Customer');
 ('adam@email.com','adlee3124','Adam One','2001-02-10','M','37 Priam Street','2514','123456','Staff'),
 ('adam1@gmail.com','adlee3127','Adam Two','2002-02-10','M','344 Priam Street','2114','1234657','Customer'),
 ('adam2@email.com','adlee3128','Adam Three','2003-02-10','M','12 Priam Street','2014','12346748','Customer'),
