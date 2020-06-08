@@ -13,6 +13,11 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <link rel="stylesheet" href="css/IoTBay.css">
         <title>Cart</title>
+        <script type="text/javascript">
+			function showMessage(){
+				alert("Your Order has been saved.");
+			}
+		</script>
     </head>
     <body>
         <div class="header-img">
@@ -28,6 +33,7 @@
             <a href="StoreServlet" style="float: left;">Kits</a>
             <a href="StoreServlet" style="float: left;">Parts</a>
             <a href="StoreServlet" style="float: left;">Sensors</a>
+            <a href="OrderServlet" style="float: left;">Your Order</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
         </div>
@@ -89,6 +95,7 @@
             </tbody>
             </table>
             
+            <a class="button" href="OrderAddServlet" onclick="showMessage()">Save Order</a>
             <a class="button" href="checkout.jsp">Continue </a>
             
             

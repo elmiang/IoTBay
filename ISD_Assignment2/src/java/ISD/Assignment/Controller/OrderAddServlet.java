@@ -6,6 +6,9 @@
 package ISD.Assignment.Controller;
 
 import ISD.Assignment.Model.Dao.OrderDao;
+import ISD.Assignment.Model.Dao.ProductDao;
+import ISD.Assignment.Model.ShoppingCart;
+import ISD.Assignment.Model.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -21,18 +24,40 @@ import javax.servlet.http.HttpSession;
  */
 public class OrderAddServlet extends HttpServlet {
 @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
             OrderDao od = (OrderDao) session.getAttribute("od");
-            int orderID = Integer.parseInt(request.getParameter("orderID"));
-            String date = request.getParameter("orderDate");
-            int userID = Integer.parseInt(request.getParameter("userID"));
-            String status = request.getParameter("orderStatus");
+            ProductDao pd = (ProductDao) session.getAttribute("pd");
+            String name = request.getParameter("productName");
+            int quantity = 1;
+            ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
+            Order order = (Order) session.getAttribute("Order");
+            if (cart == null){
+            cart = new ShoppingCart();
+            session.setAttribute("ShoppingCart", cart);
+            }
+       
+            
+            String orderStatus = "not confirmed";
+      
             try {
-                od.addOrder(orderID, date, status, userID);
+                od.updateStatus(orderStatus);
+                if(cart.getCart().contains(pd.exactSearch(name))){
+                cart.setQuantity(++quantity);
+                
+                
+            }
+            else{
+                cart.addProduct(pd.exactSearch(name));
+                cart.setQuantity(quantity);
+                
+            }
+                
+                
+                
                 //request.getRequestDispatcher("order.jsp").forward(request, response);
-                response.sendRedirect("OrderServlet");
+                request.getRequestDispatcher("Order.jsp").include(request, response);
             } catch (SQLException e){
                throw new ServletException("Cannot add order to DB", e); 
             }

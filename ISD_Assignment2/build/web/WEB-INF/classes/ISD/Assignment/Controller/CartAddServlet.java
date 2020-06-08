@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 /**
  *
  * @author jacks
@@ -30,13 +31,15 @@ public class CartAddServlet extends HttpServlet {
         ProductDao pd = (ProductDao) session.getAttribute("pd");
         String name = request.getParameter("productName");
         int quantity = 1;
+        
         ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
+        
         if (cart == null){
             cart = new ShoppingCart();
             session.setAttribute("ShoppingCart", cart);
         }
         try {
-            
+           
             if(cart.getCart().contains(pd.exactSearch(name))){
                 cart.setQuantity(++quantity);
             }

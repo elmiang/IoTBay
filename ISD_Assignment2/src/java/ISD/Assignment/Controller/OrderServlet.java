@@ -32,7 +32,7 @@ public class OrderServlet extends HttpServlet {
                 request.setAttribute("orders", orders);
                 request.getRequestDispatcher("Order.jsp").include(request, response);
             } catch (SQLException e){
-               throw new ServletException("Cannot obtain products from DB", e); 
+               throw new ServletException("Cannot obtain orders from DB", e); 
             }
         }
     

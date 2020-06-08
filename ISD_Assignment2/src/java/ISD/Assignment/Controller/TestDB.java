@@ -5,8 +5,10 @@ import java.util.*;
 import java.util.logging.*;
 import ISD.Assignment.Model.Dao.DBConnector;
 import ISD.Assignment.Model.Dao.DBManager;
+import ISD.Assignment.Model.Dao.OrderDao;
 import ISD.Assignment.Model.Dao.ProductDao;
 import ISD.Assignment.Model.Product;
+import ISD.Assignment.Model.Order;
 
  
 
@@ -16,6 +18,7 @@ private DBConnector connector;
 private Connection conn;
 private DBManager db;
 private ProductDao pd;
+private OrderDao od;
 
 public static void main(String[] args) throws SQLException {
     (new TestDB()).runQueries();
@@ -27,6 +30,7 @@ public TestDB(){
         conn = connector.openConnection();
         db = new DBManager(conn);
         pd = new ProductDao(conn);
+        od = new OrderDao(conn);
     }
     catch (ClassNotFoundException | SQLException ex) {
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -43,20 +47,18 @@ private void runQueries() throws SQLException {
     
     while ((c = readChoice()) != '*'){
         switch(c){
+        
             case 'C':
-                testAdd();
-                break;
-            case 'D':
-                testAddProduct();
+                testAddOrder();
                 break;
             case 'R':
-                testRemoveProduct();
+                testRemoveOrder();
                 break;
             case 'U':
-                testUpdateProduct();
+                testUpdateOrder();
                 break;
             case 'S':
-                testShow();
+                testShowOrders();
                 break;
             default:
                 System.out.println("Unknown Command");
@@ -64,35 +66,23 @@ private void runQueries() throws SQLException {
     }
 }
 
-private void testAdd(){
+private void testAddOrder(){
     System.out.print("User ID: ");
-    String id = in.nextLine();
+    int user = in.nextInt();
+    in.nextLine();
 
-    System.out.print("User email: ");
-    String email = in.nextLine();
+    System.out.print("date: ");
+    String date = in.nextLine();
+    
+    
+    System.out.print("Status:");
+    String status= in.nextLine();
 
-    System.out.print("User password: ");
-    String password = in.nextLine();
+    
 
-    System.out.print("User name: ");
-    String name = in.nextLine();
-
-    System.out.print("User DOB: ");
-    String dob = in.nextLine();
-
-    System.out.print("User gender: ");
-    String gender = in.nextLine();
-
-    System.out.print("User address: ");
-    String address = in.nextLine();
-
-    System.out.print("User postcode: ");
-    String postcode = in.nextLine();
-
-    System.out.print("User phone number: ");
-    String phoneNumber = in.nextLine();
+   
     try {
-        db.addUser(id, email, password, name, dob, gender, address, postcode, phoneNumber);
+        od.addOrder(user, date, status);
     } catch (SQLException ex) {
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -122,37 +112,34 @@ private void testAddProduct(){
     System.out.println("Product is added to the database.");
 }
 
-private void testUpdateProduct(){
-    System.out.print("Product Name: ");
-    String oname = in.nextLine();
-    
-    System.out.print("New Product Name: ");
-    String name = in.nextLine();
-    
-    System.out.print("Product Type: ");
-    String type = in.nextLine();
-    
-    System.out.print("Product Quantity: ");
-    int quantity = in.nextInt();
-    
-    System.out.print("Product Price: ");
-    double price = in.nextDouble();
+private void testUpdateOrder(){
+    System.out.print("User ID : ");
+    int id = in.nextInt();
     in.nextLine();
     
+    System.out.print("Date: ");
+    String date = in.nextLine();
+    
+    System.out.print("Status: ");
+    String status = in.nextLine();
+    
+ 
+    
     try{
-       pd.updateProduct(oname, name, type, quantity, price); 
+       od.updateOrder(id, date, status); 
     } catch (SQLException ex) {
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
     }
-    System.out.println("Product updated.");
+    System.out.println("Order updated.");
 }
 
-private void testRemoveProduct(){
-    System.out.print("Product Name: ");
-    String name = in.nextLine();
+private void testRemoveOrder(){
+    System.out.print("Order id: ");
+    int id = in.nextInt();
+    in.nextLine();
     
     try{
-        pd.removeProduct(name);
+        od.deleteOrder(id);
     } catch (SQLException ex) {
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -171,17 +158,34 @@ private void testShow(){
         }
     }
 private void testRead() throws SQLException{
-    System.out.print("Product name: ");
-    String name = in.nextLine();
-    ArrayList<Product> products = pd.searchProducts(name);
-    if (products != null){
-        for(Product p: products){
-            System.out.println(p.getProductName());
+    System.out.print("Order id: ");
+    int id = in.nextInt();
+    System.out.print("Order date: ");
+    String date = in.nextLine();
+    ArrayList<Order> orders = od.searchOrder(id,date);
+    if (orders != null){
+        for(Order o: orders){
+            System.out.println(o.getOrderStatus());
         }
     }
     else{
-        System.out.println("Product does not exist");
+        System.out.println("Order does not exist");
     }
 }
+private void testShowOrders(){
+    try {
+        ArrayList<Order> orders = od.fetchOrders();
+        System.out.println("ORDER TABLE: ");
+        for(Order o: orders){
+            System.out.println(o.getOrderID());
+            System.out.println(o.getUserID());
+            System.out.println(o.getOrderDate());
+            System.out.println(o.getOrderStatus());
+            }    
+    } catch (SQLException ex) {
+        Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
 }

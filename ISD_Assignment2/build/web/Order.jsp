@@ -15,6 +15,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/IoTBay.css">
         <title>Orders Page</title>
+        <script type="text/javascript">
+			function showMessage(){
+				alert("Your Order has been deleted.");
+			}
+		</script>
     </head>
     <body>
         
@@ -36,6 +41,14 @@
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
         </div>
+        <a class="button" href="order_history.jsp">Your Order History</a>
+        
+        <div>
+            
+            
+        </div>
+        
+        
         
        
         
@@ -49,20 +62,26 @@
                     <th>Price</th>
                     <th>Date</th>                  
                     <th>Status</th>
+                    <th>Actions</th>
                 </tr>    
             </thead>
-            <c:forEach var="order" items="${orders}">
+            
             <tbody>
+                <c:forEach var="cart"  items="${ShoppingCart.cart} "> 
                 <tr>
                     <td><c:out value="${order.orderID}"/></td>
-                    <td><c:out value="${cart.productName}"/></td>
+                    <td><c:out value="${cart.productName}" /></td>
                     <td><c:out value="${ShoppingCart.quantity}"/></td>
                     <td><c:out value="${cart.price}"/></td>
                     <td><c:out value="${order.orderDate}"/></td>
                     <td><c:out value="${order.orderStatus}"/></td>
+                    <td><a href="CartAddServlet?productName=<c:out value = "${product.productName}"/>">Update Order</a>
+                        <br><a href="OrderRemoveServlet" onclick="showMessage()">Delete Order</a></td>
                 </tr>
+                </c:forEach>
             </tbody>
-            </c:forEach>
+            
+            
         </table>
     </body>
     

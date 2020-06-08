@@ -29,9 +29,9 @@ public class OrderRemoveServlet extends HttpServlet {
             int orderID = Integer.parseInt(request.getParameter("orderID"));
             try {
                 od.deleteOrder(orderID);
-                response.sendRedirect("OrderServlet");
+                response.sendRedirect("products.jsp");
             } catch (SQLException e){
-               throw new ServletException("Cannot add order to DB", e); 
+               throw new ServletException("Cannot delete order in DB", e); 
             }
         }
 

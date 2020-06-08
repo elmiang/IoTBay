@@ -30,7 +30,7 @@ public class OrderUpdateServlet extends HttpServlet {
             int userID = Integer.parseInt(request.getParameter("userID"));
             String status = request.getParameter("orderStatus");
             try {
-                od.updateOrder(orderID, date, status, userID);
+                od.updateOrder(userID, date, status);
                 response.sendRedirect("OrderServlet");
             } catch (SQLException e){
                throw new ServletException("Cannot update order", e); 

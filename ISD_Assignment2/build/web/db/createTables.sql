@@ -52,11 +52,12 @@ CREATE TABLE Store
 
 CREATE TABLE OrderTable
 (
-    orderID         integer,
+    orderID         integer NOT NULL PRIMARY KEY
+                    GENERATED ALWAYS AS IDENTITY
+                    (START WITH 1, INCREMENT BY 1),
     userID          integer NOT NULL,
     orderDate       date,
     orderStatus     varchar(30),
-    deliveryType    varchar(20),
     FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
