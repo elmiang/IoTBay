@@ -11,28 +11,50 @@ package ISD.Assignment.Model;
  */
 public class AccessLogs {
     
-    private char action;
-    private String time;
+    private int visitId;
+    private int userId;
+    private String loginTime;
+    private String logoutTime;
 
-    public AccessLogs(char action, String time) {
-        this.action = action;
-        this.time = time;
+    public AccessLogs(int visitId, int userId, String loginTime, String logoutTime) {
+        this.visitId = visitId;
+        this.userId = userId;
+        this.loginTime = loginTime;
+        this.logoutTime = logoutTime;
     }
 
-    public char getAction() {
-        return action;
+    public int getVisitId() {
+        return visitId;
     }
 
-    public void setAction(char action) {
-        this.action = action;
+    public void setVisitId(int visitId) {
+        this.visitId = visitId;
     }
 
-    public String getTime() {
-        return time;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
+
+    public String getLoginTime() {
+        return loginTime;
+    }
+
+    public void setLoginTime(String loginTime) {
+        this.loginTime = loginTime;
+    }
+
+    public String getLogoutTime() {
+        return logoutTime;
+    }
+
+    public void setLogoutTime(String logoutTime) {
+        this.logoutTime = logoutTime;
+    }
+
+    
     
 }

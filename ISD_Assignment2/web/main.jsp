@@ -48,6 +48,7 @@
             <a href="address_book.jsp">Address Book</a>
             <a href="card_details.jsp">Card Details</a>
             <a href="payment_history.jsp">Payment History</a>
+            <a href="AccessLogServlet">Access Log<a/>
         </div>
         
         <p class="p">You are logged in as ${user.email}</p><br>
