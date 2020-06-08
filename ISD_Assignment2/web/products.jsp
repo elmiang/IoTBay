@@ -85,7 +85,7 @@
                             &nbsp;&nbsp;&nbsp;
                             </c:if>
                             
-                            <c:if test="${user.role == 'customer'}">
+                            <c:if test="${user.role == 'customer' || user == null}">
                                 <c:if test="${product.quantity > 0}">
                                     <a href="CartAddServlet?productName=<c:out value = "${product.productName}"/>">Add to Cart</a>
                                 </c:if>
