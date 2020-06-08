@@ -28,9 +28,9 @@ public class UserRecordDao {
         this.conn = conn;
     }
      
- public ArrayList<UserRecord> searchUserRecord(String searchName, String searchPassword) throws SQLException{
+ public ArrayList<UserRecord> searchUserRecord(String searchName, String searchPhoneNumber) throws SQLException{
         ArrayList<UserRecord> searchUserRecord = new ArrayList();
-        String search = "SELECT * FROM IOTUSER.UserRecord WHERE password LIKE '%" + searchPassword + "%' OR name LIKE '%" + searchName +"%'";
+        String search = "SELECT * FROM IOTUSER.UserRecord WHERE phoneNumber LIKE '%" + searchPhoneNumber + "%' OR name LIKE '%" + searchName +"%'";
         ResultSet rs = st.executeQuery(search);
         
         while(rs.next()){
