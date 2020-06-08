@@ -43,6 +43,8 @@
                manager = new UserManagementDao(conn);
                pd = new ProductDao(conn);
                ud = new UserManagementDao(conn);
+               pyd = new PaymentDAO(conn);
+               sm = new ShipmentManager(conn);
            } catch (SQLException ex) {
                Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
            }
