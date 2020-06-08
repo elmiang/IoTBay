@@ -43,7 +43,9 @@
             <h1>Add User Record</h1>
             <form action="URAddServlet" method="post">
         </c:if>
-            
+                <div>
+                    <p class="p instructions">Please fill out all text fields and select a DoB before pressing "Save"</p>
+                </div>
          <table>
            
          

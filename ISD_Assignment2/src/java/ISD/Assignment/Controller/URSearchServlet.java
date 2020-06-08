@@ -34,7 +34,7 @@ public class URSearchServlet extends HttpServlet{
             
             UserRecordDao ud = (UserRecordDao) session.getAttribute("ud");
             try {
-                ArrayList<UserRecord> ur = ud.searchUserRecord(result);
+                ArrayList<UserRecord> ur = ud.searchUserRecord(result,result);
                 request.setAttribute("ur", ur);
                 request.getRequestDispatcher("userRecords.jsp").include(request, response);
             } catch (SQLException e){

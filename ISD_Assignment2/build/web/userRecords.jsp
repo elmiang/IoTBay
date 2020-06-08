@@ -48,7 +48,7 @@
             
             <div>
                 <form action="URSearchServlet" method="get">
-                    <input type="text" id="searchText" name="searchText" placeholder="Search name"/>
+                    <input type="text" id="searchText" name="searchText" placeholder="Search name or phone number"/>
                 </form>
             </div>
             
