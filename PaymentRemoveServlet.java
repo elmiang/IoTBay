@@ -19,23 +19,23 @@ import ISD.Assignment.Model.Payment;
 import ISD.Assignment.Model.Dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
-
+    
 /**
  *
  * @author CristinaFidelino
  */
-public class PaymentServlet extends HttpServlet{
+public class PaymentRemoveServlet extends HttpServlet {
     @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
             PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
+            String payment = request.getParameter("paymentID");
             try {
-                ArrayList<Payment> payments = pyd.fetchPayments();
-                request.setAttribute("payments", payments);
-                request.getRequestDispatcher("payment.jsp").include(request, response);
+                pyd.deletePayment(payment);
+                response.sendRedirect("PaymentServlet");
             } catch (SQLException e){
-               throw new ServletException("Cannot obtain payments from Database", e); 
+               throw new ServletException("Cannot add payment to Database", e); 
             }
         }
 }

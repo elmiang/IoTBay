@@ -1,4 +1,4 @@
-<%-- 
+ <%--
     Document   : edit_cardDetails
     Created on : 07/06/2020, 7:03:17 PM
     Author     : CristinaFidelino
@@ -45,26 +45,44 @@
         
         <main class="main-content">
              <div class="greeting">
-            <h1>Add Card Details</h1>
+            <h1>Edit Card Details</h1>
         </div>
         
-        <form method="post" action="card_details.jsp">
-            <h2 class="h2 instructions">Card Details</h2>
-        
-            <p class="p instructions">* marks required fields</p>
             
-            <label for="chName">Card Holder Name</label>
-            <input id="chName" name="chName" type="text" placeholder="Card Holder Name" value = "${payment.cardHolderName}"/>
-            <label for="firstName">First Name*</label>
-            <input id="firstName" name="firstName" type="text" placeholder="First Name" value = "${payment.firstName}"/>
-            <label for="lastName">Last Name*</label>
-            <input id="lastName" name="lastName" type="text" placeholder="LastName Name" value = "${payment.lastName}"/>
-            <label for="cardNum">Card Number</label>
-            <input id="cardNum" name="cardNum" type="text" placeholder="Card Number" value ="${payment.cardNumber}"/>
-            <p class="cardExpiration">Card Expiry</p>
-            <div class="cardExpiration">
+        <form method="post" action="PaymentEditServlet">
+            <p class="p instructions" style="color: red">* marks required fields</p>
+            
+             <table>
+                <tr>
+                    <th>Card Holder Name*</th>
+                    <td>
+                        <input type="text" name="chName" placeholder="Card Holder Name"  value = "${payment.cardHolderName}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>First Name*</th>
+                    <td>
+                        <input type="text" name="firstName" placeholder="First Name" value = "${payment.firstName}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Last Name*</th>
+                    <td>
+                        <input type="text" name="lastName" placeholder="Last Name" value = "${payment.lastName}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Card Number*</th>
+                    <td>
+                        <input type="text" name="cardNumber" placeholder="Card Number" value ="${payment.cardNumber}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Card Expiry Date*</th>
+                    <td>
+                        <div class="cardExpiration">
                 <label for="cardMonth">Month</label>
-                <select name="cardMonth" id="cardMonth" value = "${payment.expDate}"required>
+                <select name="cardMonth" id="cardMonth" value = "${payment.expDate}" required>
                     <option value="January">01</option>
                     <option value="February">02</option>
                     <option value="March">03</option>
@@ -79,7 +97,7 @@
                     <option value="December">12</option>
                 </select>
                 <label for="cardYear">Year</label>
-                <select name="cardYear" id="cardYear" value = "${payment.expDate}" required>
+                <select name="cardYear" id="cardYear"   value = "${payment.expDate}" required>
                     <option value="2020">2020</option>
                     <option value="2021">2021</option>
                     <option value="2022">2022</option>
@@ -90,13 +108,22 @@
                 </select>
             </div>
             
-            <input class="button" type="submit" value="Save"/><br>
-            <p class="p instructions">Return to <a class="p"href = "card_details.jsp">Card Details Page</a> </p>
-
+            <div class="payment-section">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th></th>
+                    <td>
+                        <a href="card_details.jsp" class="button">Back</a>
+                        <input type="submit" value="Save Card Details" class="button"/>
+                    </td>
+                </tr>
+            </table>
         </form>
         
             <%
-//            int paymentID = Integer.parseInt(request.getParameter("paymentID"));
+           // int paymentID = Integer.parseInt(request.getParameter("paymentID"));
 //            String cardHolderName = request.getParameter("cardHolderName");
 //            String firstName = request.getParameter("firstName");
 //            String lastName = request.getParameter("lastName");

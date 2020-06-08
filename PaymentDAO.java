@@ -50,27 +50,45 @@ public class PaymentDAO {
         }
     }
     
-    public void addPayment(int paymentID, String cardHolderName, String firstName, String lastName, int cardNumber, String expDate, String paidDate, String paymentMethod, double paidAmount) throws SQLException{
-        String update = "INSERT INTO IOTUSER.Payment(paymentid, cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public void addCard (String cardHolderName, String firstName, String lastName, int cardNumber, String expDate) throws SQLException{
+        String update = "INSERT INTO IOTUSER.Payment(cardHolderName, firstName, lastName, cardNumber, expDate) VALUES(?, ?, ?, ?, ?)";
         PreparedStatement st = conn.prepareStatement(update);
-        st.setInt(1, paymentID);
-        st.setString(2, cardHolderName);
-        st.setString(3, firstName);
-        st.setString(4, lastName);
-        st.setInt(5, cardNumber);
-        st.setString(6, expDate);
-        st.setString(3, paidDate);
-        st.setString(4, paymentMethod);
-        st.setDouble(5, paidAmount);
+        st.setString(1, cardHolderName);
+        st.setString(2, firstName);
+        st.setString(3, lastName);
+        st.setInt(4, cardNumber);
+        st.setString(5, expDate);
         st.execute();
     }
     
-        public void updatePayment(String cardHolderName, String firstName, String lastName, int cardNumber, String expDate) throws SQLException{
-        st.executeUpdate("UPDATE IOTUSER.Payment SET CARDHOLDERNAME='" + cardHolderName + "', FIRSTNAME'=" + firstName +"', LASTNAME='" + lastName +"', CARDNUMBER='" + cardNumber +"', EXPDATE='" + expDate + "'");
+    public void addPayment(String cardHolderName, String firstName, String lastName, int cardNumber, String expDate, String paidDate, String paymentMethod, double paidAmount) throws SQLException{
+        String update = "INSERT INTO IOTUSER.Payment(cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement st = conn.prepareStatement(update);
+        st.setString(1, cardHolderName);
+        st.setString(2, firstName);
+        st.setString(3, lastName);
+        st.setInt(4, cardNumber);
+        st.setString(5, expDate);
+        st.setString(6, paidDate);
+        st.setString(7, paymentMethod);
+        st.setDouble(8, paidAmount);
+        st.execute();
     }
     
-    public void deletePayment(String paymentID) throws SQLException {
-        st.executeUpdate("DELETE FROM IOTUSER.Payment WHERE PAYMENTID='" + paymentID + "'");
+        public void updatePayment(int paymentID, String cardHolderName, String firstName, String lastName, int cardNumber, String expDate) throws SQLException{
+            String update ="UPDATE IOTUSER.PAYMENT SET CARDHOLDERNAME = ?, FIRSTNAME = ?, LASTNAME = ?, CARDNUMBER = ?, EXPDATE =? WHERE PAYMENTID = ?";
+            PreparedStatement st = conn.prepareStatement(update);
+            st.setString(1, cardHolderName);
+            st.setString(2, firstName);
+            st.setString(3, lastName);
+            st.setInt(4, cardNumber);
+            st.setString(5, expDate);
+            st.setInt(6, paymentID);
+            st.execute();
+    }
+        
+    public void deletePayment(String name) throws SQLException {
+        st.executeUpdate("DELETE FROM IOTUSER.Payment WHERE CARDHOLDERNAME='" + name + "'");
     }
     
     public ArrayList<Payment> fetchPayments() throws SQLException {
