@@ -17,7 +17,16 @@
         </group>
         <group name="JavaY2">
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/StoreUpdateServlet.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/register.jsp</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/LoginServlet.java</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/ConnServlet.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/welcome.jsp</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/AccDelServlet.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Model/User.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Model/Dao/UserManagementDao.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/UpdateServlet.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/login.jsp</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/RegisterServlet.java</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Model/UserRecord.java</file>
         </group>
     </open-files>
