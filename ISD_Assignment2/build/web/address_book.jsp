@@ -1,6 +1,6 @@
 <%-- 
-    Document   : main
-    Created on : 28/04/2020, 11:09:52 PM
+    Document   : address_book
+    Created on : 01/06/2020, 5:30:08 AM
     Author     : CristinaFidelino
 --%>
 
@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/IoTBay.css">
-        <title>Main</title>
+        <title>Address Book</title>
     </head>
     <body>
         <%
@@ -40,26 +40,18 @@
         </div>
         
         <main class="main-content">
-        <h1>Account Summary</h1><br>
+        <h1>Address Book</h1><br>
         
         <div class="sidenav">
-            <a href="#">Account Summary</a>
+            <a href="main.jsp">Account Summary</a>
             <a href="order_history.jsp">Order History</a>
-            <a href="address_book.jsp">Address Book</a>
+            <a href="#">Address Book</a>
             <a href="card_details.jsp">Card Details</a>
-            <a href="payment_history.jsp">Payment History</a>
         </div>
         
-        <p class="p">You are logged in as ${user.email}</p><br>
-            <table id="profile_table">
-                <tr>
-                <thead><th>Name</th><th>Email</th><th>Password</th><th>DOB</th><th>Gender</th><th>Address</th><th>Postcode</th><th>Phone Number</th></thead>
-                </tr>
-            <tr><td>${user.name}</td><td>${user.email}</td><td>${user.password}</td><td>${user.dob}</td><td>${user.gender}</td><td>${user.address}</td><td>${user.postcode}</td><td>${user.phoneNumber}</td></tr>
-            </table>
-            
+        <p class="p instructions"> You have no Addresses Saved</p>
             <div style="text-align: center;">
-                <a class="button" href="edit.jsp"> Edit </a>
+                <a class="button" href="edit.jsp"> Add New Address </a>
             </div>
         </main>
             
@@ -91,6 +83,5 @@
             
             <p class="instructions">New User? <a href= "register.jsp"> Sign Up Here</p>
         <% } %>
-        
     </body>
 </html>

@@ -12,13 +12,14 @@
         <link rel="stylesheet" href="css/IoTBay.css">
         <title>Payment</title>
     </head>
-    <body>
+     <body>
         <div class="header-img">
         <ul>
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
           <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
           <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
-          <li style="float:right" class="listImage"><a href="cart.jsp"><img class="logo" src="css/cart.png"/></a></li>
+          <li style="float:right" class="listImage"><a href="cart.jsp"><img class="logo" src="css/cart2.png"/></a></li>
+          <li style="float:right" class="listImage"><a href="main.jsp"><img class="logo" src="css/userIcon.png"/></a></li>
         </ul>
         </div>
         <div class="topnav">
@@ -31,16 +32,18 @@
         </div>
         
         <main class="main-content">
-            <form method="post" action="welcome.jsp" style="text-align: center;">
+            <form method="post" action="confirmed.jsp" style="text-align: center;">
             <h1>Payment Information</h1>
-            <h2 class="h2 instructions">* marks required fields</h2>
+            <h2 class="h2 instructions" style="color:red">* marks required fields</h2>
             
             <label for="name">Card Number*</label>
             <input id="cardNum" name="cardNum" type="text" placeholder="Card Number" required = "true"/>
             <label for="name">CVC*</label>
             <input id="cvc" name="cvc" type="text" placeholder="CVC" required = "true"/>
-            <label for="chName">Card Holder Name*</label>
-            <input id="chName" name="chName" type="text" required = "true" placeholder="Cardholder Name"/><br>
+            <label for="firstName">First Name*</label>
+            <input id="firstName" name="firstName" type="text" required = "true" placeholder="First Name"/>
+            <label for="lastName">Las Name*</label>
+            <input id="lastName" name="lastName" type="text" required = "true" placeholder="Last Name"/><br>
    
             <p class="cardExpiration">Card Expiry</p>
             <div class="cardExpiration">
@@ -79,7 +82,10 @@
             
             <h2 class="h2">Billing Address</h2><br>
             
-            <p>Put the option to select previously saved address details here</p>
+            <label for="savedAddress">Saved Address</label>
+            <select name="savedAddress" id="savedAddress">
+                <option value="1">Address</option>  
+            </select>
             
             <label for="name">First Name</label>
             <input id="name" name="name" type="text" placeholder="First Name" required = "true"/>
@@ -95,8 +101,19 @@
             <input id="addressTwo" name="addressTwo" type="text" placeholder="E.g. Apartment, Suite or Space Number" />
             <label for="city">City/Town</label>
             <input id="city" name="city" type="text" placeholder="City/Town" />
+            
             <label for="State/Territory">State/Territory</label>
-            <input id="state" name="state" type="text" placeholder="State/Territory" />
+            <select name="stateTer" id="stateTer"  required>
+                    <option value="New South Wales">New South Wales</option>
+                    <option value="Victoria">Victoria</option>
+                    <option value="Queensland">Queensland</option>
+                    <option value="Western Australia">Western Australia</option>
+                    <option value="South Australia">South Australia</option>
+                    <option value="Tasmania">Tasmania</option>
+                    <option value="Northern Territory">Northern Territory</option>
+                    <option value="Australian Capital Territory">Australian Capital Territory</option>    
+                </select>
+            
             <label for="postcode">Postcode</label>
             <input id="postcode" name="postcode" type="text" placeholder="Postcode"/>
             

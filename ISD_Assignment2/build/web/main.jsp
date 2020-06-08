@@ -24,6 +24,8 @@
         <ul>
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
           <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="logout.jsp"> Logout </a></li>
+          <li style="float:right" class="listImage"><a href="cart.jsp"><img class="logo" src="css/cart2.png"/></a></li>
+          <li style="float:right" class="listImage"><a href="main.jsp"><img class="logo" src="css/userIcon.png"/></a></li>
         </ul>
         </div>
         
@@ -39,6 +41,15 @@
         
         <main class="main-content">
         <h1>Account Summary</h1><br>
+        
+        <div class="sidenav">
+            <a href="#">Account Summary</a>
+            <a href="order_history.jsp">Order History</a>
+            <a href="address_book.jsp">Address Book</a>
+            <a href="card_details.jsp">Card Details</a>
+            <a href="payment_history.jsp">Payment History</a>
+        </div>
+        
         <p class="p">You are logged in as ${user.email}</p><br>
             <table id="profile_table">
                 <tr>
@@ -50,11 +61,36 @@
             <div style="text-align: center;">
                 <a class="button" href="edit.jsp"> Edit </a>
             </div>
+        </main>
             
         <% }  else { %>
-            <p class="p">You are not logged in</p>
-            <a class="p" href="register.jsp"> Register </a>
+        <div class="header-img">
+        <ul>
+          <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
+          <li style="float:right" class="listImage"><a href="cart.jsp"><img class="logo" src="css/cart2.png"/></a></li>
+          <li style="float:right" class="listImage"><a href="main.jsp"><img class="logo" src="css/userIcon.png"/></a></li>
+        </ul>
+        </div>
+        
+        <div class="topnav">
+             <a href="index.jsp"style="float: left;">Home</a>
+            <a style="float: left;">All Products</a>
+            <a style="float: left;">Kits</a>
+            <a style="float: left;">Parts</a>
+            <a style="float: left;">Sensors</a>
+            <a style="float: right;">About</a>
+            <a style="float: right;">Contact</a>
+        </div>
+        
+        <main class="main-content">
+            <p class="p instructions">You must be logged in to do that</p>
+            
+            <div style="text-align: center;">
+                <a class="button center" href="login.jsp"> Login </a>
+            </div>
+            
+            <p class="instructions">New User? <a href= "register.jsp"> Sign Up Here</p>
         <% } %>
-        </main>
+        
     </body>
 </html>
