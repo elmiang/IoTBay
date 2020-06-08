@@ -14,7 +14,7 @@
    public class ConnServlet extends HttpServlet {
 
        private DBConnector db;
-       private DBManager manager;
+       private UserManagementDao manager;
        private ProductDao pd;
        private Connection conn;   
        private UserRecordDao ud;
@@ -38,7 +38,7 @@
            HttpSession session = request.getSession();
            conn = db.openConnection();       
            try {
-               manager = new DBManager(conn);
+               manager = new UserManagementDao(conn);
                pd = new ProductDao(conn);
                ud = new UserRecordDao(conn);
            } catch (SQLException ex) {

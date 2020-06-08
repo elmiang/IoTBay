@@ -26,7 +26,7 @@ public class DBManager {
         ResultSet rs = st.executeQuery(read);
         
         while(rs.next()){
-            String userID = rs.getString(1);
+            int userID = rs.getInt(1);
             String userEmail = rs.getString(2);
             String userPass = rs.getString(3);
             if(userEmail.equals(email) && userPass.equals(password)){
@@ -60,7 +60,7 @@ public class DBManager {
         ArrayList<User> temp = new ArrayList();
         
         while (rs.next()){
-            String userID = rs.getString(1);
+            int userID = rs.getInt(1);
             String userEmail = rs.getString(2);
             String userPass = rs.getString(3);
             String userName = rs.getString(4);
