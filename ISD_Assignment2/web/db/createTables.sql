@@ -127,19 +127,3 @@ CREATE TABLE Shipment
     currentStatus   varchar(20)
 );
 
-CREATE TABLE UserRecord
-(
-    userID      integer NOT NULL PRIMARY KEY
-                GENERATED ALWAYS AS IDENTITY
-                (START WITH 1, INCREMENT BY 1),
-    email       varchar(30),
-    password    varchar(16),
-    name        varchar(30),
-    dob         date,
-    gender      varchar(1),
-    address     varchar(100),
-    postCode    varchar(4),
-    phoneNumber varchar(15),
-    role varchar(100)
-    
-);

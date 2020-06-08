@@ -17,7 +17,7 @@
        private UserManagementDao manager;
        private ProductDao pd;
        private Connection conn;   
-       private UserRecordDao ud;
+       private UserManagementDao ud;
        private PaymentDAO pyd;
        
        @Override //Create an instance of DBConnector for the deployment session
@@ -41,7 +41,7 @@
            try {
                manager = new UserManagementDao(conn);
                pd = new ProductDao(conn);
-               ud = new UserRecordDao(conn);
+               ud = new UserManagementDao(conn);
            } catch (SQLException ex) {
                Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
            }

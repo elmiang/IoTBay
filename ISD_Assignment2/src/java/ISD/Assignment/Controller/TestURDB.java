@@ -5,8 +5,8 @@ import java.util.*;
 import java.util.logging.*;
 import ISD.Assignment.Model.Dao.DBConnector;
 import ISD.Assignment.Model.Dao.DBManager;
-import ISD.Assignment.Model.Dao.UserRecordDao;
-import ISD.Assignment.Model.UserRecord;
+import ISD.Assignment.Model.Dao.UserManagementDao;
+import ISD.Assignment.Model.User;
 
  
 
@@ -15,7 +15,7 @@ private static Scanner in = new Scanner(System.in);
 private DBConnector connector;
 private Connection conn;
 private DBManager db;
-private UserRecordDao ud;
+private UserManagementDao ud;
 
 public static void main(String[] args) throws SQLException {
     (new TestURDB()).runQueries();
@@ -26,7 +26,7 @@ public TestURDB(){
         connector = new DBConnector();
         conn = connector.openConnection();
         db = new DBManager(conn);
-        ud = new UserRecordDao(conn);
+        ud = new UserManagementDao(conn);
     }
     catch (ClassNotFoundException | SQLException ex) {
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,9 +64,9 @@ private void runQueries() throws SQLException {
 
 private void testURShow() throws SQLException{
      try {
-        ArrayList<UserRecord> ur = ud.fetchUserRecord();
+        ArrayList<User> ur = ud.fetchUserRecord();
         System.out.println("UR Email List: ");
-        for(UserRecord p: ur){
+        for(User p: ur){
             System.out.println(p.getEmail());
             }    
     } catch (SQLException ex) {
@@ -79,9 +79,9 @@ private void testURRead() throws SQLException{
     System.out.print("Name or Phone Number: ");
     String name = in.nextLine();
     
-    ArrayList<UserRecord> ur = ud.searchUserRecord(name,name);
+    ArrayList<User> ur = ud.searchUserRecord(name,name);
     if (ur != null){
-        for(UserRecord p: ur){
+        for(User p: ur){
             System.out.println(p.getName());
         }
     }

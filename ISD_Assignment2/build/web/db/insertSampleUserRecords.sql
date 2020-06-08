@@ -7,7 +7,7 @@
  * Author:  jacks
  * Created: Jun 8, 2020
  */
-INSERT INTO IOTUSER.USERRECORD (
+INSERT INTO IOTUSER.USERS (
 
 email,
 password,
