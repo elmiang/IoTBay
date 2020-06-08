@@ -24,6 +24,7 @@
             <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
           </c:if>
           <c:if test="${user != null}">
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="main.jsp"> Account </a></li>
             <li style="float:right; margin-right:10px;"><a class="button top-actions" href="logout.jsp"> Logout </a></li>
           </c:if>
           <li style="float:right" class="listImage"><a href="cart.jsp"><img class="logo" src="css/cart.png"/></a></li>
