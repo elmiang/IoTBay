@@ -5,66 +5,124 @@
  */
 package ISD.Assignment.Model;
 
-/**
- *
- * @author CristinaFidelino
- */
-public class Shipment {
-    
-    private int shipmentID;
-    private String startDate;
-    private String estArrivalDate;
-    private String deliveryAddress;
-    private String currentStatus;
 
-    public Shipment(int shipmentID, String startDate, String estArrivalDate, String deliveryAddress, String currentStatus) {
+public class Shipment {
+   Integer shipmentID;
+   Integer userID;
+   String preferName;
+   String email;
+   Integer phone_number;
+   String address;
+   String city;
+   String territory;
+   Integer post_code;
+   String startDate;
+   String shipmentMethod;
+   String currentStatus;
+
+
+    public Shipment(Integer shipmentID, Integer userID, String preferName, String email, Integer phone_number, String address, String city, String territory, Integer post_code, String startDate, String shipmentMethod, String currentStatus) {
         this.shipmentID = shipmentID;
+        this.userID = userID;
+        this.preferName = preferName;
+        this.email = email;
+        this.phone_number = phone_number;
+        this.address = address;
+        this.city = city;
+        this.territory = territory;
+        this.post_code = post_code;
         this.startDate = startDate;
-        this.estArrivalDate = estArrivalDate;
-        this.deliveryAddress = deliveryAddress;
+        this.shipmentMethod = shipmentMethod;
         this.currentStatus = currentStatus;
     }
 
-    public int getShipmentID() {
-        return shipmentID;
+    public void setPreferName(String preferName) {
+        this.preferName = preferName;
     }
 
-    public void setShipmentID(int shipmentID) {
-        this.shipmentID = shipmentID;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public void setPhone_number(Integer phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setTerritory(String territory) {
+        this.territory = territory;
+    }
+
+    public void setPost_code(Integer post_code) {
+        this.post_code = post_code;
     }
 
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public String getEstArrivalDate() {
-        return estArrivalDate;
+    public void setShipmentMethod(String shipmentMethod) {
+        this.shipmentMethod = shipmentMethod;
     }
 
-    public void setEstArrivalDate(String estArrivalDate) {
-        this.estArrivalDate = estArrivalDate;
+    public void setCurrentStatus(String currentStatus) {
+        this.currentStatus = currentStatus;
     }
 
-    public String getDeliveryAddress() {
-        return deliveryAddress;
+    public Integer getShipmentID() {
+        return shipmentID;
     }
 
-    public void setDeliveryAddress(String deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public String getPreferName() {
+        return preferName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Integer getPhone_number() {
+        return phone_number;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getTerritory() {
+        return territory;
+    }
+
+    public Integer getPost_code() {
+        return post_code;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public String getShipmentMethod() {
+        return shipmentMethod;
     }
 
     public String getCurrentStatus() {
         return currentStatus;
     }
 
-    public void setCurrentStatus(String currentStatus) {
-        this.currentStatus = currentStatus;
-    }
     
-    
-           
 }

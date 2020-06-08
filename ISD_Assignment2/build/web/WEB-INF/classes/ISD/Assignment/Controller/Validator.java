@@ -21,6 +21,8 @@ import javax.servlet.http.HttpSession;
    private String postCodePattern = "[0-9]+";
    private String phoneNumberPattern = "[a-zA-Z0-9]{6,}";
    private String numberPattern = "^\\d+$";
+   private String datePattern = "([0-9]{4})(-)([0-9]{2})(-)([0-9]{2})";      
+   private String intPattern = "([0-9]*)";  
    //private String fieldPattern
               
    public Validator(){    }       
@@ -76,6 +78,18 @@ import javax.servlet.http.HttpSession;
    
        return validate(numberPattern, number);
    }
+   
+   public boolean validateDate(String date){                       
+
+      return validate(datePattern,date);   
+
+   }
+
+   public boolean validateInt(String ID){
+
+      return validate(intPattern,ID); 
+
+   }   
    
    public void clear(HttpSession session){
        session.setAttribute("emailErr", "Enter Email");

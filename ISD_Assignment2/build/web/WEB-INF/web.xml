@@ -100,6 +100,30 @@
         <servlet-name>CartRemoveServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.CartRemoveServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>shipmentSearchServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.shipmentSearchServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShipmentEditServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.ShipmentEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>shipmentUpdateServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.shipmentUpdateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShipmentDeleteServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.ShipmentDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllShipmentsServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.AllShipmentsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewShipmentServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.NewShipmentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StoreServlet</servlet-name>
         <url-pattern>/StoreServlet</url-pattern>
@@ -199,6 +223,30 @@
     <servlet-mapping>
         <servlet-name>CartRemoveServlet</servlet-name>
         <url-pattern>/CartRemoveServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>shipmentSearchServlet</servlet-name>
+        <url-pattern>/shipmentSearchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShipmentEditServlet</servlet-name>
+        <url-pattern>/ShipmentEditServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>shipmentUpdateServlet</servlet-name>
+        <url-pattern>/shipmentUpdateServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShipmentDeleteServlet</servlet-name>
+        <url-pattern>/ShipmentDeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllShipmentsServlet</servlet-name>
+        <url-pattern>/AllShipmentsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewShipmentServlet</servlet-name>
+        <url-pattern>/NewShipmentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

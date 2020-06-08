@@ -19,6 +19,7 @@
        private Connection conn;   
        private UserManagementDao ud;
        private PaymentDAO pyd;
+       private ShipmentManager sm;
        
        @Override //Create an instance of DBConnector for the deployment session
        
@@ -51,6 +52,7 @@
            session.setAttribute("pd", pd);
            session.setAttribute("ud", ud);
            session.setAttribute("pyd", pyd);
+           session.setAttribute("sm", sm);
        }   
 
        @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)
