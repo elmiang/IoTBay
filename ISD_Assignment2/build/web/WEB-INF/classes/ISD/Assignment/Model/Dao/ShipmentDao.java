@@ -1,7 +1,7 @@
 
 package ISD.Assignment.Model.Dao;
 
-import ISD.Assignment.Model.Shipment;
+import ISD.Assignment.Model.shipment;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -10,17 +10,17 @@ import java.util.ArrayList;
 * Complete the existing methods of this classes to perform CRUD operations with the db.
 */
 
-public class ShipmentManager {
+public class ShipmentDao {
 
 private Statement st;
    
-public ShipmentManager(Connection conn) throws SQLException {       
+public ShipmentDao(Connection conn) throws SQLException {       
    st = conn.createStatement();   
 }
 
 //Find user by email and password in the database   
-public Shipment findShipment(int shipmentID, String date) throws SQLException {       
-   String fetch = "select * from ISDUSER.SHIPMENT where shipmentID =" +shipmentID+" and startDate ='" +date+"'";
+public shipment findShipment(int shipmentID, String date) throws SQLException {       
+   String fetch = "select * from IOTUSER.SHIPMENT where shipmentID =" +shipmentID+" and startDate ='" +date+"'";
    ResultSet rs = st.executeQuery(fetch);
    
    while(rs.next()){
@@ -39,7 +39,7 @@ public Shipment findShipment(int shipmentID, String date) throws SQLException {
            String shipmentStatus = rs.getString(12);
               //             currentStatus
             
-          return new Shipment( userShipmentID, userID, prefname, email, phone, address, city, stats, postCode, userShipDate, shipmentMethod, shipmentStatus);
+          return new shipment( userShipmentID, userID, prefname, email, phone, address, city, stats, postCode, userShipDate, shipmentMethod, shipmentStatus);
        }
    }
    
@@ -49,29 +49,31 @@ public Shipment findShipment(int shipmentID, String date) throws SQLException {
 //Add a user-data into the database   
 public void addShipment(String prefname, String email,Integer phone,String address,String city,String stats,Integer postCode,String date, String shipmentMethod) throws SQLException {                   //code for add-operation       
  
-    st.executeUpdate("INSERT INTO ISDUSER.SHIPMENT (prefername, email, phone_number,address,city,territory,post_code,startdate,shipmentmethod)" +
-"VALUES ('"+prefname+"','"+email+"',"+phone+",'"+address+"','"+city+"','"+stats+"',"+postCode+",'"+date+"','"+shipmentMethod+"')");   
+    st.executeUpdate("INSERT INTO IOTUSER.SHIPMENT (prefername, email, phone_number,address,city,territory,post_code,startdate,shipmentmethod,currentStatus)" +
+"VALUES ('"+prefname+"','"+email+"',"+phone+",'"+address+"','"+city+"','"+stats+"',"+postCode+",'"+date+"','"+shipmentMethod+"','processing')");   
 
 }
 
 //update a user details in the database   
 public void updateShipment( Integer shipmentID, String prefname, String email,Integer phone,String address,String city,String stats,Integer postCode,String date, String shipmentMethod) throws SQLException {       
-    st.executeUpdate("UPDATE ISDUSER.SHIPMENT SET prefername= '"+prefname+"' , email='"+email+"', phone_number ="+phone+""
+    st.executeUpdate("UPDATE IOTUSER.SHIPMENT SET prefername= '"+prefname+"' , email='"+email+"', phone_number ="+phone+""
                         + ",address = '"+address+"',city = '"+city+"',territory='"+stats+"',\n" +
                           "post_code="+postCode+",startdate='"+date+"',shipmentmethod='"+shipmentMethod+"' where shipmentID ="+shipmentID+"");
 
 }       
 
+
+
 //delete a user from the database   
 public void deleteShipment(Integer shipmentID) throws SQLException{       
-  st.executeUpdate("DELETE FROM ISDUSER.SHIPMENT WHERE SHIPMENTID= "+shipmentID+"");
+  st.executeUpdate("DELETE FROM IOTUSER.SHIPMENT WHERE SHIPMENTID= "+shipmentID+"");
 
 }
 
-public ArrayList<Shipment> fectShipment() throws SQLException{
+public ArrayList<shipment> fectShipment() throws SQLException{
     String fetch = "SELECT * FROM SHIPMENT";
     ResultSet rs = st.executeQuery(fetch);
-    ArrayList<Shipment> temp = new ArrayList();
+    ArrayList<shipment> temp = new ArrayList();
     
     while(rs.next()){
            Integer userShipmentID = rs.getInt(1);
@@ -86,13 +88,13 @@ public ArrayList<Shipment> fectShipment() throws SQLException{
            Integer postCode = rs.getInt(9);
            String shipmentMethod = rs.getString(11);
            String shipmentStatus = rs.getString(12);
-        temp.add(new Shipment( userShipmentID, userID, prefname, email, phone, address, city, stats, postCode, userShipDate, shipmentMethod, shipmentStatus));
+        temp.add(new shipment( userShipmentID, userID, prefname, email, phone, address, city, stats, postCode, userShipDate, shipmentMethod, shipmentStatus));
     }
     return temp;
 }
 
 public boolean checkUser(Integer shipmentID, String date) throws SQLException{
-    String fect = "SELECT * FROM ISDUSER.SHIPMENT WHERE SHIPMENTID = " +shipmentID+ " and startdate='"+date+"'";
+    String fect = "SELECT * FROM IOTUSER.SHIPMENT WHERE SHIPMENTID = " +shipmentID+ " and startdate='"+date+"'";
     ResultSet rs = st.executeQuery(fect);
     
     while(rs.next()){
@@ -105,5 +107,15 @@ public boolean checkUser(Integer shipmentID, String date) throws SQLException{
     return false;
 }
 
+public String getCurrentStatus(Integer shipmentID) throws SQLException{
+    String fect = "SELECT * FROM IOTUSER.SHIPMENT WHERE SHIPMENTID = " +shipmentID+ " ";
+    ResultSet rs = st.executeQuery(fect);
+
+    while(rs.next()){
+           String currentStatus = rs.getString(12);
+           return currentStatus;
+    }
+    return null;
+}
 
 }

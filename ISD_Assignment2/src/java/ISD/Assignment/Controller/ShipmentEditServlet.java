@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import ISD.Assignment.Model.Shipment;
-import ISD.Assignment.Model.Dao.ShipmentManager;
+import ISD.Assignment.Model.shipment;
+import ISD.Assignment.Model.Dao.ShipmentDao;
 
 
 public class ShipmentEditServlet extends HttpServlet {
@@ -24,15 +24,16 @@ public class ShipmentEditServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String id = request.getParameter("id");
         String date = request.getParameter("date");
-        ShipmentManager sm = (ShipmentManager) session.getAttribute("sm");
-        
-        Shipment shipment = null;
+        ShipmentDao sm = (ShipmentDao) session.getAttribute("sm");
+
+        shipment shipment = null;
 
         try{
-            shipment = sm.findShipment(Integer. parseInt(id), date);
+         
+            shipment = sm.findShipment(Integer.parseInt(id), date);
             if(shipment != null){
                 session.setAttribute("shipment", shipment);
-                request.getRequestDispatcher("shipmentEdit.jsp").include(request, response);
+                //request.getRequestDispatcher("shipmentEdit.jsp").include(request, response);
             }else{
                 session.setAttribute("existErr", "Shipment does not exist in the Database!");
                 request.getRequestDispatcher("shipmentEdit.jsp").include(request, response);
@@ -41,6 +42,7 @@ public class ShipmentEditServlet extends HttpServlet {
             Logger.getLogger(ShipmentEditServlet.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getErrorCode() + " and " +ex.getMessage());
         }
+        request.getRequestDispatcher("shipmentEdit.jsp").include(request, response);
     }
 
     }

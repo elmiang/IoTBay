@@ -124,6 +124,10 @@
         <servlet-name>NewShipmentServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.NewShipmentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllshipmentsServelt</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.AllshipmentsServelt</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StoreServlet</servlet-name>
         <url-pattern>/StoreServlet</url-pattern>
@@ -247,6 +251,10 @@
     <servlet-mapping>
         <servlet-name>NewShipmentServlet</servlet-name>
         <url-pattern>/NewShipmentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllshipmentsServelt</servlet-name>
+        <url-pattern>/AllshipmentsServelt</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

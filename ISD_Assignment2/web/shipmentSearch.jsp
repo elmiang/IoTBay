@@ -31,9 +31,8 @@
             String existErr = (String) session.getAttribute("existErr");
             String IDErr = (String) session.getAttribute("IDErr");
             String dateErr = (String) session.getAttribute("dateErr");
-            String deleted = (String) session.getAttribute("deleted");
         %>
-        <h1>Shipment_Search<span><%=(existErr != null ? existErr : "")%><%=(deleted != null ? deleted : "")%></span></h1>
+        <h1>Shipment_Search</h1><h2><%=(existErr != null ? existErr : "")%></h2>
         <form action ="shipmentSearchServlet" method="post">
             <table>
                 <tr>

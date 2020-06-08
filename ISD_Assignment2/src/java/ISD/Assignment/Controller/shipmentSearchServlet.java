@@ -5,7 +5,7 @@
  */
 package ISD.Assignment.Controller;
 
-import ISD.Assignment.Model.Shipment;
+import ISD.Assignment.Model.shipment;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import ISD.Assignment.Model.Dao.ShipmentManager;
+import ISD.Assignment.Model.Dao.ShipmentDao;
 
 
 public class shipmentSearchServlet extends HttpServlet {
@@ -23,18 +23,17 @@ public class shipmentSearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
               throws ServletException, IOException{
         HttpSession session = request.getSession();
-        Validator validator = new Validator();
+        ValidatorShipment validator = new ValidatorShipment();
         String ID =  request.getParameter("shipmentID");
         String date = request.getParameter("shipmentDate");
-        ShipmentManager sm = (ShipmentManager) session.getAttribute("sm");
-        session.setAttribute("deleted", "");
-        Shipment shipment = null;
+        ShipmentDao sm = (ShipmentDao) session.getAttribute("sm");
+        shipment shipment = null;
         validator.clear(session);
         
         if(!validator.validateDate(date)){
             session.setAttribute("dateErr", "Error: Date format incorrect");
             request.getRequestDispatcher("shipmentSearch.jsp").include(request, response);
-        }else if(!validator.validateInt(ID)){
+        }else if(!validator.validateID(ID)){
             session.setAttribute("IDErr","Error:ID format incorrect");
             request.getRequestDispatcher("shipmentSearch.jsp").include(request, response);            
         }else{     

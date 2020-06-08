@@ -19,7 +19,7 @@
        private Connection conn;   
        private UserManagementDao ud;
        private PaymentDAO pyd;
-       private ShipmentManager sm;
+       private ShipmentDao sm;
        
        @Override //Create an instance of DBConnector for the deployment session
        

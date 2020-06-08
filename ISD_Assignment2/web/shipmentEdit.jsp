@@ -38,7 +38,6 @@
             String updated = (String) session.getAttribute("updated");
         %>
         
-        <a class ="button" href="shipmentSearchResult.jsp?id=<%=shipment.getShipmentID()%>&date='<%=shipment.getStartDate()%>'">Back</a>
         
         <h1>Edit Shipment Information</h1><%=(updated!=null?updated:"")%>
         <form method="post" action="shipmentUpdateServlet">
@@ -56,9 +55,9 @@
             <tr><td>ShipmentMethod</td><td><input type="text" name="shipmentMethod" value="${shipment.shipmentMethod}"></td></tr>
             <tr><td>CurrentStatus</td><td><input type="text" name="currentStatus" value="${shipment.currentStatus}" readonly></td></tr>
             <tr>
-                <td>
-                    <input class ="button" type="submit" value="Update">
-                </td>
+            <td>
+            <a class ="button" href="shipments.jsp?id=<%=shipment.getShipmentID()%>&date='<%=shipment.getStartDate()%>'">Back</a></td>
+            <td><input class ="button" type="submit" value="Update"></td>
             </tr>
         </table>
        </form>

@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import ISD.Assignment.Model.Shipment;
-import ISD.Assignment.Model.Dao.ShipmentManager;
+import ISD.Assignment.Model.shipment;
+import ISD.Assignment.Model.Dao.ShipmentDao;
 
 /**
  *
@@ -29,7 +29,7 @@ public class NewShipmentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         HttpSession session = request.getSession();
-        Validator validator = new Validator();
+        ValidatorShipment validator = new ValidatorShipment();
         String preferName = request.getParameter("name");
         String email = request.getParameter("email");
         String phone_number = request.getParameter("phone");
@@ -39,15 +39,15 @@ public class NewShipmentServlet extends HttpServlet {
         String post_code = request.getParameter("post_code");
         String startDate = request.getParameter("startDate");
         String shipmentMethod = request.getParameter("shipmentMethod");
-        ShipmentManager sm = (ShipmentManager) session.getAttribute("sm");
-        
+        ShipmentDao sm = (ShipmentDao) session.getAttribute("sm");
+        validator.clear(session);
         //validator
-        if(!validator.validateInt(post_code)){
-            session.setAttribute("intErr","Error: It should be digits");
-            request.getRequestDispatcher("shipmentNew.jsp").include(request, response);
-        }else if(!validator.validateInt(phone_number)){
-            session.setAttribute("IDErr","Error:ID format incorrect");
-            request.getRequestDispatcher("shipmentSearch.jsp").include(request, response);            
+        if(!validator.validatePostCode(post_code)){
+            session.setAttribute("postCodeErr","Error: Post code format incorrect");
+            request.getRequestDispatcher("checkout.jsp").include(request, response);
+        }else if(!validator.validatePhone(phone_number)){
+            session.setAttribute("phoneErr","Error:Phone format incorrect");
+            request.getRequestDispatcher("checkout.jsp").include(request, response);            
         }else{ 
             try{
             sm.addShipment(preferName, email, Integer. parseInt(phone_number), address, city, territory,Integer. parseInt(post_code) , startDate, shipmentMethod);

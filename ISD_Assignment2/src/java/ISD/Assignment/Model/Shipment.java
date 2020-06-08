@@ -6,7 +6,7 @@
 package ISD.Assignment.Model;
 
 
-public class Shipment {
+public class shipment {
    Integer shipmentID;
    Integer userID;
    String preferName;
@@ -21,7 +21,7 @@ public class Shipment {
    String currentStatus;
 
 
-    public Shipment(Integer shipmentID, Integer userID, String preferName, String email, Integer phone_number, String address, String city, String territory, Integer post_code, String startDate, String shipmentMethod, String currentStatus) {
+    public shipment(Integer shipmentID, Integer userID, String preferName, String email, Integer phone_number, String address, String city, String territory, Integer post_code, String startDate, String shipmentMethod, String currentStatus) {
         this.shipmentID = shipmentID;
         this.userID = userID;
         this.preferName = preferName;
