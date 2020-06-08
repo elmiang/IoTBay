@@ -25,11 +25,14 @@
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/CartAddServlet.java</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/profileTable.jsp</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/StoreRemoveServlet.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/ConnServlet.java</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/products.jsp</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/userRecordsAdd.jsp</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/StoreServlet.java</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Model/Dao/ProductDao.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/db/insertSampleUserRecords.sql</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/Validator.java</file>
         </group>
     </open-files>
 </project-private>
