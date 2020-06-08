@@ -44,7 +44,7 @@
             <label for="name">Name</label>
             <input id="name" name="name" type="text" placeholder="Full Name" required = "true"/>
             <label for="email">Email address</label>
-            <input id="email" name="email"  placeholder="<%=(emailErr != null ? emailErr : "Enter Email")%>" required = "true"/>
+            <input id="email" name="email" text="text" placeholder="<%=(emailErr != null ? emailErr : "Enter Email")%>" required = "true"/>
             <label for="password">Password</label>
             <input id="password" name="password" placeholder="<%=(passErr != null? passErr : "Enter Password")%>" required = "true"/>
           

@@ -113,7 +113,7 @@
                  <tr>
                     <th>Role</th>
                     <td>
-                        <input type="text" name="role" placeholder="Insert role"/>
+                        <input type="text" name="role" placeholder="Insert role (all lowercase)"/>
                     </td>
                 </tr>
                 
