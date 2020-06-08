@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -35,15 +36,25 @@
         <main class="main-content">
             <div>
                 <form action="SearchServlet" method="get">
-                    <input type="text" id="searchText" name="searchText" placeholder="Search.."/>
+                    <input type="text" name="searchName" placeholder="Search by Name"/>
                 </form>
             </div>
+            
             <div>
-                <form action="productAdd.jsp" method="post">
-                    <input type="submit" class="button" name="addProduct" value="Add"/>
+                <form action="SearchServlet" method="get">
+                    <input type="text" name="searchType" placeholder="Search by Type"/>
                 </form>
             </div>
-            <h1>All Products</h1>
+            
+            
+                <div>
+                    <form action="productAdd.jsp" method="post">
+                        <input type="submit" class="button" name="addProduct" value="Add"/>
+                    </form>
+                </div>
+            
+            
+            <h1>Products List</h1>
             <table>
                 <tr>
                     <th>ID</th>
@@ -55,10 +66,11 @@
                 </tr>
                     <c:forEach var="product" items="${products}">
                     <tr>
+                        <fmt:setLocale value= "en_US"/>
                         <td><c:out value="${product.productID}" /></td>
-                        <td><c:out value="${product.productName}" /></td>
+                        <td><c:out value="${product.productName}"/></td>
                         <td><c:out value="${product.productType}" /></td>
-                        <td><c:out value="${product.price}" /></td>
+                        <td><fmt:formatNumber type="currency" value="${product.price}" /></td>
                         <td><c:out value="${product.quantity}" /></td>
                         <td>
                             <c:if test="${sessionScope.staff != null}">
@@ -69,7 +81,12 @@
                             </c:if>
                             
                             <c:if test="${sessionScope.staff == null}">
-                                <a href="CartAddServlet?productName=<c:out value = "${product.productName}"/>">Add to Cart</a>
+                                <c:if test="${product.quantity > 0}">
+                                    <a href="CartAddServlet?productName=<c:out value = "${product.productName}"/>">Add to Cart</a>
+                                </c:if>
+                                <c:if test="${product.quantity < 1}">
+                                    <a>Add to Cart</a>
+                                </c:if>
                             </c:if>
                         </td>
                     </tr>

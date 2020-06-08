@@ -70,10 +70,6 @@ private void runQueries() throws SQLException {
 }
 
 private void testAdd(){
-        
-        System.out.print("Payment ID: ");
-        int paymentID = in.nextInt();
-
         System.out.print("Card Holder Name: ");
         String cardHolderName = in.nextLine();
 
@@ -85,6 +81,7 @@ private void testAdd(){
         
         System.out.print("Card Number: ");
         int cardNumber = in.nextInt();
+        in.nextLine();
         
         System.out.print("Expiry Date: ");
         String expDate = in.nextLine();
@@ -97,9 +94,10 @@ private void testAdd(){
 
         System.out.print("Paid Amount: ");
         double paidAmount = in.nextDouble();
+        in.nextLine();
     
         try {
-            pyd.addPayment(paymentID, cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount);
+            pyd.addPayment(cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount);
         } catch (SQLException ex) {
             Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
         }

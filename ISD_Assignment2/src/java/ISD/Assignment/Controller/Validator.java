@@ -20,6 +20,8 @@ import javax.servlet.http.HttpSession;
    private String addressPattern = "[a-zA-Z0-9]{4,}";
    private String postCodePattern = "[0-9]+";
    private String phoneNumberPattern = "[a-zA-Z0-9]{6,}";
+   private String numberPattern = "^\\d+$";
+   //private String fieldPattern
               
    public Validator(){    }       
 
@@ -70,6 +72,11 @@ import javax.servlet.http.HttpSession;
 
    }
    
+   public boolean validateNumber(String number){
+   
+       return validate(numberPattern, number);
+   }
+   
    public void clear(HttpSession session){
        session.setAttribute("emailErr", "Enter Email");
        session.setAttribute("passErr", "Enter Password");
@@ -77,6 +84,7 @@ import javax.servlet.http.HttpSession;
        session.setAttribute("addressErr", "Enter Address");
        session.setAttribute("postCodeErr", "Enter PostCode");
        session.setAttribute("phoneNumberErr", "Enter Phone Number");
-       
+       session.setAttribute("priceErr", "");
+       session.setAttribute("quantityErr", "");
    }
 }

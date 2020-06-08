@@ -27,13 +27,26 @@ import java.util.ArrayList;
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
             ProductDao pd = (ProductDao) session.getAttribute("pd");
+            Validator validator = new Validator();
             String name = request.getParameter("productName");
             String type = request.getParameter("productType");
             int quantity = Integer.parseInt(request.getParameter("productQuantity"));
             double price = Double.parseDouble(request.getParameter("productPrice"));
+            validator.clear(session);
+            
+            //if()
+            if(!validator.validateNumber(quantity+"")){
+                session.setAttribute("quantityErr", "Please enter a valid number.");
+                request.getRequestDispatcher("productAdd.jsp").include(request, response);
+            }
+            
+            if(!validator.validateNumber(price+"")){
+                session.setAttribute("priceErr", "Please enter a valid number.");
+                request.getRequestDispatcher("productAdd.jsp").include(request, response);
+            }
+            
             try {
                 pd.addProduct(name, type, quantity, price);
-                //request.getRequestDispatcher("products.jsp").forward(request, response);
                 response.sendRedirect("StoreServlet");
             } catch (SQLException e){
                throw new ServletException("Cannot add product to DB", e); 

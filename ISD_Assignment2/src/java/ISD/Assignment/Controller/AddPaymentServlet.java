@@ -40,7 +40,7 @@ public class AddPaymentServlet  extends HttpServlet{
             double paidAmount = Double.parseDouble(request.getParameter("paidAmount"));
             
             try {
-                pyd.addPayment(paymentID, cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount);
+                pyd.addPayment(cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount);
                 response.sendRedirect("PaymentServlet");
             } catch (SQLException e){
                throw new ServletException("Cannot add payment to Database", e); 

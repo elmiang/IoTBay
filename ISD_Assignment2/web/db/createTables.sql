@@ -102,11 +102,19 @@ CREATE TABLE Admin
 
 CREATE TABLE Payment
 (
-    paymentID       integer,
-    invoiceID       integer,
-    paidDate        date,
+    paymentID       integer NOT NULL PRIMARY KEY
+                    GENERATED ALWAYS AS IDENTITY
+                    (START WITH 1, INCREMENT BY 1),
+    cardHolderName  varchar (30),
+    firstName       varchar (30),
+    lastName        varchar (30),
+    cardNumber      integer,
+    expDate         varchar(100)
+    paidDate        varchar(100)
     paymentMethod   varchar(20),
-    paidAmount      double
+    paidAmount      double,
+    userID          integer,
+    FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
 CREATE TABLE Shipment

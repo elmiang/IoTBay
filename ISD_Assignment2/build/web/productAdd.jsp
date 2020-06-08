@@ -58,12 +58,14 @@
                     <th>Quantity</th>
                     <td>
                         <input type="text" name="productQuantity" placeholder="Insert product quantity..."/>
+                        <span>${quantityErr}</span>
                     </td>
                 </tr>
                 <tr>
                     <th>Price</th>
                     <td>
                         <input type="text" name="productPrice" placeholder="Insert product price..."/>
+                        <span>${priceErr}</span>
                     </td>
                 </tr>
                 

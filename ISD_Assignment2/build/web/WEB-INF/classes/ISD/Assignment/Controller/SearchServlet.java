@@ -21,12 +21,20 @@ import java.util.ArrayList;
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            String result = request.getParameter("searchText");
-            //String result = (String)session.getAttribute("searchText");
             ProductDao pd = (ProductDao) session.getAttribute("pd");
+            String name = request.getParameter("searchName");
+            String type = request.getParameter("searchType");
+            //String result = (String)session.getAttribute("searchText");
             try {
-                ArrayList<Product> products = pd.searchProducts(result);
-                request.setAttribute("products", products);
+                    ArrayList<Product> products = new ArrayList<Product>();
+                    if(name != null){
+                        products = pd.searchProducts(name);
+                    }
+                    if(type != null){
+                        products = pd.searchTypes(type);
+                    }
+                    request.setAttribute("products", products);
+
                 request.getRequestDispatcher("products.jsp").include(request, response);
             } catch (SQLException e){
                throw new ServletException("Cannot obtain products from DB", e); 

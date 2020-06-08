@@ -50,18 +50,17 @@ public class PaymentDAO {
         }
     }
     
-    public void addPayment(int paymentID, String cardHolderName, String firstName, String lastName, int cardNumber, String expDate, String paidDate, String paymentMethod, double paidAmount) throws SQLException{
-        String update = "INSERT INTO IOTUSER.Payment(paymentid, cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public void addPayment(String cardHolderName, String firstName, String lastName, int cardNumber, String expDate, String paidDate, String paymentMethod, double paidAmount) throws SQLException{
+        String update = "INSERT INTO IOTUSER.Payment(cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement st = conn.prepareStatement(update);
-        st.setInt(1, paymentID);
-        st.setString(2, cardHolderName);
-        st.setString(3, firstName);
-        st.setString(4, lastName);
-        st.setInt(5, cardNumber);
-        st.setString(6, expDate);
-        st.setString(3, paidDate);
-        st.setString(4, paymentMethod);
-        st.setDouble(5, paidAmount);
+        st.setString(1, cardHolderName);
+        st.setString(2, firstName);
+        st.setString(3, lastName);
+        st.setInt(4, cardNumber);
+        st.setString(5, expDate);
+        st.setString(6, paidDate);
+        st.setString(7, paymentMethod);
+        st.setDouble(8, paidAmount);
         st.execute();
     }
     
