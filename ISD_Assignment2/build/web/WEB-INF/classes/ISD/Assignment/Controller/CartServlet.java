@@ -28,6 +28,7 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException{
         HttpSession session = request.getSession();
         ProductDao pd = (ProductDao) session.getAttribute("pd");
+        //int quantity = (int) session.getAttribute("quantity");
         ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
         request.getRequestDispatcher("cart.jsp").include(request, response);
     }

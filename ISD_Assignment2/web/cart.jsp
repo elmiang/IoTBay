@@ -53,6 +53,7 @@
                   <th scope="col">Product Name</th>
                   <th scope="col">Quantity</th>
                   <th scope="col">Price</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -61,7 +62,8 @@
                   <th scope="row"></th>
                   <td><c:out value="${cart.productName}" /></td>
                   <td><input type="text" name="quantity" value="<c:out value="${ShoppingCart.quantity}"/>"</td>
-                  <td><c:out value="${cart.price}" /></td>
+                  <td><fmt:formatNumber type="currency" value="${cart.price}" /></td>
+                  <td><a href="CartRemoveServlet?productName=<c:out value = "${cart.productName}"/>">Remove</a></td>
                 </tr>
               </c:forEach>
               </tbody>

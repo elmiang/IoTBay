@@ -96,6 +96,10 @@
         <servlet-name>AccessLogServlet</servlet-name>
         <servlet-class>ISD.Assignment.Controller.AccessLogServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CartRemoveServlet</servlet-name>
+        <servlet-class>ISD.Assignment.Controller.CartRemoveServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StoreServlet</servlet-name>
         <url-pattern>/StoreServlet</url-pattern>
@@ -191,6 +195,10 @@
     <servlet-mapping>
         <servlet-name>AccessLogServlet</servlet-name>
         <url-pattern>/AccessLogServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartRemoveServlet</servlet-name>
+        <url-pattern>/CartRemoveServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

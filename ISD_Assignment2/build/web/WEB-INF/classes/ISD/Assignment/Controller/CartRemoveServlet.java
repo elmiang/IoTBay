@@ -22,14 +22,20 @@ import javax.servlet.http.HttpSession;
  *
  * @author jacks
  */
-public class CartServlet extends HttpServlet {
+public class CartRemoveServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         HttpSession session = request.getSession();
         ProductDao pd = (ProductDao) session.getAttribute("pd");
-        //int quantity = (int) session.getAttribute("quantity");
         ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
-        request.getRequestDispatcher("cart.jsp").include(request, response);
+        String name = request.getParameter("productName");
+        
+        try {
+            cart.removeProduct(pd.exactSearch(name));
+            response.sendRedirect("CartServlet");
+        } catch (SQLException e){
+            throw new ServletException("Cannot remove product from Cart", e);
+        }
     }
 }
