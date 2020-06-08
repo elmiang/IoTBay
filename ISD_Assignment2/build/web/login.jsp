@@ -40,7 +40,7 @@
         <form style="text-align: center;" method="post" action="LoginServlet">
             <h1>Login</h1> <span><%=(existErr != null ? existErr : "")%></span>
             <label for="email">Email address</label>
-            <input id="email" name="email" placeholder="<%=(emailErr != null ? emailErr : "Email Address")%>"/>
+            <input id="email" name="email" type="text" placeholder="<%=(emailErr != null ? emailErr : "Email Address")%>"/>
             <label for="password">Password</label>
             <input id="password" name="password" placeholder="<%=(passwordErr != null ? passwordErr : "Password")%>"/>
             <a class="button" href="index.jsp"> Cancel </a>

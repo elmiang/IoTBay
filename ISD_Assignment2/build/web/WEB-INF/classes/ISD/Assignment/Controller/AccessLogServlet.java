@@ -26,18 +26,16 @@ import javax.servlet.http.HttpSession;
  */
 public class AccessLogServlet extends HttpServlet {
     
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         HttpSession session = request.getSession();
         Validator validator = new Validator();
         UserManagementDao manager = (UserManagementDao) session.getAttribute("manager");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
         validator.clear(session);
         ArrayList<AccessLogs> accessLogs = new ArrayList<AccessLogs>();
         User user = null;
         
         try {
-            user = manager.findUser(email, password);
+            user = (User) session.getAttribute("user");
             int id = user.getUserID();
             accessLogs = manager.fetchAccessLogs(id);
             session.setAttribute("accessLogs", accessLogs);
