@@ -39,7 +39,7 @@
             <a href="StoreCategoryServlet?type=sensor" style="float: left;">Sensors</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
-            <c:if test="${user.role == 'admin'}">
+            <c:if test="${user.role == 'Admin'}">
                 <a href="URServlet" style="float: right;">User Management</a>
             </c:if>
         </div>
