@@ -16,17 +16,23 @@
     </head>
     <body onload ="startTime()">
                 <div class="header-img">
-            <ul>
-                <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
-            </ul>
+        <ul>
+          <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
+          <c:if test="${user == null}">
+            <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
+          </c:if>
+          <c:if test="${user != null}">
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="main.jsp"> Account </a></li>
+            <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="LogoutServlet"> Logout </a></li>
+          </c:if>
+        </ul>
         </div>
-        
         <div class="topnav">
-            <a href="index.jsp"style="float: left;">Home</a>
-            <a style="float: left;">All Products</a>
-            <a style="float: left;">Kits</a>
-            <a style="float: left;">Parts</a>
-            <a style="float: left;">Sensors</a>
+            <a href="StoreServlet" style="float: left;">All Products</a>
+            <a href="StoreCategoryServlet?type=motor" style="float: left;">Motors</a>
+            <a href="StoreCategoryServlet?type=display" style="float: left;">Displays</a>
+            <a href="StoreCategoryServlet?type=sensor" style="float: left;">Sensors</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
         </div>

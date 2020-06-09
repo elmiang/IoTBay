@@ -17,7 +17,6 @@
     </head>
     <body onload = "startTime()">
         <div class="header-img">
-        <div class="header-img">
         <ul>
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
           <c:if test="${user == null}">
