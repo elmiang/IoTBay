@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import ISD.Assignment.Model.Shipment;
+import ISD.Assignment.Model.shipment;
 import ISD.Assignment.Model.Dao.ShipmentManager;
 
 /**
@@ -29,11 +29,11 @@ public class AllShipmentsServlet extends HttpServlet {
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
         HttpSession session = request.getSession();
-          ShipmentManager sm = (ShipmentManager) session.getAttribute("sm");
-
+        ShipmentManager smd = (ShipmentManager) session.getAttribute("smd");
+        session.setAttribute("deleted", "");
         
         try{
-            ArrayList<Shipment> shipments = sm.fectShipment();
+            ArrayList<shipment> shipments = smd.fectShipment();
             session.setAttribute("shipments", shipments);
             request.getRequestDispatcher("shipments.jsp").include(request, response);
  
@@ -45,15 +45,4 @@ public class AllShipmentsServlet extends HttpServlet {
 }
 
 
-  /*  
-            HttpSession session = request.getSession();
-            ShipmentManager sd = (ShipmentManager) session.getAttribute("sd");
-            try {
-                ArrayList<shipment> shipments = sd.fectShipment();
-                request.setAttribute("shipment", shipments);
-                request.getRequestDispatcher("shipments.jsp").include(request, response);
-            } catch (SQLException e){
-               throw new ServletException("Cannot obtain products from DB", e); 
-            }
-        }
-    }*/
+

@@ -5,7 +5,7 @@
  */
 package ISD.Assignment.Controller;
 
-import ISD.Assignment.Model.Shipment;
+import ISD.Assignment.Model.shipment;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -23,23 +23,22 @@ public class shipmentSearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
               throws ServletException, IOException{
         HttpSession session = request.getSession();
-        Validator validator = new Validator();
+        ValidatorShipment validator = new ValidatorShipment();
         String ID =  request.getParameter("shipmentID");
         String date = request.getParameter("shipmentDate");
-        ShipmentManager sm = (ShipmentManager) session.getAttribute("sm");
-        session.setAttribute("deleted", "");
-        Shipment shipment = null;
+        ShipmentManager smd = (ShipmentManager) session.getAttribute("smd");
+        shipment shipment = null;
         validator.clear(session);
         
         if(!validator.validateDate(date)){
             session.setAttribute("dateErr", "Error: Date format incorrect");
             request.getRequestDispatcher("shipmentSearch.jsp").include(request, response);
-        }else if(!validator.validateInt(ID)){
+        }else if(!validator.validateID(ID)){
             session.setAttribute("IDErr","Error:ID format incorrect");
             request.getRequestDispatcher("shipmentSearch.jsp").include(request, response);            
         }else{     
             try{
-            shipment = sm.findShipment(Integer. parseInt(ID), date);
+            shipment = smd.findShipment(Integer. parseInt(ID), date);
             
             if(shipment != null){
                 session.setAttribute("shipment", shipment);

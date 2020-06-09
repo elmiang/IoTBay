@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/IoTBay.css">
         <script type="text/javascript" src="js/script.js"></script>
-        <title>ShipmentEdit Page</title>
+        <title>Shipment Information Page</title>
     </head>
     <body onload = "startTime()">
         <div class="header-img">
@@ -38,13 +38,13 @@
             String updated = (String) session.getAttribute("updated");
         %>
         
-        <a class ="button" href="shipmentSearchResult.jsp?id=<%=shipment.getShipmentID()%>&date='<%=shipment.getStartDate()%>'">Back</a>
         
-        <h1>Edit Shipment Information</h1><%=(updated!=null?updated:"")%>
+        <h1>Shipment Information</h1>
+        <center><%=(updated!=null?updated:"")%></center>
         <form method="post" action="shipmentUpdateServlet">
         <table>  
             <tr><td>ShipmentID</td><td><input type="text" name="shipmentID" value="${shipment.shipmentID}" readonly></td></tr>
-            <tr><td>UserID</td><td><input type="text" name="userID" value="${shipment.userID}" readonly></td></tr>
+           <%-- <tr><td>UserID</td><td><input type="text" name="userID" value="${shipment.userID}" readonly></td></tr>--%>
             <tr><td>PreferName</td><td><input type="text" name="name" value="${shipment.preferName}"></td></tr>
             <tr><td>Email</td><td><input type="email" name="email" value="${shipment.email}"></td></tr>
             <tr><td>Phone_number</td><td><input type="text" name="phone" value="${shipment.phone_number}"></td></tr>
@@ -56,9 +56,9 @@
             <tr><td>ShipmentMethod</td><td><input type="text" name="shipmentMethod" value="${shipment.shipmentMethod}"></td></tr>
             <tr><td>CurrentStatus</td><td><input type="text" name="currentStatus" value="${shipment.currentStatus}" readonly></td></tr>
             <tr>
-                <td>
-                    <input class ="button" type="submit" value="Update">
-                </td>
+            <td>
+            <a class ="button" href="shipments.jsp?id=<%=shipment.getShipmentID()%>&date='<%=shipment.getStartDate()%>'">Back</a></td>
+            <td><input class ="button" type="submit" value="Update"></td>
             </tr>
         </table>
        </form>

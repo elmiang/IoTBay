@@ -30,20 +30,23 @@
         <main class="main-content">
     <%
         ArrayList<shipment> shipments = (ArrayList<shipment>) session.getAttribute("shipments");
-         String existErr = (String) session.getAttribute("existErr");
+        String existErr = (String) session.getAttribute("existErr");
+        String deleted = (String) session.getAttribute("deleted");
     %>
-  <h1>Shipments</h1><%=(existErr != null ? existErr : "")%>
+    <h1>Shipments</h1><center><%=(existErr != null ? existErr : "")%><%=(deleted != null ? deleted : "")%></center>
 
   <table>
-                      <a class="button"  href ="shipmentSearch.jsp">shipmentSearch</a>
+      <h1>
+                <a class="button"  href ="shipmentSearch.jsp">shipmentSearch</a>
                 <a class="button"  href = "AllShipmentsServlet">All shipments </a>
-      
+      </h1>
                 <tr>
                     <td>shipmentID </td>
-                    <td> userID</td>
+                    
                     <td> preferName</td>
                     <td> email</td>
-               <%--     <td> phone_number</td>
+               <%--   <td> userID</td>  
+                    <td> phone_number</td>
                     <td> address</td>
                     <td>city</td>
                     <td> territory</td>     --%>
@@ -51,15 +54,16 @@
                     <td>  startDate</td>
                     <td> shipmentMethod</td>
                     <td> currentStatus</td>
+                    <td> Action</td>
                 </tr>
                 
         <c:forEach var="shipment" items="${shipments}">
                     <tr>
                         <td><c:out value="${shipment.shipmentID}"/></td>
-                        <td><c:out value="${shipment.userID}"/></td>
                         <td><c:out value="${shipment.preferName}"/></td>
                         <td><c:out value="${shipment.email}"/></td>
-                <%--        <td><c:out value="${shipment.phone_number}"/></td>
+                <%--                                   <td><c:out value="${shipment.userID}"/></td>
+                        <td><c:out value="${shipment.phone_number}"/></td>
                         <td><c:out value="${shipment.address}"/></td>
                         <td><c:out value="${shipment.city}"/></td>
                         <td><c:out value="${shipment.territory}"/></td>     --%>
@@ -67,7 +71,9 @@
                         <td><c:out value="${shipment.startDate}"/></td>
                         <td><c:out value="${shipment.shipmentMethod}"/></td>
                         <td><c:out value="${shipment.currentStatus}"/></td>
-                  <%--      <td>  <a class="button" href="ShipmentEditServlet?id=${shipment.shipmentID}&date='${shipment.startDate}'">Edit</a></td>--%>
+                  <td>    <a href="ShipmentEditServlet?id=<c:out value ="${shipment.shipmentID}"/>&date=<c:out value="${shipment.startDate}"/>">Detail</a>
+                            <a href="ShipmentDeleteServlet?id=<c:out value ="${shipment.shipmentID}"/>">Delete</a>            
+                    </td>
                     </tr>
                 </c:forEach>
         </table>

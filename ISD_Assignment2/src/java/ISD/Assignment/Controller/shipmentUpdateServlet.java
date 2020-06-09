@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import ISD.Assignment.Model.Shipment;
+import ISD.Assignment.Model.shipment;
 import ISD.Assignment.Model.Dao.ShipmentManager;
 
 
@@ -32,19 +32,23 @@ public class shipmentUpdateServlet extends HttpServlet {
         String startDate = request.getParameter("startDate");
         String shipmentMethod = request.getParameter("shipmentMethod");
         String currentStatus = request.getParameter("currentStatus");
-        Shipment shipment = new Shipment(shipmentID, userID, preferName, email, phone_number, address, city, territory, post_code, startDate, shipmentMethod, currentStatus);
-        ShipmentManager sm = (ShipmentManager) session.getAttribute("sm");
+        shipment shipment = new shipment(shipmentID, userID, preferName, email, phone_number, address, city, territory, post_code, startDate, shipmentMethod, currentStatus);
+        ShipmentManager smd = (ShipmentManager) session.getAttribute("smd");
         
         try{
+            if(currentStatus.equals("processing")){
             if(shipment != null){
                 session.setAttribute("shipment", shipment);
-                sm.updateShipment(shipmentID, preferName, email, phone_number, address, city, territory, post_code, startDate, shipmentMethod);
+                smd.updateShipment(shipmentID, preferName, email, phone_number, address, city, territory, post_code, startDate, shipmentMethod);
                 session.setAttribute("updated", "Update was successful");
                 request.getRequestDispatcher("shipmentEdit.jsp").include(request, response);
             } else{
                 session.setAttribute("updated", "Update was not successful");
                 request.getRequestDispatcher("shipmentEdit.jsp").include(request, response);
-            } 
+            } }else{
+                session.setAttribute("updated", "Shipment finalisation, can't be updated");
+                request.getRequestDispatcher("shipmentEdit.jsp").include(request, response);
+            }
         }catch (SQLException ex){
             Logger.getLogger(ShipmentEditServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
