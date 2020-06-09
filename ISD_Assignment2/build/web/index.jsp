@@ -29,7 +29,7 @@
           </c:if>
           <c:if test="${user != null}">
             <li style="float:right; margin-right:10px;"><a class="button top-actions" href="main.jsp"> Account </a></li>
-            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="LogoutServlet"> Logout </a></li>
+            <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="LogoutServlet"> Logout </a></li>
           </c:if>
         </ul>
         </div>
@@ -40,10 +40,6 @@
             <a href="StoreCategoryServlet?type=sensor" style="float: left;">Sensors</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
-            <a style="float: right;" href="AllShipmentsServlet">Shipment</a>
-            <c:if test="${user.role == 'admin'}">
-                <a href="URServlet" style="float: right;">User Management</a>
-            </c:if>
         </div>
         
         <main class="main-content">

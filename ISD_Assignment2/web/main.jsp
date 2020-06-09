@@ -6,6 +6,7 @@
 
 <%@page import="ISD.Assignment.Model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,6 +50,10 @@
             <a href="card_details.jsp">Card Details</a>
             <a href="PaymentServlet">Payment History</a>
             <a href="AccessLogServlet">Access Log</a>
+            <a href="AllShipmentsServlet">Shipment</a>
+            <c:if test="${user.role == 'admin'}">
+                <a href="URServlet">User Management</a>
+            </c:if>
             <a href="accDelete.jsp">Delete Account</a>
         </div>
         
