@@ -19,6 +19,26 @@
         <%
             ArrayList<AccessLogs> accessLogs = (ArrayList<AccessLogs>) session.getAttribute("accessLogs");
         %>
+        
+        <div class="header-img">
+        <ul>
+          <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
+          <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="logout.jsp"> Logout </a></li>
+          <li style="float:right" class="listImage"><a href="cart.jsp"><img class="logo" src="css/cart2.png"/></a></li>
+          <li style="float:right" class="listImage"><a href="main.jsp"><img class="logo" src="css/userIcon.png"/></a></li>
+        </ul>
+        </div>
+        
+        <div class="topnav">
+            <a href="index.jsp"style="float: left;">Home</a>
+            <a href="StoreServlet" style="float: left;">All Products</a>
+            <a href="StoreServlet" style="float: left;">Kits</a>
+            <a href="StoreServlet" style="float: left;">Parts</a>
+            <a href="StoreServlet" style="float: left;">Sensors</a>
+            <a style="float: right;">About</a>
+            <a style="float: right;">Contact</a>
+        </div>
+        
         <h1>Access log</h1>
         
         <input type="text" id="logSearch" onkeyup="loginSearch()" placeholder="Search login time" title="Type in a name">

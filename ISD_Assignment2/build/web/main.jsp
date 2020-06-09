@@ -30,7 +30,7 @@
         </div>
         
         <div class="topnav">
-             <a href="index.jsp"style="float: left;">Home</a>
+            <a href="index.jsp"style="float: left;">Home</a>
             <a href="StoreServlet" style="float: left;">All Products</a>
             <a href="StoreServlet" style="float: left;">Kits</a>
             <a href="StoreServlet" style="float: left;">Parts</a>
@@ -48,7 +48,8 @@
             <a href="address_book.jsp">Address Book</a>
             <a href="card_details.jsp">Card Details</a>
             <a href="payment_history.jsp">Payment History</a>
-            <a href="AccessLogServlet">Access Log<a/>
+            <a href="AccessLogServlet">Access Log</a>
+            <a href="accDelete.jsp">Delete Account</a>
         </div>
         
         <p class="p">You are logged in as ${user.email}</p><br>
