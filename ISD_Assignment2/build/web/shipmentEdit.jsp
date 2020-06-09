@@ -43,7 +43,7 @@
         <center><%=(updated!=null?updated:"")%></center>
         <form method="post" action="shipmentUpdateServlet">
         <table>  
-            <tr><td>ShipmentID</td><td><input type="text" name="shipmentID" value="${shipment.shipmentID}" readonly></td></tr>
+            <tr><td><input type="hidden"></td><td><input type="hidden" name="userID" value="${shipment.userID}" readonly></td></tr>
            <%-- <tr><td>UserID</td><td><input type="text" name="userID" value="${shipment.userID}" readonly></td></tr>--%>
             <tr><td>PreferName</td><td><input type="text" name="name" value="${shipment.preferName}"></td></tr>
             <tr><td>Email</td><td><input type="email" name="email" value="${shipment.email}"></td></tr>
