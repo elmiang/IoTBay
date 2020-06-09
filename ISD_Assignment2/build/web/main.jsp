@@ -47,7 +47,7 @@
             <a href="order_history.jsp">Order History</a>
             <a href="address_book.jsp">Address Book</a>
             <a href="card_details.jsp">Card Details</a>
-            <a href="payment_list.jsp">Payment History</a>
+            <a href="PaymentServlet">Payment History</a>
             <a href="AccessLogServlet">Access Log</a>
             <a href="accDelete.jsp">Delete Account</a>
         </div>

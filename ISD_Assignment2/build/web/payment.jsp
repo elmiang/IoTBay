@@ -32,7 +32,7 @@
         </div>
         
         <main class="main-content">
-            <form method="post" action="confirmed.jsp" style="text-align: center;">
+            <form method="post" action="PaymentAddServlet" style="text-align: center;">
             <h1>Payment Information</h1>
             <h2 class="h2 instructions" style="color:red">* marks required fields</h2>
             
@@ -46,15 +46,17 @@
                     <label for="payPal">PayPal</label>
                     <input type="radio" id="payPal" name="paymentMethod"  value = "PayPal" required = "true"/>
             </div>
-                
+            
+            <label for="cardHolderName">CardHolder Name*</label>
+            <input id="cardHolderName" name="cardHolderName" type="text" required = "true" placeholder="CardHolder Name"/>
+            <label for="firstName">First Name*</label>
+            <input id="firstName" name="firstName" type="text" required = "true" placeholder="First Name"/>
+            <label for="lastName">Last Name*</label>
+            <input id="lastName" name="lastName" type="text" required = "true" placeholder="Last Name"/>   
             <label for="name">Card Number*</label>
             <input id="cardNum" name="cardNum" type="text" placeholder="Card Number" required = "true"/>
             <label for="name">CVC*</label>
             <input id="cvc" name="cvc" type="text" placeholder="CVC" required = "true"/>
-            <label for="firstName">First Name*</label>
-            <input id="firstName" name="firstName" type="text" required = "true" placeholder="First Name"/>
-            <label for="lastName">Last Name*</label>
-            <input id="lastName" name="lastName" type="text" required = "true" placeholder="Last Name"/>
             <label for="name">Expiry Date*</label>
             <input id="expDate" name="expDate" type="text" placeholder="Expiry Date" required = "true"/>
             
@@ -96,7 +98,7 @@
             <input type="checkbox" name="saveToAB" id="savetoAB"/>
             </div>
             
-            <a class="button" href="confirmed.jsp"> Place Order </a>
+            <input type="submit" value="Place Order" class="button"/>
         </form>
         </main>
     </body>

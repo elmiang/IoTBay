@@ -157,7 +157,7 @@ form{
     padding:0 16px;
     width: 55%;
 }
-label[for="email"],label[for="addressTwo"], label[for="city"],label[for="State/Territory"],label[for="postcode"],label[for="chName"],label[for="firstName"], label[for="lastName"],label[for="password"], label[for="name"], label[for="phoneNumber"], label[for="address"], label[for="savedAddress"],label[for="search"]{
+label[for="email"], label[for="cardHolderName"], label[for="addressTwo"], label[for="city"],label[for="State/Territory"],label[for="postcode"],label[for="chName"],label[for="firstName"], label[for="lastName"],label[for="password"], label[for="name"], label[for="phoneNumber"], label[for="address"], label[for="savedAddress"],label[for="search"]{
     display:block;
     margin:8px auto;
     text-align:left !important;

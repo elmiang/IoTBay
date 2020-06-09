@@ -35,8 +35,8 @@
             <p class="p instructions">Thank you for your Order!</p>
             <p class="p instructions">You will receive an email shortly at ${user.email}</p>
             <p class="p instructions">Your Order Number is: (Put Order ID Here)</p>
-            <p class="p instructions"><a href = "index.jsp">Click here to view your Order History</a></p>
-            <p class="p instructions"><a href = "index.jsp">Click here to return to the Main Page</a></p>
+            <p class="p instructions"><a href = "PaymentServlet">Click here to view your Order History</a></p>
+            <p class="p instructions"><a href = "main.jsp">Click here to return to the Main Page</a></p>
             
             
         </main>
