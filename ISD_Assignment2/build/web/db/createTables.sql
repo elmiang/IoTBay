@@ -36,9 +36,10 @@ CREATE TABLE Customer
 
 CREATE TABLE AccessLogs
 (
+    visitID  Integer,
     userID Integer NOT NULL,
-    action varchar(30),
-    time   timestamp,
+    loginTime varchar(50),
+    logoutTime varchar(50),
     FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
