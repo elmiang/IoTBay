@@ -32,13 +32,11 @@ public class PaymentSearchServlet extends HttpServlet {
             
             PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
             
-            String paymentID = request.getParameter("paymentID");
-          
+            int paymentID = Integer.parseInt(request.getParameter("paymentID"));
+         
             try {
                     ArrayList<Payment> payments = new ArrayList<Payment>();
-                    if(paymentID != null){
-                        payments = pyd.searchPayment(paymentID);
-                    }
+                    payments = pyd.searchPayment(paymentID);
                     request.setAttribute("payments", payments);
 
                 request.getRequestDispatcher("payment.jsp").include(request, response);
