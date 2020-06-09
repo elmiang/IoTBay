@@ -41,19 +41,15 @@
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
         </div>
-        <a class="button" href="order_history.jsp">Your Order History</a>
+        <a class="button" href="OrderServlet">Your Order History</a>
         
         <div>
             
             
         </div>
         
-        
-        
-       
-        
         <h1>Saved Orders</h1>
-        <table class="table table-striped">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Order No</th>
@@ -67,18 +63,20 @@
             </thead>
             
             <tbody>
-                <c:forEach var="cart"  items="${ShoppingCart.cart} "> 
+                <c:forEach var="cart" items="${ShoppingCart.cart}">
+                
                 <tr>
                     <td><c:out value="${order.orderID}"/></td>
                     <td><c:out value="${cart.productName}" /></td>
-                    <td><c:out value="${ShoppingCart.quantity}"/></td>
-                    <td><c:out value="${cart.price}"/></td>
+                    <td><c:out value="${ShoppingCart.quantity}"/>"</td>
+                    <td><c:out value="${cart.price}" /></td>
                     <td><c:out value="${order.orderDate}"/></td>
                     <td><c:out value="${order.orderStatus}"/></td>
                     <td><a href="CartAddServlet?productName=<c:out value = "${product.productName}"/>">Update Order</a>
                         <br><a href="OrderRemoveServlet" onclick="showMessage()">Delete Order</a></td>
                 </tr>
                 </c:forEach>
+                
             </tbody>
             
             

@@ -25,35 +25,35 @@ public OrderDao(Connection conn) throws SQLException {
 
 //Add a user-data into the database    
 public void addOrder(int userID, String orderDate, String orderStatus) throws SQLException {       
-  st.executeUpdate("INSERT INTO IOTUSER.ORDERTABLE" + "VALUES ('" + userID + "','" + orderDate + "', + '" + orderStatus + "')");    
+  st.executeUpdate("INSERT INTO IOTUSER.ORDERTABLE" + "VALUES (" + userID + ",'" + orderDate + "', + '" + orderStatus + "')");    
   
 }
 
 //update a user details in the database    
-public void updateOrder(int userID, String orderDate, String orderStatus) throws SQLException {     
-   st.executeUpdate("UPDATE IOTUSER.ORDERTABLE SET USERID='" + userID + "',ORDERDATE ='" + orderDate + "',ORDERSTATUS='" + orderStatus + "', + '" + userID + "'");  
+public void updateOrder(String orderDate, String orderStatus, int orderID) throws SQLException {     
+   st.executeUpdate("UPDATE IOTUSER.ORDERTABLE SET ORDERDATE ='" + orderDate + "',ORDERSTATUS='" + orderStatus + "' WHERE ORDERID =" + orderID + "");  
 
 }  
 
-public void updateStatus(String orderStatus) throws SQLException {     
-   st.executeUpdate("UPDATE IOTUSER.ORDERTABLE SET ORDERSTATUS='" + orderStatus + "'");  
+public void updateStatus(String orderStatus, int userID) throws SQLException {     
+   st.executeUpdate("UPDATE IOTUSER.ORDERTABLE SET ORDERSTATUS='" + orderStatus + "' WHERE USERID =" + userID +"" );  
 
 }       
 
 //delete a user from the database    
 public void deleteOrder(int orderID) throws SQLException{        
-   st.executeUpdate("DELETE FROM IOTUSER.ORDERTABLE WHERE ORDERID='" + orderID + "'");
+   st.executeUpdate("DELETE FROM IOTUSER.ORDERTABLE WHERE ORDERID=" + orderID + "");
 }
 
-public Order findOrder(int orderID, String orderDate) throws SQLException {
-   String fetch = "select * from IOTUSER.ORDERTABLE WHERE ORDERID = '" + orderID + "' and ORDERDATE='" + orderDate + "'";
+public Order findOrder(int userid) throws SQLException {
+   String fetch = "select * from IOTUSER.ORDERTABLE WHERE USERID = " + userid + ""; 
    ResultSet rs = st.executeQuery(fetch);
   
    while (rs.next()) {
-       int orderid = rs.getInt(1);
+       int userID = rs.getInt(2);
        String orderdate = rs.getString(3);
-       if(orderid == orderID && orderdate.equals(orderDate)) {
-           int userid = rs.getInt(2);
+       if(userid == userID) {
+           int orderid = rs.getInt(1);
            String orderStatus = rs.getString(4);
            return new Order(orderid, orderdate, orderStatus,userid);
        }
@@ -76,9 +76,9 @@ public ArrayList<Order> fetchOrders() throws SQLException {
         return orders;
     }
    
-  public ArrayList<Order> searchOrder(int id, String date) throws SQLException {
+  public ArrayList<Order> searchOrder(int id) throws SQLException {
         ArrayList<Order> searchOrder = new ArrayList();
-        String search = "Select * from IOTUSER.Order where ORDERDATE LIKE UPPER('%" + date + "%')";
+        String search = "Select * from IOTUSER.Order where USERID = " +id +"";
         ResultSet rs = st.executeQuery(search);
         
         while (rs.next()){

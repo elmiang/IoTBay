@@ -17,8 +17,13 @@
         <div class="header-img">
         <ul>
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
-          <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
-          <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
+          <c:if test="${user == null}">
+            <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
+          </c:if>
+          <c:if test="${user != null}">
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="logout.jsp"> Logout </a></li>
+          </c:if>
           <li style="float:right"><a href="cart.jsp"><img class="logo" src="css/cart.png"/></a></li>
         </ul>
         </div>
@@ -58,12 +63,14 @@
                     <th>Quantity</th>
                     <td>
                         <input type="text" name="productQuantity" placeholder="Insert product quantity..."/>
+                        <span>${quantityErr}</span>
                     </td>
                 </tr>
                 <tr>
                     <th>Price</th>
                     <td>
                         <input type="text" name="productPrice" placeholder="Insert product price..."/>
+                        <span>${priceErr}</span>
                     </td>
                 </tr>
                 

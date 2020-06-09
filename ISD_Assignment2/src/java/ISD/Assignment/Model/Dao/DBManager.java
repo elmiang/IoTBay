@@ -26,7 +26,7 @@ public class DBManager {
         ResultSet rs = st.executeQuery(read);
         
         while(rs.next()){
-            String userID = rs.getString(1);
+            int userID = rs.getInt(1);
             String userEmail = rs.getString(2);
             String userPass = rs.getString(3);
             if(userEmail.equals(email) && userPass.equals(password)){
@@ -36,7 +36,8 @@ public class DBManager {
                 String userAddress = rs.getString(7);
                 String userPostCode = rs.getString(8);
                 String userPhoneNumber = rs.getString(9);
-                return new User (userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber);
+                String userRole = rs.getString(10);
+                return new User (userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber, userRole);
             }
         }
         return null;
@@ -60,7 +61,7 @@ public class DBManager {
         ArrayList<User> temp = new ArrayList();
         
         while (rs.next()){
-            String userID = rs.getString(1);
+            int userID = rs.getInt(1);
             String userEmail = rs.getString(2);
             String userPass = rs.getString(3);
             String userName = rs.getString(4);
@@ -69,7 +70,8 @@ public class DBManager {
             String userAddress = rs.getString(7);
             String userPostCode = rs.getString(8);
             String userPhoneNumber = rs.getString(9);
-            temp.add(new User(userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber));
+            String userRole = rs.getString(10);
+            temp.add(new User(userID, userEmail, userPass, userName, userDOB, userGender, userAddress, userPostCode, userPhoneNumber, userRole));
         }
         return temp;
     }

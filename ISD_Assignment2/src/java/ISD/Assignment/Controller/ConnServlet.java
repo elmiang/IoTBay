@@ -14,11 +14,13 @@
    public class ConnServlet extends HttpServlet {
 
        private DBConnector db;
-       private DBManager manager;
+       private UserManagementDao manager;
        private ProductDao pd;
-       private Connection conn;  
+       private Connection conn;   
+       private UserManagementDao ud;
+       private PaymentDAO pyd;
+       private ShipmentManager smd;
        private OrderDao od;
-       private UserRecordDao ud;
        
        @Override //Create an instance of DBConnector for the deployment session
        
@@ -39,9 +41,11 @@
            HttpSession session = request.getSession();
            conn = db.openConnection();       
            try {
-               manager = new DBManager(conn);
+               manager = new UserManagementDao(conn);
                pd = new ProductDao(conn);
-               ud = new UserRecordDao(conn);
+               ud = new UserManagementDao(conn);
+               pyd = new PaymentDAO(conn);
+               smd = new ShipmentManager(conn);
                od = new OrderDao(conn);
            } catch (SQLException ex) {
                Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -51,6 +55,8 @@
            session.setAttribute("manager", manager);  
            session.setAttribute("pd", pd);
            session.setAttribute("ud", ud);
+           session.setAttribute("pyd", pyd);
+           session.setAttribute("smd", smd);
            session.setAttribute("od", od);
        }   
 

@@ -75,7 +75,7 @@ public class ProductDao {
         }
     }
     
-     public Product exactSearch(String searchName) throws SQLException {
+    public Product exactSearch(String searchName) throws SQLException {
         String search = "Select * from IOTUSER.Product where UPPER(PRODUCTNAME) = UPPER('" + searchName + "')";
         ResultSet rs = st.executeQuery(search);
         ArrayList<Product> product = new ArrayList<Product>();

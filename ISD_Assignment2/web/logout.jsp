@@ -30,8 +30,7 @@
         </div>
         
         <main class="main-content">
-           <p class="p instructions">You have been logged out. Click <a href = "index.jsp">here</a> to return to main page </p>
-            <% session.invalidate(); %>
+           <p class="p instructions">You have been logged out. Click <a href = "LogoutServlet">here</a> to return to main page </p>
         </main>
         
     </body>

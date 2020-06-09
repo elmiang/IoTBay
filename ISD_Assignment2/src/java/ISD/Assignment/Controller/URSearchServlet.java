@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import ISD.Assignment.Model.Dao.UserRecordDao;
-import ISD.Assignment.Model.UserRecord;
+import ISD.Assignment.Model.Dao.UserManagementDao;
+import ISD.Assignment.Model.User;
 import ISD.Assignment.Model.Dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -32,9 +32,9 @@ public class URSearchServlet extends HttpServlet{
             HttpSession session = request.getSession();
             String result = request.getParameter("searchText");
             
-            UserRecordDao ud = (UserRecordDao) session.getAttribute("ud");
+            UserManagementDao ud = (UserManagementDao) session.getAttribute("ud");
             try {
-                ArrayList<UserRecord> ur = ud.searchUserRecord(result);
+                ArrayList<User> ur = ud.searchUserRecord(result,result);
                 request.setAttribute("ur", ur);
                 request.getRequestDispatcher("userRecords.jsp").include(request, response);
             } catch (SQLException e){

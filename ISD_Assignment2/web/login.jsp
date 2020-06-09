@@ -13,6 +13,11 @@
         <title>Login</title>
     </head>
     <body>
+        <%
+            String existErr = (String)session.getAttribute("existErr");
+            String emailErr = (String)session.getAttribute("emailErr"); 
+            String passwordErr = (String)session.getAttribute("passErr");
+        %>
         
         <div class="header-img">
             <ul>
@@ -26,18 +31,19 @@
             <a style="float: left;">Kits</a>
             <a style="float: left;">Parts</a>
             <a style="float: left;">Sensors</a>
+            <a href="OrderServlet" style="float: left;">Your Order</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
         </div>
         
         
         <main class="main-content">
-        <form style="text-align: center;" method="post" action="welcome.jsp">
-            <h1>Login</h1>
+        <form style="text-align: center;" method="post" action="LoginServlet">
+            <h1>Login</h1> <span><%=(existErr != null ? existErr : "")%></span>
             <label for="email">Email address</label>
-            <input id="email" name="email" type="email" placeholder="Email address"/>
+            <input id="email" name="email" type="text" placeholder="<%=(emailErr != null ? emailErr : "Email Address")%>"/>
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" placeholder="Password"/>
+            <input id="password" name="password" type="password" placeholder="<%=(passwordErr != null ? passwordErr : "Password")%>"/>
             <a class="button" href="index.jsp"> Cancel </a>
             <input class="button" type="submit" value="Login"/><br>
             <p class="instructions">New User? <a href= "register.jsp"> Sign Up Here</p>

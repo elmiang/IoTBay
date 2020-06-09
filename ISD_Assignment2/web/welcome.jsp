@@ -26,13 +26,14 @@
             <a style="float: left;">Kits</a>
             <a style="float: left;">Parts</a>
             <a style="float: left;">Sensors</a>
+            <a href="OrderServlet" style="float: left;">Your Order</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
         </div>
         
         <main class="main-content">
         <%
-            String userID = request.getParameter("userID");
+            /*String userID = request.getParameter("userID");
             String email = request.getParameter("email");
             String name = request.getParameter("name");
             String dob = request.getParameter("dob");
@@ -40,17 +41,17 @@
             String gender = request.getParameter("gender");
             String address = request.getParameter("address");
             String postcode = request.getParameter("postcode");
-            String phoneNumber = request.getParameter("phoneNumber");
+            String phoneNumber = request.getParameter("phoneNumber");*/
         %>
         
         
         
-        <h1>Welcome, <%= name %> </h1>
+        <h1>Welcome, <%//= name %> </h1>
         <p class="p instructions">Click <a href = "main.jsp">here</a> to proceed to main page </p> <br>
         
         <% 
-            User user = new User(userID, email, password, name, dob, gender, address, postcode, phoneNumber);
-            session.setAttribute("user",user);
+           // User user = new User(userID, email, password, name, dob, gender, address, postcode, phoneNumber);
+           //session.setAttribute("user",user);
         %>
         </main>
     </body>

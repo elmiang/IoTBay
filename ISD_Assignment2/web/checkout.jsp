@@ -1,7 +1,7 @@
 <%-- 
-    Document   : checkout
-    Created on : 24/05/2020, 9:06:36 PM
-    Author     : CristinaFidelino
+    Document   : shipmentNew
+    Created on : 08/06/2020, 10:24:58 PM
+    Author     : admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,60 +10,49 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/IoTBay.css">
-        <title>Checkout</title>
+        <script type="text/javascript" src="js/script.js"></script>
+        <title>New Shipment</title>
     </head>
-    <body>
-        <div class="header-img">
-        <ul>
-          <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
-          <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
-          <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
-          <li style="float:right"><a href="cart.jsp"><img class="logo" src="css/cart.png"/></a></li>
-        </ul>
+    <body onload ="startTime()">
+                <div class="header-img">
+            <ul>
+                <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
+            </ul>
         </div>
+        
         <div class="topnav">
-            <a href="products.jsp" style="float: left;">All Products</a>
+            <a href="index.jsp"style="float: left;">Home</a>
+            <a style="float: left;">All Products</a>
             <a style="float: left;">Kits</a>
             <a style="float: left;">Parts</a>
             <a style="float: left;">Sensors</a>
+            <a href="OrderServlet" style="float: left;">Your Order</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
         </div>
         
         <main class="main-content">
-            <form method="post" action="welcome.jsp" style="text-align: center;">
-            <h1>Shipping Information</h1>
+        <%
+            String existErr = (String) session.getAttribute("existErr"); 
+            String  postCodeErr  = (String) session.getAttribute("postCodeErr"); 
+            String  phoneErr  = (String) session.getAttribute("phoneErr");
+        %>
+        <h1>New Shipment</h1>
+        <form method = "post" action="NewShipmentServlet">
             
-            <label for="name">First Name</label>
-            <input id="name" name="name" type="text" placeholder="First Name" required = "true"/>
-            <label for="name">Last Name</label>
-            <input id="name" name="name" type="text" placeholder="Last Name" required = "true"/>
-            
-            <label for="email">Email address</label>
-            <input id="email" name="email" type="email" placeholder="Email address" required = "true"/>
-            <label for="phoneNumber">Phone Number</label>
-            <input id="phoneNumber" name="phoneNumber" type="tel"  pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="1234-567-890" required = "true"/>
-            
-            <label for="address">Address</label>
-            <input id="address" name="address" type="text" placeholder="Address" required ="true"/>
-            <label for="addressTwo">Address 2 </label>
-            <input id="addressTwo" name="addressTwo" type="text" placeholder="E.g. Apartment, Suite or Space Number" />
-            <label for="city">City/Town</label>
-            <input id="city" name="city" type="text" placeholder="City/Town" />
-            <label for="State/Territory">State/Territory</label>
-            <input id="state" name="state" type="text" placeholder="State/Territory" />
-            
-            <label for="postcode">Postcode</label>
-            <input id="postcode" name="postcode" type="text" placeholder="Postcode"/>
-            
-            <div class="tos-section">
-            <label for="saveToAB">Save details to Address Book</label>
-            <input type="checkbox" name="saveToAB" id="savetoAB"/>
-            </div>
-            
-            <a class="button" href="payment.jsp"> Proceed </a>
-        </form>
+            <label for="name">PreferName</label><input type="text" name="name" placeholder="Enter name" required>
+            <label for="name">Email</label><input type="email" name="email" placeholder="Enter email" required>    
+            <label for="name">Phone_number</label><input type="text" name="phone" placeholder="<%= (phoneErr != null ? phoneErr :"Enter phone")%>" required>  
+           <label for="name">Address</label><input type="text" name="address" placeholder="Enter address" required> 
+            <label for="name">City</label><input type="text" name="city" placeholder="Enter city" required>  
+            <label for="name">Territory</label><input type="text" name="territory" placeholder="Enter territory" required>
+            <label for="name">Post_code</label><input type="text" name="post_code" placeholder="<%= (postCodeErr != null ? postCodeErr :"Enter phone")%>" required>
+           <label for="name">Wished Delivery Date</label><input type="date" name="startDate" placeholder="Enter date (yyyy-mm-dd)" required>
+            <label for="name">Shipment Method</label><input type="text" name="shipmentMethod" placeholder="" required>
+            <input class="button" type ="submit" value="submit">
+                
+        
+            </form>
         </main>
     </body>
 </html>
-

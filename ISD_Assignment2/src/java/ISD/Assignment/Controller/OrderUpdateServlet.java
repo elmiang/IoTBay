@@ -6,6 +6,7 @@
 package ISD.Assignment.Controller;
 
 import ISD.Assignment.Model.Dao.OrderDao;
+import ISD.Assignment.Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -25,12 +26,10 @@ public class OrderUpdateServlet extends HttpServlet {
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
             OrderDao od = (OrderDao) session.getAttribute("od");
-            int orderID = Integer.parseInt(request.getParameter("orderID"));
-            String date = request.getParameter("orderDate");
-            int userID = Integer.parseInt(request.getParameter("userID"));
-            String status = request.getParameter("orderStatus");
+            String status = "confirmed";
+            User user = (User) session.getAttribute("User");
             try {
-                od.updateOrder(userID, date, status);
+                od.updateStatus(status, user.getUserID());
                 response.sendRedirect("OrderServlet");
             } catch (SQLException e){
                throw new ServletException("Cannot update order", e); 

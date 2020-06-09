@@ -17,8 +17,13 @@
         <div class="header-img">
             <ul>
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
-          <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
-          <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
+          <c:if test="${user == null}">
+            <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
+          </c:if>
+          <c:if test="${user != null}">
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="logout.jsp"> Logout </a></li>
+          </c:if>
           <li style="float:right"><a href="cart.jsp"><img class="logo" src="css/cart.png"/></a></li>
         </ul>
         </div>
@@ -48,7 +53,7 @@
             
             <div>
                 <form action="URSearchServlet" method="get">
-                    <input type="text" id="searchText" name="searchText" placeholder="Search name"/>
+                    <input type="text" id="searchText" name="searchText" placeholder="Search name or phone number"/>
                 </form>
             </div>
             

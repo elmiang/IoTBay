@@ -17,8 +17,13 @@
         <div class="header-img">
             <ul>
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
-          <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
-          <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
+          <c:if test="${user == null}">
+            <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
+          </c:if>
+          <c:if test="${user != null}">
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="logout.jsp"> Logout </a></li>
+          </c:if>
           <li style="float:right"><a href="cart.jsp"><img class="logo" src="css/cart.png"/></a></li>
         </ul>
         </div>
@@ -43,7 +48,9 @@
             <h1>Add User Record</h1>
             <form action="URAddServlet" method="post">
         </c:if>
-            
+                <div>
+                    <p class="p instructions">Please fill out all text fields and select a DoB before pressing "Save"</p>
+                </div>
          <table>
            
          
@@ -106,7 +113,7 @@
                  <tr>
                     <th>Role</th>
                     <td>
-                        <input type="text" name="role" placeholder="Insert role"/>
+                        <input type="text" name="role" placeholder="Insert role (all lowercase)"/>
                     </td>
                 </tr>
                 

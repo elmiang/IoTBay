@@ -10,8 +10,8 @@ CREATE TABLE Users
     gender      varchar(1),
     address     varchar(100),
     postCode    varchar(4),
-    phoneNumber varchar(15)
-    
+    phoneNumber varchar(15),
+    role        varChar(20)
 );
 
 CREATE TABLE Staff
@@ -36,9 +36,10 @@ CREATE TABLE Customer
 
 CREATE TABLE AccessLogs
 (
+    visitID  Integer,
     userID Integer NOT NULL,
-    action varchar(30),
-    time   timestamp,
+    loginTime varchar(50),
+    logoutTime varchar(50),
     FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
@@ -58,6 +59,7 @@ CREATE TABLE OrderTable
     userID          integer NOT NULL,
     orderDate       date,
     orderStatus     varchar(30),
+    deliveryType    varchar(20),
     FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
@@ -103,36 +105,37 @@ CREATE TABLE Admin
 
 CREATE TABLE Payment
 (
-    paymentID       integer,
-    invoiceID       integer,
-    paidDate        date,
+    paymentID       integer NOT NULL PRIMARY KEY
+                    GENERATED ALWAYS AS IDENTITY
+                    (START WITH 1, INCREMENT BY 1),
+    cardHolderName  varchar (30),
+    firstName       varchar (30),
+    lastName        varchar (30),
+    cardNumber      integer,
+    expDate         varchar(100)
+    paidDate        varchar(100)
     paymentMethod   varchar(20),
-    paidAmount      double
+    paidAmount      double,
+    userID          integer,
+    FOREIGN KEY (userID) REFERENCES Users(userID)
 );
+
 
 CREATE TABLE Shipment
 (
-    shipmentID      integer,
+    shipmentID       integer NOT NULL PRIMARY KEY
+                    GENERATED ALWAYS AS IDENTITY
+                    (START WITH 1, INCREMENT BY 1),
     orderID         integer,
+    preferName      varchar(30),					
+    email           varchar(50),
+    phone_number    integer,
+    address         varchar(30),
+    city            varchar(20),
+    Territory       varchar(20),
+    post_code       integer,
     startDate       date,
-    estArrDate      date,
-    deliveryAddress varchar(20),
-    currentStatus   varchar(20)
-);
-
-CREATE TABLE UserRecord
-(
-    userID      integer NOT NULL PRIMARY KEY
-                GENERATED ALWAYS AS IDENTITY
-                (START WITH 1, INCREMENT BY 1),
-    email       varchar(30),
-    password    varchar(16),
-    name        varchar(30),
-    dob         date,
-    gender      varchar(1),
-    address     varchar(100),
-    postCode    varchar(4),
-    phoneNumber varchar(15),
-    role varchar(100)
-    
+    shipmentMethod  varchar(20),
+    currentStatus   varchar(20),
+    FOREIGN KEY (orderID) REFERENCES OrderTable(orderID)
 );

@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -18,8 +19,14 @@
         <div class="header-img">
         <ul>
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
-          <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
-          <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
+          <c:if test="${user == null}">
+            <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="register.jsp"> Register </a></li>
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="login.jsp"> Login </a></li>
+          </c:if>
+          <c:if test="${user != null}">
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="main.jsp"> Account </a></li>
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="logout.jsp"> Logout </a></li>
+          </c:if>
           <li style="float:right"><a href="CartServlet"><img class="logo" src="css/cart.png"/></a></li>
         </ul>
         </div>
@@ -28,6 +35,7 @@
             <a href="StoreServlet" style="float: left;">Kits</a>
             <a href="StoreServlet" style="float: left;">Parts</a>
             <a href="StoreServlet" style="float: left;">Sensors</a>
+            <a href="OrderServlet" style="float: left;">Your Order</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
         </div>
@@ -35,15 +43,25 @@
         <main class="main-content">
             <div>
                 <form action="SearchServlet" method="get">
-                    <input type="text" id="searchText" name="searchText" placeholder="Search.."/>
+                    <input type="text" name="searchName" placeholder="Search by Name"/>
                 </form>
             </div>
+            
             <div>
-                <form action="productAdd.jsp" method="post">
-                    <input type="submit" class="button" name="addProduct" value="Add"/>
+                <form action="SearchServlet" method="get">
+                    <input type="text" name="searchType" placeholder="Search by Type"/>
                 </form>
             </div>
-            <h1>All Products</h1>
+            
+            <c:if test="${user.role == 'staff'}">
+                <div>
+                    <form action="productAdd.jsp" method="post">
+                        <input type="submit" class="button" name="addProduct" value="Add"/>
+                    </form>
+                </div>
+            </c:if>
+            
+            <h1>Products List</h1>
             <table>
                 <tr>
                     <th>ID</th>
@@ -55,21 +73,27 @@
                 </tr>
                     <c:forEach var="product" items="${products}">
                     <tr>
+                        <fmt:setLocale value= "en_US"/>
                         <td><c:out value="${product.productID}" /></td>
-                        <td><c:out value="${product.productName}" /></td>
+                        <td><c:out value="${product.productName}"/></td>
                         <td><c:out value="${product.productType}" /></td>
-                        <td><c:out value="${product.price}" /></td>
+                        <td><fmt:formatNumber type="currency" value="${product.price}" /></td>
                         <td><c:out value="${product.quantity}" /></td>
                         <td>
-                            <c:if test="${sessionScope.staff != null}">
+                            <c:if test="${user.role == 'staff'}">
                             <a href="StoreEditServlet?oName=<c:out value ="${product.productName}"/>">Edit</a>
                             &nbsp;&nbsp;&nbsp;
                             <a href="StoreRemoveServlet?productName=<c:out value ="${product.productName}"/>">Delete</a>
                             &nbsp;&nbsp;&nbsp;
                             </c:if>
                             
-                            <c:if test="${sessionScope.staff == null}">
-                                <a href="CartAddServlet?productName=<c:out value = "${product.productName}"/>">Add to Cart</a>
+                            <c:if test="${user.role == 'customer' || user == null}">
+                                <c:if test="${product.quantity > 0}">
+                                    <a href="CartAddServlet?productName=<c:out value = "${product.productName}"/>">Add to Cart</a>
+                                </c:if>
+                                <c:if test="${product.quantity < 1}">
+                                    <a>Add to Cart</a>
+                                </c:if>
                             </c:if>
                         </td>
                     </tr>

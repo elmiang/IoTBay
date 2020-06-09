@@ -7,6 +7,7 @@ package ISD.Assignment.Controller;
 
 import ISD.Assignment.Model.Dao.OrderDao;
 import ISD.Assignment.Model.Order;
+import ISD.Assignment.Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -27,9 +28,12 @@ public class OrderServlet extends HttpServlet {
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
             OrderDao od = (OrderDao) session.getAttribute("od");
+            User user = (User) session.getAttribute("User");
+            int userid = user.getUserID();
             try {
-                ArrayList<Order> orders = od.fetchOrders();
-                request.setAttribute("orders", orders);
+                
+                od.findOrder(userid);
+                
                 request.getRequestDispatcher("Order.jsp").include(request, response);
             } catch (SQLException e){
                throw new ServletException("Cannot obtain orders from DB", e); 

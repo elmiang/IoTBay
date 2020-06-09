@@ -26,6 +26,7 @@
             <a style="float: left;">Kits</a>
             <a style="float: left;">Parts</a>
             <a style="float: left;">Sensors</a>
+            <a href="OrderServlet" style="float: left;">Your Order</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>
         </div>
