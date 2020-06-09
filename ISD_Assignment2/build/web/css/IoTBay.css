@@ -1,0 +1,330 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01/05/2020, 5:38:12 PM
+    Author     : CristinaFidelino
+*/
+
+*,:before,:after{
+    margin:0;
+    padding:0;
+    font-family:"Lucida Sans Unicode",Lucida Grande, sans-serif;
+}
+
+body {
+   
+        
+}
+
+.instructions > a:link {
+  color: green;
+  text-decoration:none;
+}
+
+/* visited link */
+.instructions >a:visited {
+  color: green;
+  text-decoration:none;
+}
+
+/* mouse over link */
+.instructions >a:hover {
+  color: red;
+  text-decoration:none;
+}
+
+/* selected link */
+.instructions >a:active {
+  color: blue;
+  text-decoration:none;
+}
+
+h1{
+    text-align: center;
+    font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+    color: #ec4c4c;
+}
+
+.h2{
+    text-align: left;
+    font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+    font-size: 20px;
+    color: #ec4c4c;
+    margin: 5px;
+    padding-top: 10px;
+}
+
+h2.instructions{
+    margin: 5px auto !important;
+}
+
+td{
+    color: #333;
+    font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+    font-size: 16px;
+    padding: 5px;
+}
+
+/*Header, Logo, Login and Register styling*/
+
+.header-img{
+   background-color: #333;
+   width: 100%;
+}
+.logo{
+    display:inline-block;
+    margin-left: auto !important;
+    margin-top:10px;
+    object-fit: contain;
+    width:132px;
+    height:120px;
+}
+.button.top-actions{
+    display:inline;
+    float:right;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li{
+    display:inline-block;
+}
+
+ul li{
+    height: 100px;
+    margin-top: 25px;
+    vertical-align: top;
+    display:inline;
+}
+
+ul li img{
+    vertical-align: middle;
+}
+/*End of Login and Register styling*/
+
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Navigation bar link styling */
+.topnav a {
+  color: #f2f2f2;
+  font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Link colour change on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+.main-content{
+    height:100vh;
+    margin:15px auto;
+    padding:16px;
+    width:55%;
+}
+
+.main-content>img{
+    display:block;
+    margin:20px auto;
+}
+
+/*Form styling*/
+form{
+    margin: 20px auto;
+    padding:0 16px;
+    width: 55%;
+}
+label[for="email"],label[for="addressTwo"], label[for="city"],label[for="State/Territory"],label[for="postcode"],label[for="chName"],label[for="password"], label[for="name"], label[for="phoneNumber"], label[for="address"]{
+    display:block;
+    margin:8px auto;
+    text-align:left !important;
+}
+
+.tos-section{
+    margin:32px 18px auto;
+}
+
+.payment-section{
+    margin:32px auto;
+    margin-left: auto;
+    text-align: left;
+    
+}
+
+label[for="tos"]{
+    margin-right: 5px;
+}
+
+input[type="email"], input[type="password"], input[type="text"], input[type="date"] , input[type="tel"] {
+    font-size:16px;
+}
+input[type="email"], input[type="password"], input[type="text"], input[type="date"] , input[type="tel"], input[type="cardNum"]{
+    display:block;
+    padding:.25em .5em;
+    margin:10px auto;
+    position: relative;
+    width:95%;
+    text-align:left;
+}
+
+input[type="date"]{
+      margin:8px auto;
+}
+
+input[value="Update"]{
+    display:block;
+    margin: 0 auto;
+    width: 65%;
+}
+.button{
+  background-color: #ec4c4c; 
+/*  background-color:#0066ff;*/
+  border-radius: 6px;
+  color: white;
+  padding: 12px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  margin:16px auto;
+  margin-right:4px;
+}
+
+input[value="login"]{
+    background-color:#0066ff;
+}
+.button:hover {
+    background-color: #ffc04a;
+}
+
+.a{
+    
+}
+
+.instructions{
+    color: #333;
+    font-family: "Lucida Sans Unicode", Lucida Grande, sans-serif;
+    font-size: 16px;
+    margin: 8px auto;
+    text-align: center;
+}
+
+/*Register*/
+h4.gender{
+    font-weight:normal !important;
+    text-align:left;
+}
+
+.gender-labels{
+    display:inline;
+    margin:8px 0;
+    float:left;
+    padding:8px 0;
+}
+
+label[for="dob"]{
+    clear:both;
+    display:block;
+    margin-top:16px;
+    text-align:left;
+}
+/*End of Register*/
+/*End of form styling*/
+
+
+/*Table Styling*/
+
+table{
+    border-collapse: collapse;
+    margin:0 auto;
+    padding:0;
+}
+tr>th{
+    background:#0066ff;
+    border-right: 1px solid white;
+    color:white;
+    padding:6px 8px;
+    text-align:center;
+}
+
+
+tr>th:last-child{
+    border-right:0;
+}
+
+tr>td{
+    background:#e0e0eb;
+    border-right: 1px solid white;
+    color:black;
+    padding:6px 8px;
+    text-align:center;
+    
+.box{
+    background-color: lightgrey;
+    width: 300px;
+    border: 15px black;
+    padding: 50px;
+    margin: 20px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+}
+
+/*End of Table Styling*/
+
+
+/*Payment Styling*/
+
+.cardExpiration{
+     text-align:left;
+     margin-bottom:8px;
+}
+label[for="cardMonth"], option,label[for="cardYear"], select[value="cardMonth"],select[value="cardYear"]{
+    font-size:16px;
+    text-align:left;
+}
+
+li.listImage > a > img{
+    height:60px;
+}
+/*End of Payment Styling*/
+
+
+/*Cart Styling*/
+
+.thead-dark > tr>th, tbody > tr >th{
+    background-color:#333333;
+    border:1px solid #333333;
+}
+
+
+/*End of Cart Styling*/
