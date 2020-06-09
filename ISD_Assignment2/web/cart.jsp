@@ -96,7 +96,7 @@
                 </tr>
             </tbody>
             </table>
-            
+            <a class="button" href="OrderAddServlet?productName=<c:out value = "${product.productName}"/>" onclick="showMessage()">Save Order</a>
             <a class="button" href="checkout.jsp">Continue </a>
             
             

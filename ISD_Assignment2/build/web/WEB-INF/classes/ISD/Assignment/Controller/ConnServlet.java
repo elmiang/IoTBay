@@ -20,6 +20,7 @@
        private UserManagementDao ud;
        private PaymentDAO pyd;
        private ShipmentManager smd;
+       private OrderDao od;
        
        @Override //Create an instance of DBConnector for the deployment session
        
@@ -45,6 +46,7 @@
                ud = new UserManagementDao(conn);
                pyd = new PaymentDAO(conn);
                smd = new ShipmentManager(conn);
+               od = new OrderDao(conn);
            } catch (SQLException ex) {
                Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
            }
@@ -55,6 +57,7 @@
            session.setAttribute("ud", ud);
            session.setAttribute("pyd", pyd);
            session.setAttribute("smd", smd);
+           session.setAttribute("od", od);
        }   
 
        @Override //Destroy the servlet and release the resources of the application (terminate also the db connection)

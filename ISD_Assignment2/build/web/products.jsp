@@ -27,7 +27,7 @@
             <li style="float:right; margin-right:10px;"><a class="button top-actions" href="main.jsp"> Account </a></li>
             <li style="float:right; margin-right:10px;"><a class="button top-actions" href="logout.jsp"> Logout </a></li>
           </c:if>
-          <li style="float:right"><a href="CartServlet"><img class="logo" src="css/cart.png"/></a></li>
+          <li style="float:right"><a href="CartServlet"><img class="logo" src="css/cart2.png"/></a></li>
         </ul>
         </div>
         <div class="topnav">

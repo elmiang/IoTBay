@@ -45,8 +45,8 @@
         </div>
         
         <main class="main-content">
-             <div class="greeting">
-                 <h1>Edit Account Information</h1> <span><%=(updated != null ? updated : "")%></span>
+             <div style="text-align: center" class="greeting">
+                 <h1>Edit Account Information</h1> <span style="color:green; font-size: 1.3em;"><%=(updated != null ? updated : "")%></span>
         </div>
         
         <form method="post" action="UpdateServlet"/>
@@ -57,7 +57,7 @@
             <label for="name">Name</label>
             <input id="name" name="name" type="text" placeholder="Full Name" value = "${user.name}"/>
             <label for="email">Email address</label>
-            <input id="email" name="email" placeholder="Email address" value ="${user.email}"/>
+            <input id="email" name="email" placeholder="Email address" value ="${user.email}" readonly/>
             <label for="password">Password</label>
             <input id="password" name="password" type="password" placeholder="Password" value = "${user.password}"/>
             

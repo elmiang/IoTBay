@@ -49,7 +49,8 @@
             <a href="card_details.jsp">Card Details</a>
             <a href="PaymentServlet">Payment History</a>
             <a href="AccessLogServlet">Access Log</a>
-            <a href="AllShipmentsServlet">Shipment</a>
+            <a href="AllShipmentsServlet">Shipments</a>
+            <a href="Order.jsp">Orders</a>
             <c:if test="${user.role == 'admin'}">
                 <a href="URServlet">User Management</a>
             </c:if>

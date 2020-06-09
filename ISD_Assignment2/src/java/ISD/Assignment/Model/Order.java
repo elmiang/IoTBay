@@ -4,25 +4,28 @@
  * and open the template in the editor.
  */
 package ISD.Assignment.Model;
+import java.io.Serializable;
+import java.sql.Date;
+
 
 /**
  *
  * @author CristinaFidelino
  */
-public class Order {
+public class Order implements Serializable {
     
     private int orderID;
     private String orderDate;
-    private char orderStatus;
-    private String CustomerName;
-    private String orderAddress;     
+    private String orderStatus;
+    private int UserID;
+        
 
-    public Order(int orderID, String orderDate, char orderStatus, String CustomerName, String orderAddress) {
+    public Order(int orderID, String orderDate, String orderStatus, int userID) {
         this.orderID = orderID;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
-        this.CustomerName = CustomerName;
-        this.orderAddress = orderAddress;
+        this.UserID = userID;
+        
     }
 
     public int getOrderID() {
@@ -41,28 +44,21 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public char getOrderStatus() {
+    public String getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(char orderStatus) {
+    public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
     }
 
-    public String getCustomerName() {
-        return CustomerName;
+    public int getUserID() {
+        return UserID;
     }
 
-    public void setCustomerName(String CustomerName) {
-        this.CustomerName = CustomerName;
+    public void setUserID(int userID) {
+        this.UserID = userID;
     }
 
-    public String getOrderAddress() {
-        return orderAddress;
-    }
-
-    public void setOrderAddress(String orderAddress) {
-        this.orderAddress = orderAddress;
-    }
     
 }

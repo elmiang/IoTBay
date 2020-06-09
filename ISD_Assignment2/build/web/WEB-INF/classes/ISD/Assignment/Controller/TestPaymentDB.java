@@ -97,7 +97,7 @@ private void testAdd(){
         in.nextLine();
     
         try {
-            pyd.addPayment(cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount);
+            pyd.addPayment(cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod);
         } catch (SQLException ex) {
             Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -106,7 +106,8 @@ private void testAdd(){
 
     private void testRead() throws SQLException {
         System.out.print("Payment ID: ");
-        String paymentID = in.nextLine();
+        int paymentID = in.nextInt();
+        in.nextLine();
         
         ArrayList<Payment> payment = pyd.searchPayment(paymentID);
         
@@ -122,7 +123,8 @@ private void testAdd(){
     
     private void testUpdate() throws SQLException {
         System.out.print("Payment ID: ");
-        String paymentID = in.nextLine();
+        int paymentID = in.nextInt();
+        in.nextLine();
         
         try{
             if(pyd.checkPayment(paymentID)) {
@@ -141,7 +143,7 @@ private void testAdd(){
                 
                 System.out.print("Expiry Date: ");
                 String expDate = in.nextLine();
-                pyd.updatePayment(cardHolderName, firstName, lastName, cardNumber, expDate);
+                pyd.updatePayment(paymentID, cardHolderName, firstName, lastName, cardNumber, expDate);
             } else {
                 System.out.println("Payment ID does not exist");
             }

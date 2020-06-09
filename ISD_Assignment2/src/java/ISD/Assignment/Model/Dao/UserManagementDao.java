@@ -1,7 +1,5 @@
 package ISD.Assignment.Model.Dao;
 import ISD.Assignment.Model.AccessLogs;
-import ISD.Assignment.Model.Admin;
-import ISD.Assignment.Model.Staff;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

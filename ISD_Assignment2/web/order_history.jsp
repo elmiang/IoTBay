@@ -1,12 +1,12 @@
 <%-- 
     Document   : order_history
-    Created on : 01/06/2020, 5:51:14 AM
-    Author     : CristinaFidelino
+    Created on : Jun 8, 2020, 5:57:01 PM
+    Author     : SOMESH
 --%>
 
+<%@page import="ISD.Assignment.Model.Order"%>
 <%@page import="ISD.Assignment.Model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,9 +17,78 @@
     <body>
         <%
             User user = (User)session.getAttribute("user");
+            Order order =(Order)session.getAttribute("order");
+          
         %>
         
-        <% if (user != null) { %>
+        <% if (user != null && order != null)  { %>
+        
+        <div class="header-img">
+        <ul>
+          <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
+          <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="logout.jsp"> Logout </a></li>
+          <li style="float:right" class="listImage"><a href="cart.jsp"><img class="logo" src="css/cart2.png"/></a></li>
+          <li style="float:right" class="listImage"><a href="main.jsp"><img class="logo" src="css/userIcon.png"/></a></li>
+        </ul>
+        </div>
+        
+        <div class="topnav">
+             <a href="index.jsp"style="float: left;">Home</a>
+            <a style="float: left;">All Products</a>
+            <a style="float: left;">Kits</a>
+            <a style="float: left;">Parts</a>
+            <a style="float: left;">Sensors</a>
+            <a style="float: right;">About</a>
+            <a style="float: right;">Contact</a>
+        </div>
+        
+        <main class="main-content">
+        <h1>Order History</h1><br>
+        
+        <div class="sidenav">
+            <a href="main.jsp">Account Summary</a>
+            <a href="#">Order History</a>
+            <a href="address_book.jsp">Address Book</a>
+            <a href="card_details.jsp">Card Details</a>
+        </div>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Order No</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Date</th>                  
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>    
+            </thead>
+            
+            <tbody>
+                <c:forEach var="cart"  items="${ShoppingCart.cart} "> 
+                <tr>
+                    <td><c:out value="${order.orderID}"/></td>
+                    <td><c:out value="${cart.productName}" /></td>
+                    <td><c:out value="${ShoppingCart.quantity}"/></td>
+                    <td><c:out value="${cart.price}"/></td>
+                    <td><c:out value="${order.orderDate}"/></td>
+                    <td><c:out value="${order.orderStatus}"/></td>
+                </tr>
+                </c:forEach>
+            </tbody>
+            
+            
+        </table>
+                
+               
+    </body>
+    
+        </main>
+        
+                
+    </div>
+        <% }if (user != null && order == null){ %>
         
         <div class="header-img">
         <ul>
@@ -55,6 +124,10 @@
                 <a class="button" href="products.jsp"> Go Shopping </a>
             </div>
         </main>
+        
+        
+        
+        <div> 
             
         <% }  else { %>
         <div class="header-img">
