@@ -38,7 +38,7 @@ public class AccDelServlet extends HttpServlet {
             if(user != null){
                 try{
                     manager.deleteUser(email);
-                    session.setAttribute("accRemoved","Account Successfully deleted");
+                    session.invalidate();
                     request.getRequestDispatcher("index.jsp").include(request, response);
                 } catch (SQLException ex) {
                     Logger.getLogger(AccDelServlet.class.getName()).log(Level.SEVERE, null, ex);
