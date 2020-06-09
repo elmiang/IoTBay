@@ -20,7 +20,7 @@ public class TestPaymentDB {
     private DBConnector connector;
     private Connection conn;
     private DBManager db;
-    private PaymentDAO pyd;
+    private PaymentDAO pd;
 
     public static void main(String[] args) throws SQLException {
         (new TestPaymentDB()).runQueries();
@@ -31,7 +31,7 @@ public class TestPaymentDB {
         connector = new DBConnector();
         conn = connector.openConnection();
         db = new DBManager(conn);
-        pyd = new PaymentDAO(conn);
+        pd = new PaymentDAO(conn);
     }
     catch (ClassNotFoundException | SQLException ex) {
         Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,6 +70,10 @@ private void runQueries() throws SQLException {
 }
 
 private void testAdd(){
+        
+        System.out.print("Payment ID: ");
+        int paymentID = in.nextInt();
+
         System.out.print("Card Holder Name: ");
         String cardHolderName = in.nextLine();
 
@@ -81,7 +85,6 @@ private void testAdd(){
         
         System.out.print("Card Number: ");
         int cardNumber = in.nextInt();
-        in.nextLine();
         
         System.out.print("Expiry Date: ");
         String expDate = in.nextLine();
@@ -94,10 +97,9 @@ private void testAdd(){
 
         System.out.print("Paid Amount: ");
         double paidAmount = in.nextDouble();
-        in.nextLine();
     
         try {
-            pyd.addPayment(cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount);
+            pd.addPayment(paymentID, cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount);
         } catch (SQLException ex) {
             Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -108,7 +110,7 @@ private void testAdd(){
         System.out.print("Payment ID: ");
         String paymentID = in.nextLine();
         
-        ArrayList<Payment> payment = pyd.searchPayment(paymentID);
+        ArrayList<Payment> payment = pd.searchPayment(paymentID);
         
         if (payment != null){
             for(Payment p: payment){
@@ -125,7 +127,7 @@ private void testAdd(){
         String paymentID = in.nextLine();
         
         try{
-            if(pyd.checkPayment(paymentID)) {
+            if(pd.checkPayment(paymentID)) {
                 
                 System.out.print("Card Holder Name: ");
                 String cardHolderName = in.nextLine();
@@ -141,7 +143,7 @@ private void testAdd(){
                 
                 System.out.print("Expiry Date: ");
                 String expDate = in.nextLine();
-                pyd.updatePayment(cardHolderName, firstName, lastName, cardNumber, expDate);
+                pd.updatePayment(cardHolderName, firstName, lastName, cardNumber, expDate);
             } else {
                 System.out.println("Payment ID does not exist");
             }
@@ -155,8 +157,8 @@ private void testAdd(){
         String paymentID = in.nextLine();
         
         try{
-            if(pyd.checkPayment(paymentID)) {
-                pyd.deletePayment(paymentID);
+            if(pd.checkPayment(paymentID)) {
+                pd.deletePayment(paymentID);
             } else {
                 System.out.println("Payment does not exist");
             }
@@ -167,7 +169,7 @@ private void testAdd(){
 
     private void testShow() throws SQLException {
         try{
-            ArrayList<Payment> payments = pyd.fetchPayments();
+            ArrayList<Payment> payments = pd.fetchPayments();
             System.out.println("PAYMENT TABLE: ");
             payments.stream().forEach((payment) -> {
                 System.out.printf("%-20s %-30s %-20s %10s \n", payment.getPaymentID(), payment.getCardHolderName(), payment.getFirstName(), payment.getLastName(), payment.getCardNumber(), payment.getExpDate(), payment.getPaidDate(), payment.getPaymentMethod(), payment.getPaidAmount());

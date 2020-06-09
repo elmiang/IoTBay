@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ISD.Assignment.Controller;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -15,25 +16,34 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ISD.Assignment.Model.Dao.PaymentDAO;
-import ISD.Assignment.Model.Payment ;
+import ISD.Assignment.Model.Payment;
 import ISD.Assignment.Model.Dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 /**
  *
- * @author CristinaFidelino
+ * @author Crist
  */
-public class EditPaymentServlet  extends HttpServlet{
-    @Override
+public class PaymentSearchServlet extends HttpServlet {
+        @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            PaymentDAO pd = (PaymentDAO) session.getAttribute("pd");
-            String oname = (String) request.getParameter("oName");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("edit_cardDetails.jsp");
-            request.setAttribute("oName", oname);
-            dispatcher.forward(request, response);
+            
+            PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
+            
+            String paymentID = request.getParameter("paymentID");
+          
+            try {
+                    ArrayList<Payment> payments = new ArrayList<Payment>();
+                    if(paymentID != null){
+                        payments = pyd.searchPayment(paymentID);
+                    }
+                    request.setAttribute("payments", payments);
+
+                request.getRequestDispatcher("payment.jsp").include(request, response);
+            } catch (SQLException e){
+               throw new ServletException("Cannot obtain payments from Database", e); 
+            }
         }
-    
 }

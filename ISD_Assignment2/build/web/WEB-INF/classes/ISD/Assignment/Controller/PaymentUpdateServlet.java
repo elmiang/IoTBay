@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ISD.Assignment.Controller;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -19,23 +20,27 @@ import ISD.Assignment.Model.Payment;
 import ISD.Assignment.Model.Dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
-    
-/**
- *
- * @author CristinaFidelino
- */
-public class RemovePaymentServlet extends HttpServlet {
-    @Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+
+public class PaymentUpdateServlet extends HttpServlet {
+        @Override
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            PaymentDAO pd = (PaymentDAO) session.getAttribute("pd");
-            String payment = request.getParameter("paymentID");
+            PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
+            
+            String paymentID = request.getParameter("paymentID");
+            
+            String cardHolderName = request.getParameter("cardHolderName");
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            int cardNumber = Integer.parseInt(request.getParameter("cardNumber"));
+            String expDate = request.getParameter("expDate");
+            
             try {
-                pd.deletePayment(payment);
+                pyd.updatePayment(cardNumber, cardHolderName, firstName, lastName, cardNumber, expDate);
                 response.sendRedirect("PaymentServlet");
             } catch (SQLException e){
-               throw new ServletException("Cannot add payment to Database", e); 
+               throw new ServletException("Cannot update payment", e); 
             }
         }
 }

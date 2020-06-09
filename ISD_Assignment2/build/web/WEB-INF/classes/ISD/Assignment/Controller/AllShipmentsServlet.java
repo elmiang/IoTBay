@@ -31,8 +31,9 @@ public class AllShipmentsServlet extends HttpServlet {
         HttpSession session = request.getSession();
         ShipmentManager smd = (ShipmentManager) session.getAttribute("smd");
         session.setAttribute("deleted", "");
+       
         
-        try{
+        try{            
             ArrayList<shipment> shipments = smd.fectShipment();
             session.setAttribute("shipments", shipments);
             request.getRequestDispatcher("shipments.jsp").include(request, response);

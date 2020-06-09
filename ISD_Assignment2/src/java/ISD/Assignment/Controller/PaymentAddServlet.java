@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -19,20 +19,25 @@ import ISD.Assignment.Model.Payment;
 import ISD.Assignment.Model.Dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
-    
 /**
  *
  * @author CristinaFidelino
  */
-public class RemovePaymentServlet extends HttpServlet {
+public class PaymentAddServlet  extends HttpServlet{
     @Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            PaymentDAO pd = (PaymentDAO) session.getAttribute("pd");
-            String payment = request.getParameter("paymentID");
+            PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
+            
+            String cardHolderName = request.getParameter("cardHolderName");
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            int cardNumber = Integer.parseInt(request.getParameter("cardNumber"));
+            String expDate = request.getParameter("expDate");
+            
             try {
-                pd.deletePayment(payment);
+                pyd.addCard(cardHolderName, firstName, lastName, cardNumber, expDate);
                 response.sendRedirect("PaymentServlet");
             } catch (SQLException e){
                throw new ServletException("Cannot add payment to Database", e); 

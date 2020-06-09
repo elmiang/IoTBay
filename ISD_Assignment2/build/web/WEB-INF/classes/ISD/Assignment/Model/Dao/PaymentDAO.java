@@ -50,6 +50,17 @@ public class PaymentDAO {
         }
     }
     
+    public void addCard (String cardHolderName, String firstName, String lastName, int cardNumber, String expDate) throws SQLException{
+        String update = "INSERT INTO IOTUSER.Payment(cardHolderName, firstName, lastName, cardNumber, expDate) VALUES(?, ?, ?, ?, ?)";
+        PreparedStatement st = conn.prepareStatement(update);
+        st.setString(1, cardHolderName);
+        st.setString(2, firstName);
+        st.setString(3, lastName);
+        st.setInt(4, cardNumber);
+        st.setString(5, expDate);
+        st.execute();
+    }
+    
     public void addPayment(String cardHolderName, String firstName, String lastName, int cardNumber, String expDate, String paidDate, String paymentMethod, double paidAmount) throws SQLException{
         String update = "INSERT INTO IOTUSER.Payment(cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement st = conn.prepareStatement(update);
@@ -64,12 +75,20 @@ public class PaymentDAO {
         st.execute();
     }
     
-        public void updatePayment(String cardHolderName, String firstName, String lastName, int cardNumber, String expDate) throws SQLException{
-        st.executeUpdate("UPDATE IOTUSER.Payment SET CARDHOLDERNAME='" + cardHolderName + "', FIRSTNAME'=" + firstName +"', LASTNAME='" + lastName +"', CARDNUMBER='" + cardNumber +"', EXPDATE='" + expDate + "'");
+        public void updatePayment(int paymentID, String cardHolderName, String firstName, String lastName, int cardNumber, String expDate) throws SQLException{
+            String update ="UPDATE IOTUSER.PAYMENT SET CARDHOLDERNAME = ?, FIRSTNAME = ?, LASTNAME = ?, CARDNUMBER = ?, EXPDATE =? WHERE PAYMENTID = ?";
+            PreparedStatement st = conn.prepareStatement(update);
+            st.setString(1, cardHolderName);
+            st.setString(2, firstName);
+            st.setString(3, lastName);
+            st.setInt(4, cardNumber);
+            st.setString(5, expDate);
+            st.setInt(6, paymentID);
+            st.execute();
     }
-    
-    public void deletePayment(String paymentID) throws SQLException {
-        st.executeUpdate("DELETE FROM IOTUSER.Payment WHERE PAYMENTID='" + paymentID + "'");
+        
+    public void deletePayment(String name) throws SQLException {
+        st.executeUpdate("DELETE FROM IOTUSER.Payment WHERE CARDHOLDERNAME='" + name + "'");
     }
     
     public ArrayList<Payment> fetchPayments() throws SQLException {
