@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ISD.Assignment.Controller;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -19,23 +20,30 @@ import ISD.Assignment.Model.Payment;
 import ISD.Assignment.Model.Dao.DBConnector;
 import java.sql.Connection;
 import java.util.ArrayList;
-    
 /**
  *
- * @author CristinaFidelino
+ * @author Crist
  */
-public class RemovePaymentServlet extends HttpServlet {
-    @Override
+public class PaymentSearchServlet extends HttpServlet {
+        @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
+            
             PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
-            String payment = request.getParameter("paymentID");
+            
+            String paymentID = request.getParameter("paymentID");
+          
             try {
-                pyd.deletePayment(payment);
-                response.sendRedirect("PaymentServlet");
+                    ArrayList<Payment> payments = new ArrayList<Payment>();
+                    if(paymentID != null){
+                        payments = pyd.searchPayment(paymentID);
+                    }
+                    request.setAttribute("payments", payments);
+
+                request.getRequestDispatcher("payment.jsp").include(request, response);
             } catch (SQLException e){
-               throw new ServletException("Cannot add payment to Database", e); 
+               throw new ServletException("Cannot obtain payments from Database", e); 
             }
         }
 }

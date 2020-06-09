@@ -23,7 +23,7 @@ import java.util.ArrayList;
  *
  * @author CristinaFidelino
  */
-public class AddPaymentServlet  extends HttpServlet{
+public class PaymentAddServlet  extends HttpServlet{
     @Override
         protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 

@@ -36,73 +36,47 @@
             <h1>Payment Information</h1>
             <h2 class="h2 instructions" style="color:red">* marks required fields</h2>
             
+            <label for="paymentMethod">Payment Method</label>
+           
+            <div>
+                    <label for="visa">Visa</label>
+                    <input type="radio" id="visa" name="paymentMethod" value="Visa" required = "true"/>
+                    <label for="masterCard">MasterCard</label>
+                    <input  type="radio" id="masterCard" name="paymentMethod" value="MasterCard" required = "true"/>
+                    <label for="payPal">PayPal</label>
+                    <input type="radio" id="payPal" name="paymentMethod"  value = "PayPal" required = "true"/>
+            </div>
+                
             <label for="name">Card Number*</label>
             <input id="cardNum" name="cardNum" type="text" placeholder="Card Number" required = "true"/>
             <label for="name">CVC*</label>
             <input id="cvc" name="cvc" type="text" placeholder="CVC" required = "true"/>
             <label for="firstName">First Name*</label>
             <input id="firstName" name="firstName" type="text" required = "true" placeholder="First Name"/>
-            <label for="lastName">Las Name*</label>
-            <input id="lastName" name="lastName" type="text" required = "true" placeholder="Last Name"/><br>
-   
-            <p class="cardExpiration">Card Expiry</p>
-            <div class="cardExpiration">
-                <label for="cardMonth">Month</label>
-                <select name="cardMonth" id="cardMonth" required>
-                    <option value="January">01</option>
-                    <option value="February">02</option>
-                    <option value="March">03</option>
-                    <option value="April">04</option>
-                    <option value="May">05</option>
-                    <option value="June">06</option>
-                    <option value="July">07</option>
-                    <option value="August">08</option>
-                    <option value="September">09</option>
-                    <option value="October">10</option>
-                    <option value="November">11</option>
-                    <option value="December">12</option>
-                </select>
-                <label for="cardYear">Year</label>
-                <select name="cardYear" id="cardYear"  required>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>    
-                </select>
-            </div>
+            <label for="lastName">Last Name*</label>
+            <input id="lastName" name="lastName" type="text" required = "true" placeholder="Last Name"/>
+            <label for="name">Expiry Date*</label>
+            <input id="expDate" name="expDate" type="text" placeholder="Expiry Date" required = "true"/>
             
-            <div class="payment-section">
-            <label for="saveCD">Save Card Details</label>
-            <input type="checkbox" name="saveCD" id="saveCD"/>
-            </div>
+            <h2 class="h2">Billing Address</h2>
+            <h2 class="h2 instructions" style="color:red">* marks required fields</h2>
             
-            
-            <h2 class="h2">Billing Address</h2><br>
-            
-            <label for="savedAddress">Saved Address</label>
-            <select name="savedAddress" id="savedAddress">
-                <option value="1">Address</option>  
-            </select>
-            
-            <label for="name">First Name</label>
+            <label for="name">First Name*</label>
             <input id="name" name="name" type="text" placeholder="First Name" required = "true"/>
-            <label for="name">Last Name</label>
+            <label for="name">Last Name*</label>
             <input id="name" name="name" type="text" placeholder="Last Name" required = "true"/>
             <label for="email">Email address</label>
             <input id="email" name="email" type="email" placeholder="Email address" required = "true"/>
-            <label for="phoneNumber">Phone Number</label>
+            <label for="phoneNumber">Phone Number*</label>
             <input id="phoneNumber" name="phoneNumber" type="tel"  pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="1234-567-890" required = "true"/>
-            <label for="address">Address</label>
+            <label for="address">Address*</label>
             <input id="address" name="address" type="text" placeholder="Address" required ="true"/>
             <label for="addressTwo">Address 2 </label>
             <input id="addressTwo" name="addressTwo" type="text" placeholder="E.g. Apartment, Suite or Space Number" />
-            <label for="city">City/Town</label>
+            <label for="city">City/Town*</label>
             <input id="city" name="city" type="text" placeholder="City/Town" />
             
-            <label for="State/Territory">State/Territory</label>
+            <label for="State/Territory">State/Territory*</label>
             <select name="stateTer" id="stateTer"  required>
                     <option value="New South Wales">New South Wales</option>
                     <option value="Victoria">Victoria</option>
@@ -114,7 +88,7 @@
                     <option value="Australian Capital Territory">Australian Capital Territory</option>    
                 </select>
             
-            <label for="postcode">Postcode</label>
+            <label for="postcode">Postcode*</label>
             <input id="postcode" name="postcode" type="text" placeholder="Postcode"/>
             
             <div class="tos-section">

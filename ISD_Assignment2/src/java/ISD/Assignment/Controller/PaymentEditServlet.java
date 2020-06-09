@@ -24,7 +24,7 @@ import javax.servlet.RequestDispatcher;
  *
  * @author CristinaFidelino
  */
-public class EditPaymentServlet  extends HttpServlet{
+public class PaymentEditServlet  extends HttpServlet{
     @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
