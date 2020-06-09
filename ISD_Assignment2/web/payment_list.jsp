@@ -68,7 +68,7 @@
                 <th>Paid Date</th>
                 <th>Payment Method</th>
                 <th>Paid Amount</th>
-                <th></th>
+                <th>Test</th>
             </tr>
             <c:forEach var="payment" items="${payments}">
                 <tr>
@@ -83,13 +83,14 @@
                     <td><c:out value="${payment.paidAmount}" /></td>
                      <td>    
                          <a href="PaymentEditServlet?id=<c:out value ="${payment.paymentID}"/>">Edit Payment</a>
-                           <a href="PaymentRemoveServlet?id=<c:out value ="${payment.paymentID}"/>">Delete</a>            
+                           <a href="PaymentRemoveServlet?id=<c:out value ="${payment.paymentID}"/>">Delete</a>      
                     </td>
                 </tr>
             </c:forEach>
         </table>
             <div style="text-align: center;">
                 <a class="button" href="PaymentServlet?id=<c:out value ="${payment.paymentID}"/>"> Add New Payment </a>
+                
             </div>
         </main>
             

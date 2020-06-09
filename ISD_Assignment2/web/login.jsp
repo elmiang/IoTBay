@@ -42,7 +42,7 @@
             <label for="email">Email address</label>
             <input id="email" name="email" type="text" placeholder="<%=(emailErr != null ? emailErr : "Email Address")%>"/>
             <label for="password">Password</label>
-            <input id="password" name="password" placeholder="<%=(passwordErr != null ? passwordErr : "Password")%>"/>
+            <input id="password" name="password" type="password" placeholder="<%=(passwordErr != null ? passwordErr : "Password")%>"/>
             <a class="button" href="index.jsp"> Cancel </a>
             <input class="button" type="submit" value="Login"/><br>
             <p class="instructions">New User? <a href= "register.jsp"> Sign Up Here</p>

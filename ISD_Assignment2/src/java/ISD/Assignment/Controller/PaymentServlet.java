@@ -30,6 +30,7 @@ public class PaymentServlet extends HttpServlet{
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
             PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
+            int id = Integer.parseInt(request.getParameter("id"));
             try {
                 ArrayList<Payment> payments = pyd.fetchPayments();
                 request.setAttribute("payments", payments);

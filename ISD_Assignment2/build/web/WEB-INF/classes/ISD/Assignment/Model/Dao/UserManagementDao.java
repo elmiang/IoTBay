@@ -53,13 +53,13 @@ public class UserManagementDao {
     
     public void updateUser(String email, String password, String name, String dob, String gender, String address, String postCode, String phoneNumber) throws SQLException{
             
-            st.executeUpdate("UPDATE IotBayAdmin.Users SET  PASSWORD='" + password + "', NAME = '"+ name +"',"
+            st.executeUpdate("UPDATE IOTUSER.Users SET  PASSWORD='" + password + "', NAME = '"+ name +"',"
             + "DOB='" + dob + "', GENDER='" + gender + "', ADDRESS='" + address + "', POSTCODE='" + postCode + "', "
             + "PHONENUMBER='" + phoneNumber + "' WHERE EMAIL='" + email + "'");     
     }
     
     public void deleteUser(String email) throws SQLException {
-        st.executeUpdate("UPDATE IotBayAdmin.Users SET EMAIL =NULL, PASSWORD=NULL, NAME =NULL,"
+        st.executeUpdate("UPDATE IOTUSER.Users SET EMAIL =NULL, PASSWORD=NULL, NAME =NULL,"
             + "DOB=CAST(NULL AS DATE), GENDER=NULL, ADDRESS=NULL, POSTCODE=NULL, "
             + "PHONENUMBER=NULL, ROLE=NULL WHERE EMAIL='" + email + "'");
         
