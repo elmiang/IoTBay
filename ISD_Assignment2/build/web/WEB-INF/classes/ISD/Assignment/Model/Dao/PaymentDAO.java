@@ -25,9 +25,9 @@ public class PaymentDAO {
         this.conn = conn;
     }
     
-    public ArrayList<Payment> searchPayment(String searchID) throws SQLException {
+    public ArrayList<Payment> searchPayment(int searchID) throws SQLException {
         ArrayList<Payment> searchPayments = new ArrayList();
-        String search = "Select * from IOTUSER.Payment where PAYMENTID=" + searchID ;
+        String search = "Select * from IOTUSER.Payment where PAYMENTID=" + searchID + "";
         ResultSet rs = st.executeQuery(search);
         
         while (rs.next()){
@@ -64,8 +64,8 @@ public class PaymentDAO {
         st.execute();
     }
     
-        public void updatePayment(String cardHolderName, String firstName, String lastName, int cardNumber, String expDate) throws SQLException{
-        st.executeUpdate("UPDATE IOTUSER.Payment SET CARDHOLDERNAME='" + cardHolderName + "', FIRSTNAME'=" + firstName +"', LASTNAME='" + lastName +"', CARDNUMBER='" + cardNumber +"', EXPDATE='" + expDate + "'");
+        public void updatePayment(int id, String cardHolderName, String firstName, String lastName, int cardNumber, String expDate) throws SQLException{
+        st.executeUpdate("UPDATE IOTUSER.Payment SET CARDHOLDERNAME='" + cardHolderName + "', FIRSTNAME ='" + firstName +"', LASTNAME='" + lastName +"', CARDNUMBER=" + cardNumber +", EXPDATE='" + expDate + "' WHERE PAYMENTID=" + id + "");
     }
     
     public void deletePayment(int paymentID) throws SQLException {

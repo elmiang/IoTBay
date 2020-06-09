@@ -49,7 +49,7 @@
             <a href="#">Card Details</a>
         </div>
         
-        <table border="1" cellpadding="5">
+<!--        <table border="1" cellpadding="5">
             <caption><h2>Your Card Details</h2></caption>
             <tr>
                 <th>Card Holder Name</th>
@@ -58,20 +58,20 @@
                 <th>Credit Card Number</th>
                 <th>Expiry Date</th>
             </tr>
-            <c:forEach var="payment" items="${payments}">
+            <c:forEach var="payment" items="">
                 <tr>
-                    <td><c:out value="${payment.cardHolderName}" /></td>
-                    <td><c:out value="${payment.firstName}" /></td>
-                    <td><c:out value="${payment.lastName}" /></td>
-                    <td><c:out value="${payment.cardNumber}" /></td>
-                    <td><c:out value="${payment.expDate}" /></td>                
+                    <td><c:out value="" /></td>
+                    <td><c:out value="" /></td>
+                    <td><c:out value="" /></td>
+                    <td><c:out value="" /></td>
+                    <td><c:out value="" /></td>                
                 </tr>
             </c:forEach>
         </table>
             <div style="text-align: center;">
                 <a class="button" href="edit_cardDetails.jsp"> Add New Card Details </a>
             </div>
-        </main>
+        </main>-->
             
     </body>
 </html>

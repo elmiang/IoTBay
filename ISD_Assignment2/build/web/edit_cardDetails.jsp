@@ -48,11 +48,12 @@
             <h1>Add Card Details</h1>
         </div>
         
-        <form method="post" action="card_details.jsp">
+        <form method="post" action="PaymentUpdateServlet">
             <h2 class="h2 instructions">Card Details</h2>
         
             <p class="p instructions">* marks required fields</p>
             
+            <input type="hidden" id="paymentID" name="paymentID" value="${payment.paymentID}"/>
             <label for="chName">Card Holder Name</label>
             <input id="chName" name="chName" type="text" placeholder="Card Holder Name" value = "${payment.cardHolderName}"/>
             <label for="firstName">First Name*</label>
@@ -61,38 +62,11 @@
             <input id="lastName" name="lastName" type="text" placeholder="LastName Name" value = "${payment.lastName}"/>
             <label for="cardNum">Card Number</label>
             <input id="cardNum" name="cardNum" type="text" placeholder="Card Number" value ="${payment.cardNumber}"/>
-            <p class="cardExpiration">Card Expiry</p>
-            <div class="cardExpiration">
-                <label for="cardMonth">Month</label>
-                <select name="cardMonth" id="cardMonth" value = "${payment.expDate}"required>
-                    <option value="January">01</option>
-                    <option value="February">02</option>
-                    <option value="March">03</option>
-                    <option value="April">04</option>
-                    <option value="May">05</option>
-                    <option value="June">06</option>
-                    <option value="July">07</option>
-                    <option value="August">08</option>
-                    <option value="September">09</option>
-                    <option value="October">10</option>
-                    <option value="November">11</option>
-                    <option value="December">12</option>
-                </select>
-                <label for="cardYear">Year</label>
-                <select name="cardYear" id="cardYear" value = "${payment.expDate}" required>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>    
-                </select>
-            </div>
+            <label for="expDate">Expiry Date</label>
+            <input id="expDate" name="expDate" type="text" placeholder="Expiry Date" value="${payment.expDate}"/>
             
             <input class="button" type="submit" value="Save"/><br>
             <p class="p instructions">Return to <a class="p"href = "card_details.jsp">Card Details Page</a> </p>
-
         </form>
         
             <%

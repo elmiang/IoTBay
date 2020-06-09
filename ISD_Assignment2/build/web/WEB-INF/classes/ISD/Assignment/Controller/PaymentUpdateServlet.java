@@ -28,19 +28,18 @@ public class PaymentUpdateServlet extends HttpServlet {
             HttpSession session = request.getSession();
             PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
             
-            String paymentID = request.getParameter("paymentID");
-            
-            String cardHolderName = request.getParameter("cardHolderName");
+            int paymentID = Integer.parseInt(request.getParameter("paymentID"));
+            String cardHolderName = request.getParameter("chName");
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
-            int cardNumber = Integer.parseInt(request.getParameter("cardNumber"));
+            int cardNumber = Integer.parseInt(request.getParameter("cardNum"));
             String expDate = request.getParameter("expDate");
             
-//            try {
-//                pyd.updatePayment(cardNumber, cardHolderName, firstName, lastName, cardNumber, expDate);
-//                response.sendRedirect("PaymentServlet");
-//            } catch (SQLException e){
-//               throw new ServletException("Cannot update payment", e); 
-//            }
+            try {
+                pyd.updatePayment(paymentID, cardHolderName, firstName, lastName, cardNumber, expDate);
+                response.sendRedirect("PaymentServlet");
+            } catch (SQLException e){
+               throw new ServletException("Cannot update payment", e); 
+            }
         }
 }

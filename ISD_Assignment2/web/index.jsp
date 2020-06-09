@@ -35,8 +35,8 @@
         </div>
         <div class="topnav">
             <a href="StoreServlet" style="float: left;">All Products</a>
-            <a href="StoreCategoryServlet?type=motor" style="float: left;">Kits (Motors)</a>
-            <a href="StoreCategoryServlet?type=display" style="float: left;">Parts (Displays)</a>
+            <a href="StoreCategoryServlet?type=motor" style="float: left;">Motors</a>
+            <a href="StoreCategoryServlet?type=display" style="float: left;">Displays</a>
             <a href="StoreCategoryServlet?type=sensor" style="float: left;">Sensors</a>
             <a style="float: right;">About</a>
             <a style="float: right;">Contact</a>

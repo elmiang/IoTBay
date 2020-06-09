@@ -30,10 +30,15 @@ public class PaymentEditServlet  extends HttpServlet{
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
             PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
-            String oname = (String) request.getParameter("oName");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("edit_cardDetails.jsp");
-            request.setAttribute("oName", oname);
-            dispatcher.forward(request, response);
+            int id = Integer.parseInt(request.getParameter("id"));
+            try{
+                Payment payment = pyd.searchPayment(id).get(0);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("edit_cardDetails.jsp");
+                request.setAttribute("payment", payment);
+                dispatcher.forward(request, response);
+            } catch (SQLException ex) {
+            Logger.getLogger(PaymentEditServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     
 }
