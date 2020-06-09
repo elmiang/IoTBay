@@ -28,7 +28,7 @@ public class AddPaymentServlet  extends HttpServlet{
         protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            PaymentDAO pd = (PaymentDAO) session.getAttribute("pd");
+            PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
             int paymentID = Integer.parseInt(request.getParameter("paymentID"));
             String cardHolderName = request.getParameter("cardHolderName");
             String firstName = request.getParameter("firstName");
@@ -40,7 +40,7 @@ public class AddPaymentServlet  extends HttpServlet{
             double paidAmount = Double.parseDouble(request.getParameter("paidAmount"));
             
             try {
-                pd.addPayment(paymentID, cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount);
+                pyd.addPayment(cardHolderName, firstName, lastName, cardNumber, expDate, paidDate, paymentMethod, paidAmount);
                 response.sendRedirect("PaymentServlet");
             } catch (SQLException e){
                throw new ServletException("Cannot add payment to Database", e); 

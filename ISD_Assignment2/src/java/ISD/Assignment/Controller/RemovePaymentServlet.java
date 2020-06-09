@@ -29,10 +29,10 @@ public class RemovePaymentServlet extends HttpServlet {
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            PaymentDAO pd = (PaymentDAO) session.getAttribute("pd");
+            PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
             String payment = request.getParameter("paymentID");
             try {
-                pd.deletePayment(payment);
+                pyd.deletePayment(payment);
                 response.sendRedirect("PaymentServlet");
             } catch (SQLException e){
                throw new ServletException("Cannot add payment to Database", e); 

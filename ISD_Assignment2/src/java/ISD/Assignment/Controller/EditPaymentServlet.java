@@ -29,7 +29,7 @@ public class EditPaymentServlet  extends HttpServlet{
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException{ 
             HttpSession session = request.getSession();
-            PaymentDAO pd = (PaymentDAO) session.getAttribute("pd");
+            PaymentDAO pyd = (PaymentDAO) session.getAttribute("pyd");
             String oname = (String) request.getParameter("oName");
             RequestDispatcher dispatcher = request.getRequestDispatcher("edit_cardDetails.jsp");
             request.setAttribute("oName", oname);

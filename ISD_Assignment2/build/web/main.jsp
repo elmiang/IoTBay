@@ -23,14 +23,14 @@
         <div class="header-img">
         <ul>
           <li><a href="index.jsp"><img class="logo" src="css/IoTBlogo3.png"/></a></li>
-          <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="LogoutServlet"> Logout </a></li>
+          <li style="float:right; margin-right:10px;"> <a class="button top-actions"href="logout.jsp"> Logout </a></li>
           <li style="float:right" class="listImage"><a href="cart.jsp"><img class="logo" src="css/cart2.png"/></a></li>
           <li style="float:right" class="listImage"><a href="main.jsp"><img class="logo" src="css/userIcon.png"/></a></li>
         </ul>
         </div>
         
         <div class="topnav">
-            <a href="index.jsp"style="float: left;">Home</a>
+             <a href="index.jsp"style="float: left;">Home</a>
             <a href="StoreServlet" style="float: left;">All Products</a>
             <a href="StoreServlet" style="float: left;">Kits</a>
             <a href="StoreServlet" style="float: left;">Parts</a>
@@ -48,8 +48,7 @@
             <a href="address_book.jsp">Address Book</a>
             <a href="card_details.jsp">Card Details</a>
             <a href="payment_history.jsp">Payment History</a>
-            <a href="AccessLogServlet">Access Log</a>
-            <a href="accDelete.jsp">Delete Account</a>
+            <a href="AccessLogServlet">Access Log<a/>
         </div>
         
         <p class="p">You are logged in as ${user.email}</p><br>
