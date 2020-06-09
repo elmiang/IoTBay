@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ISD_Assignment1/web/accessLog.jsp</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ISD_Assignment1/src/java/ISD/Assignment/Controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ISD_Assignment1/web/Db/CreateTables.sql</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ISD_Assignment1/src/java/ISD/Assignment/Controller/TestDB.java</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ISD_Assignment1/web/edit.jsp</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ISD_Assignment1/web/main.jsp</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ISD_Assignment1/src/java/ISD/Assignment/Model/Dao/DBManager.java</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ISD_Assignment1/src/java/ISD/Assignment/Controller/EditServlet.java</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ISD_Assignment1/src/java/ISD/Assignment/Controller/Validator.java</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ISD_Assignment1/web/register.jsp</file>
+            <file>file:/C:/Users/Martin/Documents/NetBeansProjects/ISD_Assignment1/src/java/ISD/Assignment/Controller/AccessLogServlet.java</file>
+        </group>
+        <group name="JavaY2">
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/LoginServlet.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/index.jsp</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Model/ShoppingCart.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/cart.jsp</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/CartRemoveServlet.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/CartServlet.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/CartAddServlet.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/profileTable.jsp</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/StoreRemoveServlet.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/ConnServlet.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/products.jsp</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/userRecordsAdd.jsp</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/StoreServlet.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Model/Dao/ProductDao.java</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/web/db/insertSampleUserRecords.sql</file>
+            <file>file:/C:/Users/jacks/OneDrive/Documents/GitHub/IoTBay/ISD_Assignment2/src/java/ISD/Assignment/Controller/Validator.java</file>
+        </group>
+    </open-files>
+</project-private>
