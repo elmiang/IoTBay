@@ -35,7 +35,7 @@ public class AllShipmentsServlet extends HttpServlet {
         try{
             ArrayList<shipment> shipments = smd.fectShipment();
             session.setAttribute("shipments", shipments);
-            request.getRequestDispatcher("shipments.jsp").forward(request, response);
+            request.getRequestDispatcher("shipments.jsp").include(request, response);
  
         }catch(SQLException ex){
             Logger.getLogger(AllShipmentsServlet.class.getName()).log(Level.SEVERE, null, ex);
