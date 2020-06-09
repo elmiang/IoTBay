@@ -36,9 +36,10 @@ CREATE TABLE Customer
 
 CREATE TABLE AccessLogs
 (
+    visitID  Integer,
     userID Integer NOT NULL,
-    action varchar(30),
-    time   timestamp,
+    loginTime varchar(50),
+    logoutTime varchar(50),
     FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
@@ -52,7 +53,9 @@ CREATE TABLE Store
 
 CREATE TABLE OrderTable
 (
-    orderID         integer,
+    orderID         integer NOT NULL PRIMARY KEY
+                    GENERATED ALWAYS AS IDENTITY
+                    (START WITH 1, INCREMENT BY 1),
     userID          integer NOT NULL,
     orderDate       date,
     orderStatus     varchar(30),

@@ -29,7 +29,7 @@
           </c:if>
           <c:if test="${user != null}">
             <li style="float:right; margin-right:10px;"><a class="button top-actions" href="main.jsp"> Account </a></li>
-            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="logout.jsp"> Logout </a></li>
+            <li style="float:right; margin-right:10px;"><a class="button top-actions" href="LogoutServlet"> Logout </a></li>
           </c:if>
         </ul>
         </div>
